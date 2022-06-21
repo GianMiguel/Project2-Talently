@@ -1,5 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+  --font-league-spartan: "League Spartan", sans-serif;
+  --font-raleway: "Raleway", sans-serif;
+}
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Raleway", sans-serif;
 }
+
+// How to use?
+// .class {
+//   font-family: var(--font-league-spartan); Text in League Spartan Font
+// }
