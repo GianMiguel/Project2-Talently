@@ -1,38 +1,38 @@
-const user = {
-  id: "", // nanoid() - programatically generated throu NanoID library
-  email: "", //check for valid email | required for both hunter and talent | Check if user already exists <-> later feature
-  password: "", //check for valid email | required for both hunter and talent | 8 - 20 characters?
-  userType: "", // Radio button? | Required | either "hunter" or "talent"
-  firstName: "", // Required for userType = "hunter" sign up
-  lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
-  company: "", // Required for userType = "hunter" sign up
-  jobTitle: "", // Required for userType = "hunter" sign up
-  profileActivated: false, // Default value = false after "talent" signs up
-  profileCard: {
-    // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
-    profileFirstName: "",
-    profileLastName: "",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
-    profileJobTitle: "",
-    profileEmail: "",
-    profileLinkedIn: "",
-    profileWebsite: "",
-    profileSkills: [],
-    profileBio: "", //30 - 50 words?
-    profileExperience: "",
-  },
-  connections: [],
-};
+// const user = {
+//   id: "", // nanoid() - programatically generated throu NanoID library
+//   email: "", //check for valid email | required for both hunter and talent | Check if user already exists <-> later feature
+//   password: "", //check for valid email | required for both hunter and talent | 8 - 20 characters?
+//   userType: "", // Radio button? | Required | either "hunter" or "talent"
+//   firstName: "", // Required for userType = "hunter" sign up
+//   lastName: "", // Required for userType = "hunter" sign up
+//
+//   company: "", // Required for userType = "hunter" sign up
+//   jobTitle: "", // Required for userType = "hunter" sign up
+//   profileActivated: false, // Default value = false after "talent" signs up
+//   profileCard: {
+//     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
+//     profileFirstName: "",
+//     profileLastName: "",
+//
+//     profileJobTitle: "",
+//     profileEmail: "",
+//     profileLinkedIn: "",
+//     profileWebsite: "",
+//     profileSkills: [],
+//     profileBio: "", //30 - 50 words?
+//     profileExperience: "",
+//   },
+//   connections: [],
+// };
 
-const Laura = {
+const laura = {
   id: 1, // nanoid() - programatically generated throu NanoID library
   email: "laurasmith@fakegmail.com", //check for valid email | required for both hunter and talent | Check if user already exists <-> later feature
   password: "1234", //check for valid email | required for both hunter and talent
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -40,12 +40,12 @@ const Laura = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "laura",
     profileLastName: "smith",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Frontend Developer",
     profileEmail: "laurasmith@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "laurasmith.io",
-    profileSkills: ["html,css,react,javascript,bootstrap"],
+    profileSkills: ["html", "css", "react", "javascript", "bootstrap"],
     profileBio:
       "I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.",
     profileExperience: 6,
@@ -61,7 +61,7 @@ const argel = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -69,12 +69,12 @@ const argel = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "argel",
     profileLastName: "miralles",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
-    profileJobTitle: "edit",
-    profileEmail: "edit",
+
+    profileJobTitle: "Software Developer",
+    profileEmail: "argelmiralles@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
-    profileWebsite: "argel.io",
-    profileSkills: ["html,css,react,javascript,bootstrap"],
+    profileWebsite: "argelmiralles.io",
+    profileSkills: ["html", "css", "react", "javascript", "bootstrap"],
     profileBio:
       "Amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante",
     profileExperience: 0,
@@ -90,7 +90,7 @@ const james = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -98,7 +98,7 @@ const james = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "james",
     profileLastName: "willems",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Video Editor",
     profileEmail: "james@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
@@ -119,7 +119,7 @@ const adam = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -127,12 +127,12 @@ const adam = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "adam",
     profileLastName: "kovic",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Backend Developer",
     profileEmail: "adam@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "adamkovic.io",
-    profileSkills: ["html,css,javascript,C, C#, node,"],
+    profileSkills: ["html", "css", "javascript", "c", "c#", "node"],
     profileBio:
       "Eget est lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas integer eget aliquet nibh praesent tristique magna sit amet purus",
     profileExperience: 2,
@@ -148,7 +148,7 @@ const bruce = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -156,13 +156,20 @@ const bruce = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "Bruce",
     profileLastName: "Greene",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Software Developer",
     profileEmail: "bruce@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "brucegreene.io",
     profileSkills: [
-      "html,css,react,javascript,bootstrap, Node, MongoDB, Express",
+      "html",
+      "css",
+      "react",
+      "javascript",
+      "bootstrap",
+      "node",
+      "mongodb",
+      "express",
     ],
     profileBio:
       "Ut consequat semper viverra nam libero justo laoreet sit amet cursus sit amet dictum sit amet justo donec enim diam vulputate ut pharetra sit amet aliquam id diam maecenas ultricies mi eget mauris pharetra et ultrices neque ornare",
@@ -179,7 +186,7 @@ const elyse = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -187,12 +194,12 @@ const elyse = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "elyse",
     profileLastName: "willems",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Web Designer",
     profileEmail: "elyse@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "elysewillems.io",
-    profileSkills: ["Figma, Adobe XD, Adobe Photoshop"],
+    profileSkills: ["web--design"],
     profileBio:
       "Purus viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor eu augue ut lectus arcu bibendum at varius vel pharetra vel turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet",
     profileExperience: 3,
@@ -208,7 +215,7 @@ const lawrence = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -216,12 +223,12 @@ const lawrence = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "lawrence",
     profileLastName: "Sonntag",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Frontend Developer",
     profileEmail: "lawrence@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "lawrencesonntag.io",
-    profileSkills: ["html,css,react,javascript,bootstrap, vue"],
+    profileSkills: ["html", "css", "react", "javascript", "bootstrap", "vue"],
     profileBio:
       "Enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus",
     profileExperience: 6,
@@ -237,7 +244,7 @@ const alanah = {
   userType: "talent", // Radio button? | Required | either "hunter" or "talent"
   firstName: "", // Required for userType = "hunter" sign up
   lastName: "", // Required for userType = "hunter" sign up
-  fullName: `${this.firstName} ${this.firstName}`, // Default value - sign up form unrelated
+
   company: "", // Required for userType = "hunter" sign up
   jobTitle: "", // Required for userType = "hunter" sign up
   profileActivated: true, // Default value = false after "talent" signs up
@@ -245,14 +252,12 @@ const alanah = {
     // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
     profileFirstName: "alanah",
     profileLastName: "pearce",
-    profileFullName: `${this.profileFirstName} ${this.LastName}`,
+
     profileJobTitle: "Graphic Designer",
     profileEmail: "alanahpearce@fakegmail.com",
     profileLinkedIn: "fakelinkedin.com",
     profileWebsite: "alanahpearce.io",
-    profileSkills: [
-      "Adobe Photoshop, Adobe Lightroom, Adobe XD, Adobe After Effects",
-    ],
+    profileSkills: ["graphic--design"],
     profileBio:
       "in tellus integer feugiat scelerisque varius morbi enim nunc faucibus a pellentesque sit amet porttitor eget dolor morbi non arcu risus quis varius quam quisque id diam vel quam elementum",
     profileExperience: 6,
@@ -261,6 +266,43 @@ const alanah = {
   connections: [],
 };
 
-const data = [laura, argel, james, adam, bruce, elyse, lawrence, alanah];
+const testHunter1 = {
+  id: 9, // nanoid() - programatically generated throu NanoID library
+  email: "teshunter1@fakegmail.com", //check for valid email | required for both hunter and talent | Check if user already exists <-> later feature
+  password: "1234", //check for valid email | required for both hunter and talent | 8 - 20 characters?
+  userType: "hunter", // Radio button? | Required | either "hunter" or "talent"
+  firstName: "test", // Required for userType = "hunter" sign up
+  lastName: "hunter1", // Required for userType = "hunter" sign up
+
+  company: "hunterxhunter", // Required for userType = "hunter" sign up
+  jobTitle: "Lead Hunter", // Required for userType = "hunter" sign up
+  profileActivated: false, // Default value = false after "talent" signs up
+  profileCard: {
+    // Default value = object with undefined values | will populate after "talent" created a profile card in My Profile page
+    profileFirstName: "",
+    profileLastName: "",
+
+    profileJobTitle: "",
+    profileEmail: "",
+    profileLinkedIn: "",
+    profileWebsite: "",
+    profileSkills: [],
+    profileBio: "", //30 - 50 words?
+    profileExperience: "",
+  },
+  connections: [],
+};
+
+const data = [
+  laura,
+  argel,
+  james,
+  adam,
+  bruce,
+  elyse,
+  lawrence,
+  alanah,
+  testHunter1,
+];
 
 export default data;

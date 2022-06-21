@@ -1,45 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --font-league-spartan: "League Spartan", sans-serif;
-  --font-raleway: "Raleway", sans-serif;
-}
-
-body {
-  font-family: "Raleway", sans-serif;
-}
-
-:root {
-  --primary-white: #ffffff;
-  --primary-off-white: #efefef;
-  --primary-black: #000000;
-  --primary-desaturated-blue: #7c99ac;
-  --primary-dark-blue: #1572a1;
-  --primary-very-dark-blue: #11324d;
-}
-
-.talent--cards--wrapper {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 1536px;
-  margin: auto;
-}
+// START OF TALENT CARD
 
 .talent--card {
   background-color: #1a1b21;
@@ -106,10 +65,13 @@ body {
 .talent--card--btn--email {
   margin-right: 17px;
   /* white */
+
   background: #ffffff;
   /* gray/300 */
+
   border: 1px solid #d1d5db;
   /* shadow/sm */
+
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
@@ -118,6 +80,7 @@ body {
   color: #ffffff;
   background: #5093e2;
   /* shadow/sm */
+
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
@@ -156,4 +119,4 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}/*# sourceMappingURL=style.css.map */
+}
