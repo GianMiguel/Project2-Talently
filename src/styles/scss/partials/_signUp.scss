@@ -1,0 +1,116 @@
+// START OF SIGN UP
+
+.sign--up--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.sign--up--wrapper{
+    background-color:#1a1b21;;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+    width: 400px;
+}
+
+.sign--up--wrapper > h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+// INPUT LABELS
+.sign--up--input--group{
+    font-size: 12px;
+}
+
+// FOR NOTIFICATION
+.sign--up--notification{
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+// ERROR MESSAGE
+.sign--up--error{
+    color: #FF8C8C;
+}
+
+// SUCCESS MESSAGE{
+.sign--up--success{
+    color: #82DBD8;
+}
+
+// FOR RADIO
+.sign--up--radio--wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
+.sign--up--radio--group{
+    margin: 0px 55px;
+}
+
+// FOR INPUT GROUP
+.sign--up--input--group{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+// INPUT BOX
+.sign--up--input{
+    padding: 9px 13px 9px 11px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    transition: all 0.5s;
+}
+
+// INPUT BOX
+.sign--up--input{
+    padding: 9px 13px 9px 11px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    transition: all 0.5s;
+}
+
+// BUTTON
+.sign--up--btn{
+    padding: 9px 13px 9px 11px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.sign--up--btn:hover{
+  transform: scale(1.05);
+}
+
+// LINK FOR LOGIN
+.sign--up--wrapper > p{
+    text-align: center;
+    font-size: 15px;
+    color: #efefef;
+    margin-top: 5px;
+}
+
+.sign--up--wrapper > p > a{
+    color: #ffffff;
+}

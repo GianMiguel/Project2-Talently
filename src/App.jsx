@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Talents from "./Pages/Talents";
+import SignUp from "./Pages/SignUp";
 import sampleData from "./Data/data";
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
           element={<Talents accounts={accounts} isLoggedIn={isLoggedIn} />}
         ></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/signup" element={<SignUp />}></Route>
       </Routes>
     </Router>
   );

@@ -156,4 +156,108 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.sign--up--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.sign--up--wrapper {
+  background-color: #1a1b21;
+  color: #ffffff;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  width: 400px;
+}
+
+.sign--up--wrapper > h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sign--up--input--group {
+  font-size: 12px;
+}
+
+.sign--up--notification {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.sign--up--error {
+  color: #FF8C8C;
+}
+
+.sign--up--success {
+  color: #82DBD8;
+}
+
+.sign--up--radio--wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 20px;
+}
+
+.sign--up--radio--group {
+  margin: 0px 55px;
+}
+
+.sign--up--input--group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+
+.sign--up--input {
+  padding: 9px 13px 9px 11px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  transition: all 0.5s;
+}
+
+.sign--up--input {
+  padding: 9px 13px 9px 11px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  transition: all 0.5s;
+}
+
+.sign--up--btn {
+  padding: 9px 13px 9px 11px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.sign--up--btn:hover {
+  transform: scale(1.05);
+}
+
+.sign--up--wrapper > p {
+  text-align: center;
+  font-size: 15px;
+  color: #efefef;
+  margin-top: 5px;
+}
+
+.sign--up--wrapper > p > a {
+  color: #ffffff;
+}

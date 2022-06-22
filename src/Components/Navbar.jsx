@@ -7,6 +7,7 @@ export default function Navbar() {
       <Link to="/">Home</Link>
       <Link to="/talents">Talents</Link>
       <Link to="/about">About</Link>
+      <Link to="/signup">Sign Up</Link>
     </nav>
   );
 }
