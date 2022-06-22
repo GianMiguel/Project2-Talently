@@ -64,6 +64,27 @@ export default function Talents(props) {
         (a, b) =>
           a.profileCard.profileExperience - b.profileCard.profileExperience
       );
+  } else if (sort === "nameUp") {
+    filteredAndSortedTalents = filteredTalents
+      .slice()
+      .sort((a, b) =>
+        a.profileCard.profileFirstName
+          .concat(a.profileCard.profileLastName)
+          .localeCompare(
+            b.profileCard.profileFirstName.concat(b.profileCard.profileLastName)
+          )
+      );
+  } else if (sort === "nameDown") {
+    filteredAndSortedTalents = filteredTalents
+      .slice()
+      .sort((a, b) =>
+        a.profileCard.profileFirstName
+          .concat(a.profileCard.profileLastName)
+          .localeCompare(
+            b.profileCard.profileFirstName.concat(b.profileCard.profileLastName)
+          )
+      )
+      .reverse();
   }
 
   const talentElements = filteredAndSortedTalents.map((talent) => {
@@ -153,6 +174,8 @@ export default function Talents(props) {
             <option value="experienceUp">
               Years of experience (Lowest to Highest)
             </option>
+            <option value="nameUp">Name (A to Z)</option>
+            <option value="nameDown">Name (Z to A)</option>
           </select>
         </div>
       </div>
