@@ -1,94 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Raleway:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-:root {
-  --font-league-spartan: "League Spartan", sans-serif;
-  --font-raleway: "Raleway", sans-serif;
-}
-
-body {
-  font-family: "Raleway", sans-serif;
-}
-
-:root {
-  --primary-white: #ffffff;
-  --primary-off-white: #efefef;
-  --primary-black: #000000;
-  --primary-desaturated-blue: #7c99ac;
-  --primary-dark-blue: #1572a1;
-  --primary-very-dark-blue: #11324d;
-}
-
-.header {
-  font-family: var(--font-league-spartan);
-  position: fixed;
-  height: 80px;
-  width: 100%;
-  transition: 0.3s ease-in;
-}
-.header h1 {
-  font-weight: 900;
-  font-size: 35px;
-}
-.header h1 span {
-  color: var(--primary-dark-blue);
-}
-.header nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-  height: 100%;
-  padding: 0 6rem;
-}
-.header nav ul {
-  list-style-type: none;
-}
-.header nav ul li {
-  display: inline-block;
-  padding: 0 20px;
-  font-size: 18px;
-  font-weight: 600;
-}
-.header nav ul li .nav--link {
-  text-decoration: none;
-  color: var(--primary-black);
-}
-.header nav ul li button {
-  border: 2px solid var(--primary-dark-blue);
-  color: var(--primary-very-dark-blue);
-  border-radius: 5px;
-  padding: 6px 22px;
-  font-weight: 600;
-  font-size: 14px;
-}
-.header nav ul li button:hover {
-  background-color: var(--primary-dark-blue);
-  color: var(--primary-white);
-  cursor: pointer;
-}
-
-.talent--cards--wrapper {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 1536px;
-  margin: auto;
-}
+// START OF TALENT CARD
 
 .talent--card {
   background-color: #1a1b21;
@@ -155,10 +65,13 @@ body {
 .talent--card--btn--email {
   margin-right: 17px;
   /* white */
+
   background: #ffffff;
   /* gray/300 */
+
   border: 1px solid #d1d5db;
   /* shadow/sm */
+
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
@@ -167,6 +80,7 @@ body {
   color: #ffffff;
   background: #5093e2;
   /* shadow/sm */
+
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
 }
