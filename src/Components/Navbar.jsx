@@ -3,9 +3,17 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-    </nav>
+    <div className="header">
+      <nav>
+        <h1>talently<span>.</span></h1>
+        <ul>
+          <li><Link to="/" className="nav--link">Home </Link></li>
+          <li><Link to="/about" className="nav--link">About Us</Link></li>
+          <li><Link to="/talents" className="nav--link">Talents</Link></li>
+          <li>Sign In</li>
+          <li><button>Join</button></li>
+        </ul>
+      </nav>
+    </div>
   );
 }
