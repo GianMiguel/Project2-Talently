@@ -1,18 +1,22 @@
 import React from "react";
 import TalentCards from "../Components/TalentCards";
+import Pagination from "../Components/Pagination";
+import SortAndFilter from "../Components/SortAndFilter";
 
 export default function Talents(props) {
   const [filters, setFilters] = React.useState([]);
   const [sort, setSort] = React.useState("");
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [talentsPerPage] = React.useState(3);
 
   const talents = props.accounts.filter(
     (account) => account.userType === "talent"
   );
 
-  function handleFilterBox(e) {
-    if (e.target.name === "all") {
-      if (e.target.checked) {
-        e.target
+  function handleFilterBox(target) {
+    if (target.name === "all") {
+      if (target.checked) {
+        target
           .closest(".talents--page--view--card")
           .querySelectorAll("input")
           .forEach((input, i) => {
@@ -22,21 +26,23 @@ export default function Talents(props) {
           });
       }
       setFilters([]);
-    } else if (e.target.name !== "all") {
-      e.target
+    } else if (target.name !== "all") {
+      target
         .closest(".talents--page--view--card")
         .querySelector(`input[name="all"]`).checked = false;
-      if (e.target.checked)
-        setFilters((prevFilters) => [...prevFilters, e.target.name]);
-      if (!e.target.checked)
+      if (target.checked)
+        setFilters((prevFilters) => [...prevFilters, target.name]);
+      if (!target.checked)
         setFilters((prevFilters) =>
-          prevFilters.filter((filter) => filter !== e.target.name)
+          prevFilters.filter((filter) => filter !== target.name)
         );
     }
+    // RESET TO PAGE ONE
+    setCurrentPage(1);
   }
 
-  function handleSort(e) {
-    setSort(e.target.value);
+  function handleSort(target) {
+    setSort(target.value);
   }
 
   let filteredTalents;
@@ -87,99 +93,54 @@ export default function Talents(props) {
       .reverse();
   }
 
-  const talentElements = filteredAndSortedTalents.map((talent) => {
-    return <TalentCards talent={talent} key={talent.id} />;
+  // Pagination
+  const indexOfLastTalent = currentPage * talentsPerPage;
+  const indexOfFirstTalent = indexOfLastTalent - talentsPerPage;
+  const currentTalents = filteredAndSortedTalents.slice(
+    indexOfFirstTalent,
+    indexOfLastTalent
+  );
+
+  // Change page
+  function paginate(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
+
+  function handlePreviousPage() {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage - 1);
+  }
+
+  function handleNextPage() {
+    setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
+  }
+
+  const talentElements = currentTalents.map((talent) => {
+    return (
+      <TalentCards
+        talent={talent}
+        key={talent.id}
+        currentUser={props.currentUser}
+        isLoggedIn={props.isLoggedIn}
+        handleConnections={props.handleConnections}
+        handleDisconnections={props.handleDisconnections}
+      />
+    );
   });
   return (
     <div className="talents--page--container">
       <h2>💡Discover talented professionals:</h2>
       <div className="talents--page--view--card">
-        <div className="talents--page--view--card--filter--section">
-          <h3>Filter by skills:</h3>
-          {/* Show All */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="all"
-            name="all"
-          />
-          <label htmlFor="all">Show All</label>
-          {/* HTML */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="html"
-            name="html"
-          />
-          <label htmlFor="html">HTML</label>
-          {/* CSS */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="css"
-            name="css"
-          />
-          <label htmlFor="css">CSS</label>
-          {/* React */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="react"
-            name="react"
-          />
-          <label htmlFor="react">React</label>
-          {/* JS */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="javascript"
-            name="javascript"
-          />
-          <label htmlFor="javascript">JavaScript</label>
-          {/* Videography */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="videography"
-            name="videography"
-          />
-          <label htmlFor="videography">Videography</label>
-          {/* C */}
-          <input type="checkbox" onChange={handleFilterBox} id="c" name="c" />
-          <label htmlFor="c">C</label>
-          {/* Web Design */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="web--design"
-            name="web--design"
-          />
-          <label htmlFor="web--design">Web Design</label>
-          {/* Graphic Design */}
-          <input
-            type="checkbox"
-            onChange={handleFilterBox}
-            id="graphic--design"
-            name="graphic--design"
-          />
-          <label htmlFor="graphic--design">Graphic Design</label>
-        </div>
-        <div className="talents--page--view--card--filter--section">
-          <h3>Sort</h3>
-          <select name="sort" id="sort" onChange={handleSort}>
-            <option value="">Do not sort</option>
-            <option value="experienceDown">
-              Years of experience (Highest to Lowest)
-            </option>
-            <option value="experienceUp">
-              Years of experience (Lowest to Highest)
-            </option>
-            <option value="nameUp">Name (A to Z)</option>
-            <option value="nameDown">Name (Z to A)</option>
-          </select>
-        </div>
+        <SortAndFilter handleFilter={handleFilterBox} handleSort={handleSort} />
       </div>
       <div className="talent--cards--wrapper">{talentElements}</div>
+      <Pagination
+        talentsPerPage={talentsPerPage}
+        totalTalents={filteredAndSortedTalents.length}
+        paginate={paginate}
+        handlePreviousPage={handlePreviousPage}
+        handleNextPage={handleNextPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }

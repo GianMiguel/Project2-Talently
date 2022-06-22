@@ -9,7 +9,7 @@ import sampleData from "./Data/data";
 
 export default function App() {
   // STATE TO HANDLE ISLOGIN
-  const [isLoggedIn, setIsLoggedin] = React.useState(false);
+  const [isLoggedIn, setIsLoggedin] = React.useState(true);
   // STATE TO HANDLE ACCOUNTS
   const [accounts, setAccounts] = React.useState(sampleData);
 
@@ -24,6 +24,41 @@ export default function App() {
   // }
   // dummySetAccount();
 
+  // For Testing
+  const currentUser = sampleData[8];
+  function handleConnections(currentUserId, talentId) {
+    setAccounts(
+      accounts.map((account) => {
+        if (account.id === currentUserId) {
+          account.connections.push(talentId);
+        }
+        if (account.id === talentId) {
+          account.connections.push(currentUserId);
+        }
+
+        return account;
+      })
+    );
+  }
+
+  function handleDisconnections(currentUserId, talentId) {
+    setAccounts(
+      accounts.map((account) => {
+        if (account.id === currentUserId) {
+          account.connections.splice(account.connections.indexOf(talentId), 1);
+        }
+        if (account.id === talentId) {
+          account.connections.splice(
+            account.connections.indexOf(currentUserId),
+            1
+          );
+        }
+
+        return account;
+      })
+    );
+  }
+
   return (
     <Router>
       <Navbar />
@@ -31,7 +66,15 @@ export default function App() {
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/talents"
-          element={<Talents accounts={accounts} isLoggedIn={isLoggedIn} />}
+          element={
+            <Talents
+              accounts={accounts}
+              isLoggedIn={isLoggedIn}
+              currentUser={currentUser}
+              handleConnections={handleConnections}
+              handleDisconnections={handleDisconnections}
+            />
+          }
         ></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>

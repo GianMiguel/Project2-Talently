@@ -6,6 +6,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin: 1rem;
+  position: relative;
 }
 
 .talent--image--wrapper img {
@@ -119,4 +120,42 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+// OVERLAYS
+.talent--card--delete--overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  color: var(--primary-white);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.talent--card--email--overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba($color: #000000, $alpha: 0.8);
+  color: var(--primary-white);
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.talent--card--form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
 }

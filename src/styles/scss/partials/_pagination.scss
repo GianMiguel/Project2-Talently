@@ -1,0 +1,33 @@
+// Pagination
+.pagination--container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+}
+
+.pagination--previous--wrapper {
+  grid-column: 1/2;
+  text-align: start;
+}
+
+.pagination--pages--wrapper {
+  grid-column: 2/3;
+  text-align: center;
+}
+
+.pagination--next--wrapper {
+  grid-column: 3/4;
+  text-align: end;
+}
+
+.pagination--pages {
+  text-decoration: none;
+  color: black;
+  margin: 0.5rem;
+}
+
+.pagination--pages--active {
+  background-color: black;
+  color: white;
+}
