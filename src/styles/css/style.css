@@ -32,12 +32,123 @@ body {
   --primary-very-dark-blue: #11324d;
 }
 
+.hero--container {
+  background-color: var(--primary-desaturated-blue);
+  height: 510px;
+  padding-top: 80px;
+}
+
+.hero--wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.hero--wrapper img {
+  width: 28vw;
+}
+
+.hero--header {
+  color: var(--primary-white);
+  width: 40vw;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.search--bar input {
+  height: 40px;
+  width: 60%;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 0 18px;
+}
+.search--bar input:focus {
+  outline: none;
+}
+.search--bar button {
+  height: 40px;
+  width: 15%;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-white);
+  font-size: 1rem;
+}
+.search--bar button:hover {
+  cursor: pointer;
+  background-color: var(--primary-very-dark-blue);
+}
+
+.company--logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-family: var(--font-league-spartan);
+  color: var(--primary-desaturated-blue);
+  margin-top: 6px;
+  padding: 10px;
+}
+.company--logos img {
+  height: auto;
+  width: 8vw;
+  margin: 0 4px;
+}
+
+@media screen and (max-width: 768px) {
+  .hero--wrapper img {
+    display: none;
+  }
+
+  .hero--header {
+    width: 80vw;
+    text-align: center;
+    padding: 10vw 0;
+  }
+
+  .company--logos {
+    margin-top: 6vw;
+  }
+  .company--logos img {
+    width: 12vw;
+  }
+}
+@media screen and (max-width: 426px) {
+  .hero--header {
+    width: 80vw;
+    text-align: center;
+    padding: 10vw 0;
+    font-size: 2rem;
+  }
+
+  .search--bar {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .search--bar input, .search--bar button {
+    width: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  .company--logos {
+    font-size: 0;
+    margin-top: 6vw;
+  }
+  .company--logos img {
+    width: 18vw;
+  }
+}
 .header {
   font-family: var(--font-league-spartan);
   position: fixed;
   height: 80px;
   width: 100%;
-  transition: 0.3s ease-in;
+  transition: 0.5s ease-in;
+  color: var(--primary-white);
 }
 .header h1 {
   font-weight: 900;
@@ -65,22 +176,56 @@ body {
 }
 .header nav ul li .nav--link {
   text-decoration: none;
-  color: var(--primary-black);
+  color: var(--primary-white);
+  transition: 0.5s ease-in;
 }
-.header nav ul li button {
-  border: 2px solid var(--primary-dark-blue);
-  color: var(--primary-very-dark-blue);
+.header nav ul li .nav--link--join {
+  border: 2px solid var(--primary-white);
+  color: var(--primary-white);
   border-radius: 5px;
   padding: 6px 22px;
-  font-weight: 600;
-  font-size: 14px;
+  text-decoration: none;
 }
-.header nav ul li button:hover {
+.header nav ul li .nav--link--join:hover {
   background-color: var(--primary-dark-blue);
-  color: var(--primary-white);
+  border: 2px solid var(--primary-dark-blue);
   cursor: pointer;
 }
 
+.header-scroll {
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+}
+.header-scroll nav ul li .nav--link {
+  color: var(--primary-black);
+}
+.header-scroll nav ul li .nav--link--join {
+  color: var(--primary-dark-blue);
+  border: 2px solid var(--primary-dark-blue);
+}
+
+.brand--logo {
+  display: flex;
+  align-items: center;
+}
+.brand--logo .toggle-button {
+  color: var(--primary-white);
+  font-size: 35px;
+  display: none;
+}
+.brand--logo h1 {
+  margin-left: 2vw;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul li .nav--link {
+    display: none;
+  }
+
+  .brand--logo .toggle-button {
+    display: block;
+  }
+}
 .talent--cards--wrapper {
   display: flex;
   align-items: start;

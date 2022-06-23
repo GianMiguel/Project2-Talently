@@ -3,7 +3,8 @@
     position: fixed;
     height: 80px;
     width: 100%;
-    transition: .3s ease-in;
+    transition: .5s ease-in;
+    color: var(--primary-white);
     
     h1 {
         font-weight: 900;
@@ -20,6 +21,7 @@
         margin: auto;
         height: 100%;
         padding: 0 6rem;
+        
 
         ul {
             list-style-type: none;
@@ -32,36 +34,67 @@
 
                 .nav--link {
                     text-decoration: none;
-                    color: var(--primary-black);
+                    color: var(--primary-white);
+                    transition: .5s ease-in;
                 }
 
-                button {
-                    border: 2px solid var(--primary-dark-blue);
-                    color: var(--primary-very-dark-blue);
+                .nav--link--join {
+                    border: 2px solid var(--primary-white);
+                    color: var(--primary-white);
                     border-radius: 5px;
                     padding: 6px 22px;
-                    font-weight: 600;
-                    font-size: 14px;
+                    text-decoration: none;
                     
                     &:hover {
                         background-color: var(--primary-dark-blue);
-                        color: var(--primary-white);
+                        border: 2px solid var(--primary-dark-blue);
                         cursor: pointer;
                     }
                 }
             }
         }
     }
+}
 
+.header-scroll {
+    background-color: var(--primary-white);
+    color: var(--primary-black);
+
+    nav ul li .nav--link {
+        color: var(--primary-black);
+    }
     
+    nav ul li .nav--link--join {
+        color: var(--primary-dark-blue);
+        border: 2px solid var(--primary-dark-blue);
+    }
+}
+
+.brand--logo {
+    display: flex;
+    align-items: center;
+    
+    .toggle-button {
+        color: var(--primary-white);
+        font-size: 35px;
+        display: none;
+    }
+
+    h1 {
+        margin-left: 2vw;
+    }
 }
 
 
-// // .header {
-// //     background-color: rgb(254, 92, 92);
-// color: var(--primary-white);
-// // }
 
+@media screen and (max-width: 768px) {
+    nav ul li .nav--link {
+        display: none;
+    }
 
+    .brand--logo .toggle-button {
+        display: block;
+    }
 
+}
 
