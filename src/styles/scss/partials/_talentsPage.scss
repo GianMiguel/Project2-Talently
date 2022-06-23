@@ -1,0 +1,117 @@
+.talent--cards--wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  // max-width: 1536px;
+  // margin: auto;
+  // Temporary
+  min-height: 700px;
+}
+
+// TEMPORARY
+.talents--page--container {
+  padding-top: 5rem;
+
+  max-width: 1536px;
+  margin: auto;
+}
+
+.talents--page {
+  background-color: #efefef;
+}
+
+.talents--page--view--card {
+  // background-color: var(--primary-white);
+  display: flex;
+  padding: 1rem;
+
+  border-radius: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  position: absolute;
+  z-index: 100;
+  background-color: var(--primary-white);
+  right: 0px;
+  top: 40px;
+}
+
+.talents--page--view--card--sort--section {
+  align-self: flex-start;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.filter--section--wrapper {
+  display: flex;
+}
+
+.filter--group {
+  margin: 0.5rem;
+}
+
+.filter--input--group input {
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.talents--page--header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2rem;
+  position: relative;
+}
+
+.sort--filter--button {
+  float: right;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: var(--primary-white);
+  background-color: var(--primary-dark-blue);
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.view--card--hidden {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .filter--section--wrapper {
+    flex-direction: column;
+  }
+
+  .talents--page--view--card--sort--section {
+    flex-direction: column;
+  }
+
+  .sort--apply--button {
+    margin: 0.5rem;
+    width: 270px;
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .talents--page--header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .talents--page--header h2 {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .talents--page--header h2 {
+    font-size: 18px;
+  }
+}
