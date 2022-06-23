@@ -1,64 +1,90 @@
 import React from "react";
 import HunterForm from "../Components/HunterForm";
 import TalentForm from "../Components/TalentForm";
+import * as Helpers from "../Helpers/helpers";
 
 const SignUp = () => {
   const [formShown, setFormShown] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [company, setCompany] = React.useState("");
+  const [jobTitle, setJobTitle] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
 
-  // const emailRef = React.useRef(null);
-  // const firstNameRef = React.useRef(null);
-  // const lastNameRef = React.useRef(null);
-  // const userTypeRef = React.useRef(null);
-  // const companyRef = React.useRef(null);
-  // const jobTitleRef = React.useRef(null);
-  // const passwordRef = React.useRef(null);
+  const [emailNotif, setEmailNotif] = React.useState("email");
+  const [firstNameNotif, setFirstNameNotif] = React.useState("firstName");
+  const [lastNameNotif, setLastNameNotif] = React.useState("lastName");
+  const [companyNotif, setCompanyNotif] = React.useState("company");
+  const [jobTitleNotif, setJobTitleNotif] = React.useState("jobTitle");
+  const [passwordNotif, setPasswordNotif] = React.useState("password");
+  const [confirmPasswordNotif, setConfirmPasswordNotif] = React.useState("confirmPassword");
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  // handle Submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  //   handleEmail(emailRef);
-  //   hasValue(emailRef);
-  //   hasValue(firstNameRef);
-  //   hasValue(lastNameRef);
-  //   hasValue(companyRef);
-  //   hasValue(jobTitleRef);
-  //   hasValue(passwordRef);
-  // };
-
-  // Validate Email
-  function handleEmail(emailRef) {
-    const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(emailRef.current.value);
-  }
-
-  // Require value
-  function hasValue(input) {
-    input.current.value === ""
-      ? showError(input.current.name + "Notif", "This Field is Required")
-      : showSuccess(input.current.name + "Notif");
-  }
-
-  // show the error message
-  const showError = (input, message) => {
-    //  Get small tag element
-    let notif = document.getElementById(input);
-    notif.classList.add("sign--up--error");
-    notif.classList.remove("sign--up--success");
-    notif.textContent = message;
+    Helpers.validateEmail(email, emailNotif);
+    Helpers.validatePassword(password, passwordNotif, confirmPassword, confirmPasswordNotif);
+    
+    if(formShown === "hunter"){
+      Helpers.hasValue(firstName, firstNameNotif);
+      Helpers.hasValue(lastName, lastNameNotif);
+      Helpers.hasValue(company, companyNotif);
+      Helpers.hasValue(jobTitle, jobTitleNotif);
+    }
+    
   };
 
-  // show the success message
-  const showSuccess = (input) => {
-    let notif = document.getElementById(input);
-    notif.classList.remove("sign--up--error");
-    notif.classList.add("sign--up--success");
-    notif.textContent = "Looks Good";
-  };
+  // handle Email
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+    setEmailNotif(e.target.id);
+  }
+
+   // handle First Name
+   const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+    setFirstNameNotif(e.target.name);
+  }
+
+   // handle Last Name
+   const handleLastName = (e) => {
+    setLastName(e.target.value);
+    setLastNameNotif(e.target.name);
+  }
+
+   // handle Job Title
+   const handleJobTitle = (e) => {
+    setJobTitle(e.target.value);
+    setJobTitleNotif(e.target.name);
+  }
+
+   // handle Company
+   const handleCompany = (e) => {
+    setCompany(e.target.value);
+    setCompanyNotif(e.target.name);
+  }
+
+   // handle Password
+   const handlePassword = (e) => {
+    setPassword(e.target.value);
+    setPasswordNotif(e.target.name);
+  }
+
+  // handle Confirm Password
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+    setConfirmPasswordNotif(e.target.name);
+  }
 
   function handleFormSelect(e) {
     if (e.target.value === "hunter") setFormShown("hunter");
     if (e.target.value === "talent") setFormShown("talent");
+    setPassword("");
+    setEmail("");
+    setConfirmPassword("");
   }
 
   return (
@@ -102,14 +128,28 @@ const SignUp = () => {
         {formShown === "" ? (
           ""
         ) : formShown === "hunter" ? (
-          <HunterForm />
+          <HunterForm 
+          handleEmail={handleEmail} 
+          handleFirstName={handleFirstName} 
+          handleLastName={handleLastName} 
+          handleCompany={handleCompany} 
+          handleJobTitle={handleJobTitle}
+          handlePassword={handlePassword}
+          handleSubmit={handleSubmit}
+          handleConfirmPassword={handleConfirmPassword}
+          />
         ) : (
-          <TalentForm />
+          <TalentForm 
+          handleEmail={handleEmail} 
+          handlePassword={handlePassword}
+          handleSubmit={handleSubmit}
+          handleConfirmPassword={handleConfirmPassword}
+          />
         )}
 
         {/* LINK FOR LOGIN */}
         <p>
-          Already a member? <a href="#">Go and login</a>
+          Already a member? <a href="#login">Go and login</a>
         </p>
       </div>
     </div>
