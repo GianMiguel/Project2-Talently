@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Talents from "./Pages/Talents";
 import SignUp from "./Pages/SignUp";
-import sampleData from "./Data/data";
+// import sampleData from "./Data/data";
 import sampleData2 from "./Data/data2";
 
 export default function App() {

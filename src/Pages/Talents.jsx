@@ -7,7 +7,7 @@ export default function Talents(props) {
   const [filters, setFilters] = React.useState([]);
   const [sort, setSort] = React.useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [talentsPerPage] = React.useState(4);
+  const [talentsPerPage] = React.useState(8);
 
   const talents = props.accounts.filter(
     (account) => account.userType === "talent"
