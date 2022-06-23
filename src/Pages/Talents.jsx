@@ -7,7 +7,7 @@ export default function Talents(props) {
   const [filters, setFilters] = React.useState([]);
   const [sort, setSort] = React.useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
-  const [talentsPerPage] = React.useState(3);
+  const [talentsPerPage] = React.useState(4);
 
   const talents = props.accounts.filter(
     (account) => account.userType === "talent"
@@ -126,21 +126,54 @@ export default function Talents(props) {
       />
     );
   });
+
+  function toggleFilterAndSort() {
+    document
+      .querySelector(".talents--page--view--card")
+      .classList.toggle("view--card--hidden");
+    if (
+      !document
+        .querySelector(".talents--page--view--card")
+        .classList.contains("view--card--hidden")
+    ) {
+      document.querySelectorAll(".sort--filter--button")[0].textContent =
+        "Close Sort/Filter";
+    } else {
+      document.querySelectorAll(".sort--filter--button")[0].textContent =
+        "Sort/Filter";
+    }
+  }
   return (
-    <div className="talents--page--container">
-      <h2>💡Discover talented professionals:</h2>
-      <div className="talents--page--view--card">
-        <SortAndFilter handleFilter={handleFilterBox} handleSort={handleSort} />
+    <div className="talents--page">
+      <div className="talents--page--container">
+        <div className="talents--page--header">
+          <h2>Discover talented professionals</h2>
+          <div>
+            <button
+              className="sort--filter--button"
+              onClick={toggleFilterAndSort}
+            >
+              Sort / Filter
+            </button>
+            <div className="talents--page--view--card view--card--hidden">
+              <SortAndFilter
+                handleFilter={handleFilterBox}
+                handleSort={handleSort}
+                handleShowBtn={toggleFilterAndSort}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="talent--cards--wrapper">{talentElements}</div>
+        <Pagination
+          talentsPerPage={talentsPerPage}
+          totalTalents={filteredAndSortedTalents.length}
+          paginate={paginate}
+          handlePreviousPage={handlePreviousPage}
+          handleNextPage={handleNextPage}
+          currentPage={currentPage}
+        />
       </div>
-      <div className="talent--cards--wrapper">{talentElements}</div>
-      <Pagination
-        talentsPerPage={talentsPerPage}
-        totalTalents={filteredAndSortedTalents.length}
-        paginate={paginate}
-        handlePreviousPage={handlePreviousPage}
-        handleNextPage={handleNextPage}
-        currentPage={currentPage}
-      />
     </div>
   );
 }

@@ -6,12 +6,13 @@ import About from "./Pages/About";
 import Talents from "./Pages/Talents";
 import SignUp from "./Pages/SignUp";
 import sampleData from "./Data/data";
+import sampleData2 from "./Data/data2";
 
 export default function App() {
   // STATE TO HANDLE ISLOGIN
   const [isLoggedIn, setIsLoggedin] = React.useState(true);
   // STATE TO HANDLE ACCOUNTS
-  const [accounts, setAccounts] = React.useState(sampleData);
+  const [accounts, setAccounts] = React.useState(sampleData2);
 
   // TEMPORARY FUNCTIONS TO AVOID WARNING ON UNUSED VARIABLES
   // function loginSuccess() {
@@ -25,7 +26,7 @@ export default function App() {
   // dummySetAccount();
 
   // For Testing
-  const currentUser = sampleData[8];
+  const currentUser = sampleData2[7];
   function handleConnections(currentUserId, talentId) {
     setAccounts(
       accounts.map((account) => {

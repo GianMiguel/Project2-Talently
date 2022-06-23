@@ -64,9 +64,10 @@ export default function TalentCards(props) {
   }
   return (
     <div className="talent--card">
+      <div className="talent--card--background"></div>
       <div className="talent--image--wrapper">
         <img
-          src={require(`../images/${talent.profileCard.profileImage}.png`)}
+          src={require(`../images/${talent.profileCard.profileImage}`)}
           alt={talent.profileCard.profileFirstName}
         />
       </div>
@@ -100,23 +101,33 @@ export default function TalentCards(props) {
             LinkedIn
           </button>
         </div>
+        <div className="talent--card--experience--wrapper">
+          <p>
+            <span className="talent--card--experience">
+              {talent.profileCard.profileExperience === 0
+                ? "Entry-level and job ready"
+                : `${talent.profileCard.profileExperience} year${
+                    talent.profileCard.profileExperience === 1 ? "" : "s"
+                  } of experience`}
+            </span>
+          </p>
+        </div>
         <div className="talent--card--about--wrapper">
           <h4 className="talent--card--about--header">About</h4>
           <p className="talent--card--about">{talent.profileCard.profileBio}</p>
         </div>
-        <div
-          className="talent--card--experience--wrapper"
-          style={{ color: "white" }}
-        >
-          <p>
-            <span className="talent--card--experience--header">
-              Years of Experience:
-            </span>
-            <span className="talent--card--experience">
-              {talent.profileCard.profileExperience}
-            </span>
-          </p>
+
+        <h4 className="talent--card--fields--header">
+          Field{talent.profileCard.profileSkills.length === 1 ? "" : "s"}
+        </h4>
+        <div className="talent--card--fields--wrapper">
+          {talent.profileCard.profileSkills.map((field, i) => (
+            <p key={i} className="talent--card--fields">
+              {field}
+            </p>
+          ))}
         </div>
+
         {props.isLoggedIn && props.currentUser.userType === "hunter" && (
           <div className="talent--card--connect--wrapper">
             {!props.currentUser.connections.includes(talent.id) ? (
@@ -124,24 +135,18 @@ export default function TalentCards(props) {
                 className="talent--card--connect--button"
                 onClick={handleConnect}
               >
-                💜Connect
+                Connect to this Talent
               </button>
             ) : (
               <button
                 className="talent--card--connect--button"
                 onClick={confirmDisconnection}
               >
-                ❌Disconnect
+                Disconnect from this Talent
               </button>
             )}
           </div>
         )}
-        <div className="talent--card--footer">
-          <img src={require(`../images/twitter.png`)} alt="twitter icon" />
-          <img src={require(`../images/facebook.png`)} alt="facebook icon" />
-          <img src={require(`../images/instagram.png`)} alt="instagram icon" />
-          <img src={require(`../images/github.png`)} alt="github icon" />
-        </div>
       </div>
       {displayOverlay.disconnection && (
         <div className="talent--card--delete--overlay">

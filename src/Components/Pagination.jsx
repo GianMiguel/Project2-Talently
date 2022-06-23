@@ -38,7 +38,13 @@ export default function Pagination({
         <div className="pagination--container">
           <div className="pagination--previous--wrapper">
             {currentPage >= 2 && (
-              <p onClick={handlePreviousPage}>Previous Page</p>
+              <button className="pagination--prev" onClick={handlePreviousPage}>
+                <img
+                  src={require(`../images/pagination-prev.png`)}
+                  alt="arrow left"
+                />
+                Prev
+              </button>
             )}
           </div>
           <div className="pagination--pages--wrapper">
@@ -46,7 +52,13 @@ export default function Pagination({
           </div>
           <div className="pagination--next--wrapper">
             {currentPage < pageNumbers.length && (
-              <p onClick={handleNextPage}>Next Page</p>
+              <button className="pagination--next" onClick={handleNextPage}>
+                Next
+                <img
+                  src={require(`../images/pagination-next.png`)}
+                  alt="arrow right"
+                />
+              </button>
             )}
           </div>
         </div>
