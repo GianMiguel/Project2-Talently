@@ -41,7 +41,7 @@ export default function App() {
       })
     );
   }
-  console.log(accounts);
+
   function handleDisconnections(currentUserId, talentId) {
     setAccounts(
       accounts.map((account) => {

@@ -155,6 +155,11 @@
   border-radius: 5px;
   font-size: 14px;
   cursor: pointer;
+  transition: all 0.2s;
+}
+
+.talent--card--connect--button:hover {
+  transform: scale(1.05);
 }
 
 // OVERLAYS
@@ -173,6 +178,26 @@
   justify-content: center;
 }
 
+.talent--card--delete--btn--wrappers {
+  display: flex;
+  margin: 0.5rem;
+}
+
+.talent--card--delete--btn--wrappers button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: var(--primary-dark-blue);
+  border: none;
+  color: var(--primary-white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.talent--card--delete--btn--wrappers button:hover {
+  transform: scale(1.05);
+}
+
 .talent--card--email--overlay {
   position: absolute;
   height: 100%;
@@ -188,9 +213,48 @@
   justify-content: center;
 }
 
+.talent--card--email--overlay button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: var(--primary-dark-blue);
+  border: none;
+  color: var(--primary-white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.talent--card--email--overlay button:hover {
+  transform: scale(1.05);
+}
+
+.talent--card--linkedin--redirect {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: var(--primary-dark-blue);
+  border: none;
+  color: var(--primary-white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.talent--card--linkedin--redirect:hover {
+  transform: scale(1.05);
+}
+
 .talent--card--form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
+}
+
+.talent--connected {
+  margin: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 2.5rem;
+  color: var(--primary-white);
+  float: right;
 }

@@ -8,6 +8,10 @@ export default function SortAndFilter(props) {
   function handleSort(e) {
     props.handleSort(e.target);
   }
+
+  function handleRemoveSort() {}
+
+  function handleRemoveFilters() {}
   return (
     <>
       <div className="talents--page--view--card--filter--section">
@@ -41,22 +45,20 @@ export default function SortAndFilter(props) {
               <input
                 type="checkbox"
                 onChange={handleFilterBox}
-                id="back-end-developement"
+                id="back-end-development"
                 name="back-end-development"
               />
-              <label htmlFor="back-end-developement">
-                Back End Development
-              </label>
+              <label htmlFor="back-end-development">Back End Development</label>
             </div>
             {/* full-stack-developement */}
             <div className="filter--input--group">
               <input
                 type="checkbox"
                 onChange={handleFilterBox}
-                id="full-stack-developement"
+                id="full-stack-development"
                 name="full-stack-development"
               />
-              <label htmlFor="full-stack-developement">
+              <label htmlFor="full-stack-development">
                 Full Stack Development
               </label>
             </div>
@@ -167,7 +169,7 @@ export default function SortAndFilter(props) {
             className="sort--filter--button sort--apply--button"
             onClick={props.handleShowBtn}
           >
-            Apply
+            Close
           </button>
         </div>
       </div>
