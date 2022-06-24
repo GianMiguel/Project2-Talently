@@ -2,12 +2,15 @@ import React from "react";
 import TalentCards from "../Components/TalentCards";
 import Pagination from "../Components/Pagination";
 import SortAndFilter from "../Components/SortAndFilter";
+import * as Helpers from "../Helpers/helpers";
+import { GrClose } from "react-icons/gr";
 
 export default function Talents(props) {
   const [filters, setFilters] = React.useState([]);
   const [sort, setSort] = React.useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
   const [talentsPerPage] = React.useState(8);
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   const talents = props.accounts.filter(
     (account) => account.userType === "talent"
@@ -143,6 +146,31 @@ export default function Talents(props) {
         "Sort/Filter";
     }
   }
+
+  function removeSort() {
+    setSort("");
+    document.querySelector("#sort").value = "";
+  }
+
+  function removeFilter(e) {
+    setFilters((prevFilters) => {
+      return prevFilters.filter(
+        (filter) =>
+          filter !== e.target.closest(".filter--option").dataset.filter
+      );
+    });
+    document.querySelector(
+      `#${e.target.closest(".filter--option").dataset.filter}`
+    ).checked = false;
+  }
+  const filtersRemoveElement = filters.map((filter, i) => (
+    <span data-filter={filter} className="filter--option" key={i}>
+      <div className="talents--displayed--contents">
+        {filter}
+        <GrClose className="talents--remove--view" onClick={removeFilter} />
+      </div>
+    </span>
+  ));
   return (
     <div className="talents--page">
       <div className="talents--page--container">
@@ -163,6 +191,28 @@ export default function Talents(props) {
               />
             </div>
           </div>
+        </div>
+        <div className="talents--view--feedback">
+          {sort && (
+            <span className="talents--displayed">
+              Sorted by:{" "}
+              <div className="talents--displayed--contents">
+                {Helpers.sortString(sort)}
+                <GrClose
+                  className="talents--remove--view"
+                  onClick={removeSort}
+                />
+              </div>
+            </span>
+          )}
+          {filters.length >= 1 && (
+            <span className="talents--displayed">
+              Filtered by: {filtersRemoveElement}
+            </span>
+          )}
+          {searchQuery && (
+            <span className="talents--displayed">Search by: </span>
+          )}
         </div>
         <div className="talent--cards--wrapper">{talentElements}</div>
         <Pagination

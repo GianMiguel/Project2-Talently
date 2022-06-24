@@ -23,7 +23,7 @@ const data = [
       profileExperience: 6,
       profileImage: "laura.png",
     },
-    connections: [],
+    connections: [9],
   },
   {
     id: 3, // nanoid() - programatically generated throu NanoID library
@@ -51,7 +51,7 @@ const data = [
       profileExperience: 3,
       profileImage: "james.png",
     },
-    connections: [],
+    connections: [9],
   },
   {
     id: 4, // nanoid() - programatically generated throu NanoID library
@@ -217,7 +217,7 @@ const data = [
       profileBio: "", //30 - 50 words?
       profileExperience: "",
     },
-    connections: [],
+    connections: [1, 3],
   },
   {
     id: 10,
@@ -242,7 +242,7 @@ const data = [
       profileExperience: 6,
       profileImage: "liamsmith.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 11,
@@ -267,7 +267,7 @@ const data = [
       profileExperience: 4,
       profileImage: "noahjohnson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 12,
@@ -292,7 +292,7 @@ const data = [
       profileExperience: 8,
       profileImage: "emmawilliams.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 13,
@@ -317,7 +317,7 @@ const data = [
       profileExperience: 4,
       profileImage: "oliverbrown.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 14,
@@ -342,7 +342,7 @@ const data = [
       profileExperience: 3,
       profileImage: "charlottejones.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 15,
@@ -367,7 +367,7 @@ const data = [
       profileExperience: 2,
       profileImage: "ameliagarcia.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 16,
@@ -392,7 +392,7 @@ const data = [
       profileExperience: 2,
       profileImage: "elijahmiller.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 17,
@@ -417,7 +417,7 @@ const data = [
       profileExperience: 5,
       profileImage: "jamesdavis.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 18,
@@ -442,7 +442,7 @@ const data = [
       profileExperience: 9,
       profileImage: "avarodriguez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 19,
@@ -467,7 +467,7 @@ const data = [
       profileExperience: 12,
       profileImage: "williammartinez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 20,
@@ -492,7 +492,7 @@ const data = [
       profileExperience: 1,
       profileImage: "sophiahernandez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 21,
@@ -517,7 +517,7 @@ const data = [
       profileExperience: 0,
       profileImage: "isabellalopez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 22,
@@ -542,7 +542,7 @@ const data = [
       profileExperience: 7,
       profileImage: "benjamingonzalez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 23,
@@ -567,7 +567,7 @@ const data = [
       profileExperience: 3,
       profileImage: "lucaswilson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 24,
@@ -592,7 +592,7 @@ const data = [
       profileExperience: 2,
       profileImage: "miaanderson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 25,
@@ -617,7 +617,7 @@ const data = [
       profileExperience: 4,
       profileImage: "henrythomas.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 26,
@@ -642,7 +642,7 @@ const data = [
       profileExperience: 2,
       profileImage: "evelyntaylor.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 27,
@@ -667,7 +667,7 @@ const data = [
       profileExperience: 2,
       profileImage: "harpermoore.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 28,
@@ -692,7 +692,7 @@ const data = [
       profileExperience: 1,
       profileImage: "theodorejackson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 29,
@@ -717,7 +717,7 @@ const data = [
       profileExperience: 6,
       profileImage: "jackmartin.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 30,
@@ -742,7 +742,7 @@ const data = [
       profileExperience: 4,
       profileImage: "lunalee.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 31,
@@ -767,7 +767,7 @@ const data = [
       profileExperience: 8,
       profileImage: "leviperez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 32,
@@ -792,7 +792,7 @@ const data = [
       profileExperience: 9,
       profileImage: "camilathompson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 33,
@@ -817,7 +817,7 @@ const data = [
       profileExperience: 12,
       profileImage: "giannawhite.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 34,
@@ -842,7 +842,7 @@ const data = [
       profileExperience: 1,
       profileImage: "alexanderharris.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 35,
@@ -867,7 +867,7 @@ const data = [
       profileExperience: 0,
       profileImage: "jacksonsanchez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 36,
@@ -892,7 +892,7 @@ const data = [
       profileExperience: 7,
       profileImage: "elizabethclark.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 37,
@@ -917,7 +917,7 @@ const data = [
       profileExperience: 3,
       profileImage: "mateoramirez.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 38,
@@ -942,7 +942,7 @@ const data = [
       profileExperience: 2,
       profileImage: "eleanorlewis.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 39,
@@ -967,7 +967,7 @@ const data = [
       profileExperience: 4,
       profileImage: "ellarobinson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 40,
@@ -992,7 +992,7 @@ const data = [
       profileExperience: 2,
       profileImage: "danielwalker.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 41,
@@ -1017,7 +1017,7 @@ const data = [
       profileExperience: 2,
       profileImage: "michaelyoung.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 42,
@@ -1042,7 +1042,7 @@ const data = [
       profileExperience: 1,
       profileImage: "abigailallen.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 43,
@@ -1067,7 +1067,7 @@ const data = [
       profileExperience: 2,
       profileImage: "masonking.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 44,
@@ -1092,7 +1092,7 @@ const data = [
       profileExperience: 4,
       profileImage: "sofiawright.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 45,
@@ -1117,7 +1117,7 @@ const data = [
       profileExperience: 2,
       profileImage: "averyscott.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 46,
@@ -1142,7 +1142,7 @@ const data = [
       profileExperience: 2,
       profileImage: "sebastiantorres.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 47,
@@ -1167,7 +1167,7 @@ const data = [
       profileExperience: 1,
       profileImage: "ethannguyen.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 48,
@@ -1192,7 +1192,7 @@ const data = [
       profileExperience: 9,
       profileImage: "scarletthill.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 49,
@@ -1217,7 +1217,7 @@ const data = [
       profileExperience: 12,
       profileImage: "loganflores.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 50,
@@ -1242,7 +1242,7 @@ const data = [
       profileExperience: 1,
       profileImage: "emilygreen.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 51,
@@ -1267,7 +1267,7 @@ const data = [
       profileExperience: 0,
       profileImage: "ariaadams.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 52,
@@ -1292,7 +1292,7 @@ const data = [
       profileExperience: 7,
       profileImage: "owennelson.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 53,
@@ -1317,7 +1317,7 @@ const data = [
       profileExperience: 3,
       profileImage: "samuelbaker.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 54,
@@ -1342,7 +1342,7 @@ const data = [
       profileExperience: 2,
       profileImage: "penelopehall.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 55,
@@ -1367,7 +1367,7 @@ const data = [
       profileExperience: 4,
       profileImage: "jacobrivera.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 56,
@@ -1392,7 +1392,7 @@ const data = [
       profileExperience: 2,
       profileImage: "chloecampbell.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 57,
@@ -1417,7 +1417,7 @@ const data = [
       profileExperience: 2,
       profileImage: "laylamitchell.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 58,
@@ -1442,7 +1442,7 @@ const data = [
       profileExperience: 1,
       profileImage: "ashercarter.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
   {
     id: 59,
@@ -1467,7 +1467,7 @@ const data = [
       profileExperience: 0,
       profileImage: "milaroberts.jpg",
     },
-    connections: "[]",
+    connections: [],
   },
 ];
 

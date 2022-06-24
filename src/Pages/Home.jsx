@@ -1,17 +1,30 @@
 import React from "react";
-import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa"
+import {FaArrowCircleLeft, FaArrowCircleRight} from "react-icons/fa";
 import { FiCheckSquare } from "react-icons/fi";
+import {BsSearch} from "react-icons/bs";
 
 export default function Home() {
   return (
     <div className="home--page">
       <div className="hero--container">
         <div className="hero--wrapper">
-          <img src={require(`../images/home-img/hero-image.png`)} alt="heroImage" />
+          <div className="hero--bg">
+            <img
+              src={require(`../images/home-img/hero-bg.png`)}
+              alt="heroImage"
+            />
+          </div>
           <div className="hero--header">
-            <p>Connecting you to the best <i>talents</i> that is perfect for your business.</p>
+            <p>
+              Connecting you to the best <i>talents</i> that is perfect for your
+              business.
+            </p>
             <form action="" className="search--bar">
-              <input type="text" placeholder='Try "web design" or "front end developer"'/>
+              <BsSearch className="search--icon" />
+              <input
+                type="text"
+                placeholder='Try "web design" or "front end developer"'
+              />
               <button type="submit">Search</button>
             </form>
           </div>
@@ -75,5 +88,5 @@ export default function Home() {
           </div>
         </div>
     </div>
-  )
+  );
 }

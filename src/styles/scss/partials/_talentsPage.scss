@@ -64,6 +64,7 @@
   justify-content: space-between;
   margin: 0 2rem;
   position: relative;
+  padding: 1rem;
 }
 
 .sort--filter--button {
@@ -113,5 +114,39 @@
 @media screen and (max-width: 370px) {
   .talents--page--header h2 {
     font-size: 18px;
+  }
+}
+
+.talents--view--feedback {
+  display: inline-block;
+  background-color: var(--primary-white);
+  margin-left: 72px;
+  border-radius: 5px;
+  max-width: 800px;
+}
+
+.talents--displayed {
+  margin: 0.5rem;
+  display: block;
+  font-weight: 700;
+}
+
+.talents--displayed--contents {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.talents--remove--view {
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 744px) {
+  .talents--view--feedback {
+    margin: 1rem;
   }
 }
