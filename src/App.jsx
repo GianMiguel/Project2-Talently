@@ -8,6 +8,7 @@ import SignUp from "./Pages/SignUp";
 // import sampleData from "./Data/data";
 import sampleData2 from "./Data/data2";
 import Login from "./Pages/Login";
+import Footer from "./Components/Footer";
 
 export default function App() {
   // STATE TO HANDLE ISLOGIN
@@ -82,6 +83,7 @@ export default function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }

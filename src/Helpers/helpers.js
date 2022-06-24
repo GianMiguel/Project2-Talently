@@ -61,3 +61,16 @@
     
 
   };
+
+
+// className={`nav--link ${
+//   navControls.page === "/" && "nav--link--active"
+// }`}
+
+export const sortString = (sort) => {
+  if (sort === "experienceDown")
+    return "Years of experience (Highest to lowest)";
+  if (sort === "experienceUp") return "Years of experience (Lowest to highest)";
+  if (sort === "nameUp") return "Name (A to Z)";
+  if (sort === "nameDown") return "Name (Z to A)";
+};

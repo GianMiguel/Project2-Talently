@@ -1,4 +1,5 @@
 import React from "react";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
 
 export default function TalentCards(props) {
   const talent = props.talent;
@@ -8,6 +9,7 @@ export default function TalentCards(props) {
       ? true
       : false,
     emailDisplay: false,
+    linkedInDisplay: false,
   });
 
   function handleConnect() {
@@ -22,14 +24,15 @@ export default function TalentCards(props) {
     props.handleDisconnections(props.currentUser.id, talent.id);
     setDisplayOverlay((prevDisplayOverlay) => ({
       ...prevDisplayOverlay,
+      emailConnected: !prevDisplayOverlay.emailConnected,
       disconnection: false,
     }));
   }
 
   function confirmDisconnection() {
     setDisplayOverlay((prevDisplayOverlay) => ({
+      ...prevDisplayOverlay,
       disconnection: true,
-      emailConnected: !prevDisplayOverlay.emailConnected,
     }));
   }
 
@@ -44,6 +47,20 @@ export default function TalentCards(props) {
     setDisplayOverlay((prevDisplayOverlay) => ({
       ...prevDisplayOverlay,
       emailDisplay: true,
+    }));
+  }
+
+  function handleLinkedIn() {
+    setDisplayOverlay((prevDisplayOverlay) => ({
+      ...prevDisplayOverlay,
+      linkedInDisplay: true,
+    }));
+  }
+
+  function handleLinkedInOverlay() {
+    setDisplayOverlay((prevDisplayOverlay) => ({
+      ...prevDisplayOverlay,
+      linkedInDisplay: false,
     }));
   }
 
@@ -62,9 +79,16 @@ export default function TalentCards(props) {
       emailDisplay: false,
     }));
   }
+
   return (
     <div className="talent--card">
-      <div className="talent--card--background"></div>
+      <div className="talent--card--background">
+        {displayOverlay.emailConnected && (
+          <span>
+            <BsFillBookmarkStarFill className="talent--connected" />
+          </span>
+        )}
+      </div>
       <div className="talent--image--wrapper">
         <img
           src={require(`../images/${talent.profileCard.profileImage}`)}
@@ -91,7 +115,10 @@ export default function TalentCards(props) {
             </span>
             Email
           </button>
-          <button className="talent--card--btn talent--card--btn--linkedin">
+          <button
+            className="talent--card--btn talent--card--btn--linkedin"
+            onClick={handleLinkedIn}
+          >
             <span className="talent--card--btn--logo">
               <img
                 src={require(`../images/linkedin.png`)}
@@ -153,18 +180,20 @@ export default function TalentCards(props) {
           <p className="talent--card--delete--warning">
             Please confirm disconnection.
           </p>
-          <button
-            className="talent--card--delete--btn"
-            onClick={handleDisconnect}
-          >
-            Confirm
-          </button>
-          <button
-            className="talent--card--delete--btn"
-            onClick={cancelDisconnection}
-          >
-            Cancel
-          </button>
+          <div className="talent--card--delete--btn--wrappers">
+            <button
+              className="talent--card--delete--btn"
+              onClick={handleDisconnect}
+            >
+              Confirm
+            </button>
+            <button
+              className="talent--card--delete--btn"
+              onClick={cancelDisconnection}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       )}
       {displayOverlay.emailDisplay && (
@@ -199,6 +228,41 @@ export default function TalentCards(props) {
               <button
                 className="talent--card--email--btn"
                 onClick={handleEmailOverlay}
+              >
+                Okay
+              </button>
+            </>
+          )}
+        </div>
+      )}
+      {displayOverlay.linkedInDisplay && (
+        <div className="talent--card--email--overlay">
+          {displayOverlay.emailConnected ? (
+            <>
+              <a
+                href="https://www.linkedin.com/login"
+                target="_blank"
+                className="talent--card--linkedin--redirect"
+              >
+                Go to LinkedIn
+              </a>
+              <button
+                className="talent--card--email--btn"
+                onClick={handleLinkedInOverlay}
+              >
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <p className="talent--card--email--warning">
+                {props.isLoggedIn
+                  ? "Please connect to this Talent first."
+                  : "Please login first."}
+              </p>
+              <button
+                className="talent--card--email--btn"
+                onClick={handleLinkedInOverlay}
               >
                 Okay
               </button>
