@@ -7,6 +7,7 @@ import Talents from "./Pages/Talents";
 import SignUp from "./Pages/SignUp";
 // import sampleData from "./Data/data";
 import sampleData2 from "./Data/data2";
+import Footer from "./Components/Footer";
 
 export default function App() {
   // STATE TO HANDLE ISLOGIN
@@ -80,6 +81,7 @@ export default function App() {
         <Route path="/about" element={<About />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
       </Routes>
+      <Footer />
     </Router>
   );
 }
