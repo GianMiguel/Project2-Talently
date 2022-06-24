@@ -1,42 +1,16 @@
-
-  // Validate Email
-  export function validateEmail(email, notif) {
-    email === ""
-      ? showError(notif + "Notif", "This Field is Required")
-      : showSuccess(notif + "Notif");
-
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-
-  // Validate Password
-  export function validatePassword(password, notif1, confirmPassword, notif2){
-
-    if(password === ""){
-      showError(notif1 + "Notif", "This Field is Required");
-    }else if(confirmPassword === ""){
-      showError(notif2 + "Notif", "This Field is Required");
-    }else if(confirmPassword !== password){
-      showError(notif1 + "Notif", "Not Match");
-    }else{  
-      showSuccess(notif1 + "Notif");
-      showSuccess(notif2 + "Notif");
+ // Require value
+  export function hasValue(inputValue) {
+    if (inputValue.value === ""){
+      return showError(inputValue, "This Field is Required")
+    }else{
+      return showSuccess(inputValue);
     }
-
-    
-  }
-
-  // Require value
-  export function hasValue(inputValue, notif) {
-    inputValue === ""
-      ? showError(notif + "Notif", "This Field is Required")
-      : showSuccess(notif + "Notif");
   }
 
   // show the error message
   export  const showError = (input, message) => {
-    //  Get small tag element
-    let notif = document.getElementById(input);
+    
+    let notif = input.closest(".sign--up--input--group").querySelector("small");
     notif.classList.add("sign--up--error");
     notif.classList.remove("sign--up--success");
     notif.textContent = message;
@@ -46,10 +20,44 @@
 
   // show the success message
   export  const showSuccess = (input) => {
-    let notif = document.getElementById(input);
+    let notif = input.closest(".sign--up--input--group").querySelector("small");
     notif.classList.remove("sign--up--error");
     notif.classList.add("sign--up--success");
     notif.textContent = "Looks Good";
 
     return true;
+  };
+
+
+  //validate password
+  export  const validatePassword = (target, password, confirmPassword) => {
+    let passwords = false;
+    let passwordNotif1 = target.querySelector("#confirmPasswordNotif");
+    let passwordNotif2 = target.querySelector("#passwordNotif");
+    
+    if(password.length < 8){
+      passwordNotif2.classList.add("sign--up--error");
+      passwordNotif2.classList.remove("sign--up--success");
+      passwordNotif2.textContent = "Minimum of 8 characters for the password";
+      passwordNotif1.textContent = "";
+      passwords = false;
+    }else{
+      passwords = true;
+    }
+    
+   if(passwords === true){
+    if(password !== confirmPassword){
+      passwordNotif2.classList.add("sign--up--error");
+      passwordNotif2.classList.remove("sign--up--success");
+      passwordNotif1.classList.add("sign--up--error");
+      passwordNotif1.classList.remove("sign--up--success");
+      passwordNotif2.textContent = "Password not Match";
+      passwordNotif1.textContent = "Password not Match";
+      return false;
+    }else{
+      return true;
+    }
+   }
+    
+
   };

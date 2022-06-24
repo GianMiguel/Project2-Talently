@@ -1,9 +1,17 @@
 import React from "react";
 
 export default function HunterForm(props) {
+  const handleHunterSubmit = (e) => {
+    e.preventDefault();
+    props.handleSubmit(e.target);
+  }
+
+  const handleHunterInputBox = (e) => {
+    props.handleInputBox(e.target);
+  }
 
   return (
-  <form action="" onSubmit={props.handleSubmit}>
+  <form action="" onSubmit={handleHunterSubmit}>
     {/* EMAIL INPUT*/}
     <div className="sign--up--input--group">
       <label htmlFor="email" className="sign--up--label">
@@ -11,11 +19,11 @@ export default function HunterForm(props) {
       </label>
       <input
         type="email"
-        onChange={props.handleEmail}
         className="sign--up--input"
         id="email"
         name="email"
-        placeholder="yourEmail@email.com"
+        placeholder="youremail@email.com"
+        onChange={handleHunterInputBox}
       />
       <small className="sign--up--notification" id="emailNotif"></small>
     </div>
@@ -27,10 +35,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="text"
-        onChange={props.handleFirstName}
         className="sign--up--input"
         id="firstName"
         name="firstName"
+        onChange={handleHunterInputBox}
         placeholder="Your First Name"
       />
       <small className="sign--up--notification" id="firstNameNotif"></small>
@@ -43,10 +51,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="text"
-        onChange={props.handleLastName}
         className="sign--up--input"
         id="lastName"
         name="lastName"
+        onChange={handleHunterInputBox}
         placeholder="Your Last Name"
       />
       <small className="sign--up--notification" id="lastNameNotif"></small>
@@ -59,10 +67,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="text"
-        onChange={props.handleCompany}
         className="sign--up--input"
         id="company"
         name="company"
+        onChange={handleHunterInputBox}
         placeholder="Company"
       />
       <small className="sign--up--notification" id="companyNotif"></small>
@@ -75,10 +83,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="text"
-        onChange={props.handleJobTitle}
         className="sign--up--input"
         id="jobTitle"
         name="jobTitle"
+        onChange={handleHunterInputBox}
         placeholder="Job Title"
       />
       <small className="sign--up--notification" id="jobTitleNotif"></small>
@@ -91,10 +99,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="password"
-        onChange={props.handleEmail}
         className="sign--up--input"
         id="password"
         name="password"
+        onChange={handleHunterInputBox}
         placeholder="Password"
       />
       <small className="sign--up--notification" id="passwordNotif"></small>
@@ -107,10 +115,10 @@ export default function HunterForm(props) {
       </label>
       <input
         type="password"
-        onChange={props.handleConfirmPassword}
         className="sign--up--input"
         id="confirmPassword"
         name="confirmPassword"
+        onChange={handleHunterInputBox}
         placeholder="Confirm Password"
       />
       <small className="sign--up--notification" id="confirmPasswordNotif"></small>

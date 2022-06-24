@@ -1,8 +1,17 @@
 import React from "react";
 
 export default function talentForm(props) {
+  const handleTalentSubmit = (e) => {
+    e.preventDefault();
+    props.handleSubmit(e.target);
+  }
+
+  const handleTalentInputBox = (e) => {
+    props.handleInputBox(e.target);
+  }
+
   return (
-    <form action="" onSubmit={props.handleSubmit} >
+    <form action="" onSubmit={handleTalentSubmit} >
     {/* EMAIL INPUT*/}
     <div className="sign--up--input--group">
       <label htmlFor="email" className="sign--up--label">
@@ -10,11 +19,11 @@ export default function talentForm(props) {
       </label>
       <input
         type="email"
-        onChange={props.handleEmail}
         className="sign--up--input"
         id="email"
         name="email"
         placeholder="yourEmail@email.com"
+        onChange={handleTalentInputBox}
       />
       <small className="sign--up--notification" id="emailNotif"></small>
     </div>
@@ -26,10 +35,10 @@ export default function talentForm(props) {
       </label>
       <input
         type="password"
-        onChange={props.handlePassword}
         className="sign--up--input"
         id="password"
         name="password"
+        onChange={handleTalentInputBox}
         placeholder="Password"
       />
       <small className="sign--up--notification" id="passwordNotif"></small>
@@ -42,10 +51,10 @@ export default function talentForm(props) {
       </label>
       <input
         type="password"
-        onChange={props.handleConfirmPassword}
         className="sign--up--input"
         id="confirmPassword"
         name="confirmPassword"
+        onChange={handleTalentInputBox}
         placeholder="Confirm Password"
       />
       <small className="sign--up--notification" id="confirmPasswordNotif"></small>

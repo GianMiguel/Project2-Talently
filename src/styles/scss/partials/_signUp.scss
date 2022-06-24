@@ -4,17 +4,49 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    backdrop-filter: blur(6px);
+    transition: all 0.5s;
+    z-index: 1000;
 }
 
 .sign--up--wrapper{
-    background-color: var(--primary-very-dark-blue);
+    background-color: var(--primary-dark-blue);
     color: #ffffff;
     border-radius: 10px;
-    margin: 1rem;
-    padding: 1rem;
-    width: 400px;
+    padding: 1.5rem;
+    max-width: 40rem;
+    transition: all 0.5s;
+
 }
+
+.sign--up--close {
+    text-decoration: none;
+    color: inherit;
+    margin-top: -45px;
+    margin-right: -40px;
+    float: right;
+    position: relative;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 5px 11px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  
+
+  .sign--up--close:hover {
+    background-color: var(--primary-off-white);
+    color: var(--primary-very-dark-blue);
+  }
 
 .sign--up--wrapper > h2{
     text-align: center;
@@ -29,7 +61,7 @@
 
 // FOR NOTIFICATION
 .sign--up--notification{
-    font-size: 10px;
+    font-size: 11px;
     margin-left: 5px;
 }
 
@@ -42,7 +74,7 @@
 // SUCCESS MESSAGE{
 .sign--up--success{
     font-weight: bold;
-    color: #3EC70B;
+    color: #71DFE7;
 }
 
 // FOR RADIO
@@ -56,6 +88,7 @@
 
 .sign--up--radio--group{
     margin: 0px 55px;
+    cursor: pointer;
 }
 
 // FOR INPUT GROUP
