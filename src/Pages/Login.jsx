@@ -26,8 +26,8 @@ const handleSubmit = (e) => {
       <div className="signin--wrapper">
       <button onClick={props.handleModalLogin} className="signin--close" >&times;</button>
         <h1>talently<span>.</span></h1>
-        <h4>Login Form</h4>
-
+        <h2>Login to your talently account</h2>
+        <p className='signin--error--message'>Error message here</p>
         <form action="" onSubmit={handleSubmit}>
              {/* EMAIL INPUT*/}
             <div className="signin--input--group">
@@ -40,7 +40,7 @@ const handleSubmit = (e) => {
                     id="email"
                     name="email"
                     onChange={handleEmail}
-                    placeholder="yourEmail@email.com"
+                    placeholder="youremail@email.com"
                     required
                 />
                 <small className="signin--notification" id="emailNotif"></small>
@@ -71,7 +71,7 @@ const handleSubmit = (e) => {
         <p>or</p>
         {/* LINK FOR LOGIN */}
         <p>
-         <Link to="/signup">Sign Up</Link>
+         Don't have an account yet? <a href='#signUp' >Sign up instead</a>
         </p>
       </div>
     </div>

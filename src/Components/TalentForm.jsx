@@ -60,6 +60,23 @@ export default function talentForm(props) {
       <small className="sign--up--notification" id="confirmPasswordNotif"></small>
     </div>
 
+    {/* Terms anf]d Condition*/}
+    <div className="sign--up--input--group">
+      <div className="sign--up--check">
+        <input
+          type="checkbox"
+          className="sign--up--input"
+          id="termsAndCondition"
+          name="termsAndCondition"
+          onChange={handleTalentInputBox}
+        />
+        <label htmlFor="termsAndCondition" className="sign--up--label">
+          Accept terms and condition.
+        </label>
+      <small className="sign--up--notification"></small>
+        
+      </div>
+    </div>
     <button type="submit" className="sign--up--btn">
       Sign Up
     </button>

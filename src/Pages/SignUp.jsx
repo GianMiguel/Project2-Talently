@@ -59,25 +59,10 @@ const SignUp = (props) => {
       <div className="sign--up--wrapper">
       <button className="sign--up--close" onClick={props.handleModalSignUp}>&times;</button>
 
-        <h2>Join Talently as? </h2>
+        <p className="sign--up--tittle">Join <span className="logo--name">talently<span className="logo--period">.</span></span> as? </p>
 
         {/* RADIO */}
         <div className="sign--up--radio--wrapper">
-          <div className="sign--up--radio--group">
-            <input
-              className=""
-              // ref={userTypeRef}
-              type="radio"
-              name="signup"
-              id="talent"
-              value="talent"
-              required
-              onChange={handleFormSelect}
-            />
-            <label className="sign--up--label" htmlFor="talent">
-              &nbsp;Talent
-            </label>
-          </div>
           <div className="sign--up--radio--group">
             <input
               className=""
@@ -89,10 +74,26 @@ const SignUp = (props) => {
               required
               onChange={handleFormSelect}
             />
-            <label className="sign--up--label" htmlFor="hunter">
+            <label className={formShown == "hunter" ? "sign--up--highlight" : "" + "sign--up--label"} htmlFor="hunter">
               &nbsp;Recruiter
             </label>
           </div>
+          <div className="sign--up--radio--group">
+            <input
+              className=""
+              // ref={userTypeRef}
+              type="radio"
+              name="signup"
+              id="talent"
+              value="talent"
+              required
+              onChange={handleFormSelect}
+            />
+            <label className={formShown == "talent" ? "sign--up--highlight" : "" + "sign--up--label"} htmlFor="talent">
+              &nbsp;Talent
+            </label>
+          </div>
+          
         </div>
         {formShown === "" ? (
           ""
@@ -109,8 +110,8 @@ const SignUp = (props) => {
         )}
 
         {/* LINK FOR LOGIN */}
-        <p>
-          Already a member? <a href="#login" onClick={props.handleModalSignUp}>Go and login</a>
+        <p className="sign--up--footer">
+          Already a member? <a href="#login" onClick={props.handleModalSignUp}>Login instead</a>
         </p>
       </div>
     </div>

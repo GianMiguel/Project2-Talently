@@ -1,9 +1,19 @@
  // Require value
   export function hasValue(inputValue) {
-    if (inputValue.value === ""){
-      return showError(inputValue, "This Field is Required")
+    
+
+    if(inputValue.name === "termsAndCondition"){
+      if (inputValue.checked === false){
+        return showError(inputValue, "This Field is Required")
+      }else{
+        return showSuccess(inputValue);
+      }
     }else{
-      return showSuccess(inputValue);
+      if (inputValue.value === ""){
+        return showError(inputValue, "This Field is Required")
+      }else{
+        return showSuccess(inputValue);
+      }
     }
   }
 
