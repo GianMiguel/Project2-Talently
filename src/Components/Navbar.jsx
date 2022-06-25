@@ -1,9 +1,14 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi"
+import Login from "../Pages/Login";
+import SignUp from "../Pages/SignUp";
 import { GrClose } from "react-icons/gr";
 
 export default function Navbar() {
+  
+  const [modalSignUp, setModalSignUp] = React.useState(false);
+  const [modalLogin, setModalLogin] = React.useState(false);
   // change color when scroll
   const [navControls, setNavControls] = React.useState({
     color: true,
@@ -50,6 +55,14 @@ export default function Navbar() {
     }));
   }
 
+  const handleModalLogin = () =>{
+    !modalLogin ? setModalLogin(true) : setModalLogin(false);
+  }
+
+  const handleModalSignUp = () =>{
+    !modalSignUp ? setModalSignUp(true) : setModalSignUp(false);
+  }
+
   return (
     <div
       className={`header ${
@@ -86,15 +99,10 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/" className="nav--link">
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link to="/signup" className="nav--link--join">
-                Join
-              </Link>
-            </li>
+              <a href="#1" onClick={handleModalLogin} className="nav--link">
+                Sign In 
+                </a></li>
+            <li><a href="#1" onClick={handleModalSignUp} className="nav--link--join">Join</a></li>
           </ul>
           <span>
             {navControls.expandNav ? (
@@ -104,6 +112,9 @@ export default function Navbar() {
             )}
           </span>
         </div>
+
+        {modalLogin ? <Login handleModalLogin={handleModalLogin}/> : ""}
+        {modalSignUp ? <SignUp handleModalSignUp={handleModalSignUp}/> : ""}
       </nav>
       {navControls.expandNav && (
         <div className="nav--links--collapsed">
@@ -118,16 +129,8 @@ export default function Navbar() {
                 Talents
               </Link>
             </li>
-            <li>
-              <Link to="/about" className="nav--link" onClick={collapseNav}>
-                About Us
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="nav--link" onClick={collapseNav}>
-                Sign In
-              </Link>
-            </li>
+            <li><a href="#1" onClick={handleModalLogin} className="nav--link">Sign In </a></li>
+            <li><a href="#1" onClick={handleModalSignUp} className="nav--link--join">Join</a></li>
             <li>
               <Link
                 to="/signup"

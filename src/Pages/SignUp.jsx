@@ -1,60 +1,53 @@
 import React from "react";
 import HunterForm from "../Components/HunterForm";
 import TalentForm from "../Components/TalentForm";
+import { Link } from "react-router-dom";
+import * as Helpers from "../Helpers/helpers";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [formShown, setFormShown] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
+  const [company, setCompany] = React.useState("");
+  const [jobTitle, setJobTitle] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPassword, setConfirmPassword] = React.useState("");
 
-  // const emailRef = React.useRef(null);
-  // const firstNameRef = React.useRef(null);
-  // const lastNameRef = React.useRef(null);
-  // const userTypeRef = React.useRef(null);
-  // const companyRef = React.useRef(null);
-  // const jobTitleRef = React.useRef(null);
-  // const passwordRef = React.useRef(null);
+  // handle Submit
+  const handleSubmit = (e) => {
+    let valid = true;
+    e.querySelectorAll("input").forEach((input) => {
+      // Verify that each input field contains a value.
+      let inputValidation = Helpers.hasValue(input);
+      if(inputValidation === false) valid = false;
+    });
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+    // Validate Password
+    let passwordValid = Helpers.validatePassword(e, password, confirmPassword);
+    if(passwordValid === false) valid = false;
 
-  //   handleEmail(emailRef);
-  //   hasValue(emailRef);
-  //   hasValue(firstNameRef);
-  //   hasValue(lastNameRef);
-  //   hasValue(companyRef);
-  //   hasValue(jobTitleRef);
-  //   hasValue(passwordRef);
-  // };
-
-  // Validate Email
-  function handleEmail(emailRef) {
-    const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(emailRef.current.value);
-  }
-
-  // Require value
-  function hasValue(input) {
-    input.current.value === ""
-      ? showError(input.current.name + "Notif", "This Field is Required")
-      : showSuccess(input.current.name + "Notif");
-  }
-
-  // show the error message
-  const showError = (input, message) => {
-    //  Get small tag element
-    let notif = document.getElementById(input);
-    notif.classList.add("sign--up--error");
-    notif.classList.remove("sign--up--success");
-    notif.textContent = message;
+    if(valid === true){
+      let userType = formShown;
+      let account = {email, password, firstName, lastName, company, jobTitle, userType};
+      
+      // Submit Data
+      console.log(account);
+      }
+      
   };
 
-  // show the success message
-  const showSuccess = (input) => {
-    let notif = document.getElementById(input);
-    notif.classList.remove("sign--up--error");
-    notif.classList.add("sign--up--success");
-    notif.textContent = "Looks Good";
-  };
+  
+  const handleInputBox = (target) => {
+    if(target.name === "email") setEmail(target.value);
+    if(target.name === "password") setPassword(target.value);
+    if(target.name === "firstName") setFirstName(target.value);
+    if(target.name === "lastName") setLastName(target.value);
+    if(target.name === "company") setCompany(target.value);
+    if(target.name === "jobTitle") setJobTitle(target.value);
+    if(target.name === "confirmPassword") setConfirmPassword(target.value);
+  }
+
 
   function handleFormSelect(e) {
     if (e.target.value === "hunter") setFormShown("hunter");
@@ -64,7 +57,9 @@ const SignUp = () => {
   return (
     <div className="sign--up--container">
       <div className="sign--up--wrapper">
-        <h2>Sign Up Form</h2>
+      <button className="sign--up--close" onClick={props.handleModalSignUp}>&times;</button>
+
+        <h2>Join Talently as? </h2>
 
         {/* RADIO */}
         <div className="sign--up--radio--wrapper">
@@ -95,21 +90,27 @@ const SignUp = () => {
               onChange={handleFormSelect}
             />
             <label className="sign--up--label" htmlFor="hunter">
-              &nbsp;Hunter
+              &nbsp;Recruiter
             </label>
           </div>
         </div>
         {formShown === "" ? (
           ""
         ) : formShown === "hunter" ? (
-          <HunterForm />
+          <HunterForm 
+          handleSubmit={handleSubmit}
+          handleInputBox={handleInputBox}
+          />
         ) : (
-          <TalentForm />
+          <TalentForm 
+          handleSubmit={handleSubmit}
+          handleInputBox={handleInputBox}
+          />
         )}
 
         {/* LINK FOR LOGIN */}
         <p>
-          Already a member? <a href="#">Go and login</a>
+          Already a member? <a href="#login" onClick={props.handleModalSignUp}>Go and login</a>
         </p>
       </div>
     </div>

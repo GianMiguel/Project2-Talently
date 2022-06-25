@@ -1,33 +1,67 @@
-// Validate Email
-export function handleEmail(emailRef) {
-  const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(emailRef.current.value);
-}
+ // Require value
+  export function hasValue(inputValue) {
+    if (inputValue.value === ""){
+      return showError(inputValue, "This Field is Required")
+    }else{
+      return showSuccess(inputValue);
+    }
+  }
 
-// Require value
-export function hasValue(input) {
-  input.current.value === ""
-    ? showError(input.current.name + "Notif", "This Field is Required")
-    : showSuccess(input.current.name + "Notif");
-}
+  // show the error message
+  export  const showError = (input, message) => {
+    
+    let notif = input.closest(".sign--up--input--group").querySelector("small");
+    notif.classList.add("sign--up--error");
+    notif.classList.remove("sign--up--success");
+    notif.textContent = message;
 
-// show the error message
-export const showError = (input, message) => {
-  //  Get small tag element
-  let notif = document.getElementById(input);
-  notif.classList.add("sign--up--error");
-  notif.classList.remove("sign--up--success");
-  notif.textContent = message;
-};
+    return false;
+  };
 
-// show the success message
-export const showSuccess = (input) => {
-  let notif = document.getElementById(input);
-  notif.classList.remove("sign--up--error");
-  notif.classList.add("sign--up--success");
-  notif.textContent = "Looks Good";
-};
+  // show the success message
+  export  const showSuccess = (input) => {
+    let notif = input.closest(".sign--up--input--group").querySelector("small");
+    notif.classList.remove("sign--up--error");
+    notif.classList.add("sign--up--success");
+    notif.textContent = "Looks Good";
+
+    return true;
+  };
+
+
+  //validate password
+  export  const validatePassword = (target, password, confirmPassword) => {
+    let passwords = false;
+    let passwordNotif1 = target.querySelector("#confirmPasswordNotif");
+    let passwordNotif2 = target.querySelector("#passwordNotif");
+    
+    if(password.length < 8){
+      passwordNotif2.classList.add("sign--up--error");
+      passwordNotif2.classList.remove("sign--up--success");
+      passwordNotif2.textContent = "Minimum of 8 characters for the password";
+      passwordNotif1.textContent = "";
+      passwords = false;
+    }else{
+      passwords = true;
+    }
+    
+   if(passwords === true){
+    if(password !== confirmPassword){
+      passwordNotif2.classList.add("sign--up--error");
+      passwordNotif2.classList.remove("sign--up--success");
+      passwordNotif1.classList.add("sign--up--error");
+      passwordNotif1.classList.remove("sign--up--success");
+      passwordNotif2.textContent = "Password not Match";
+      passwordNotif1.textContent = "Password not Match";
+      return false;
+    }else{
+      return true;
+    }
+   }
+    
+
+  };
+
 
 // className={`nav--link ${
 //   navControls.page === "/" && "nav--link--active"

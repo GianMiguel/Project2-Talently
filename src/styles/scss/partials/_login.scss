@@ -1,6 +1,6 @@
 // START OF SIGN UP
 
-.sign--up--container{
+.signin--container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,28 +8,35 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(6px);
     transition: all 0.5s;
-    z-index: 1000;
 }
 
-.sign--up--wrapper{
+.signin--wrapper{
     background-color: var(--primary-dark-blue);
     color: #ffffff;
     border-radius: 10px;
-    padding: 1.5rem;
-    max-width: 40rem;
+    padding: 1rem;
+    min-width: 25rem;
+    max-width: 50rem;
     transition: all 0.5s;
 
+    h1 {
+        font-weight: 900;
+        font-size: 35px;
+        span {
+            color: var(--primary-dark-blue);
+        }
+    }
 }
 
-.sign--up--close {
+.signin--close {
     text-decoration: none;
     color: inherit;
-    margin-top: -45px;
-    margin-right: -40px;
+    margin-top: -35px;
+    margin-right: -30px;
     float: right;
     position: relative;
     font-size: 2rem;
@@ -41,79 +48,54 @@
     background: inherit;
   }
 
-  
-
-  .sign--up--close:hover {
+  .signin--close:hover {
     background-color: var(--primary-off-white);
     color: var(--primary-very-dark-blue);
   }
 
-.sign--up--wrapper > h2{
+.signin--wrapper > h4{
     text-align: center;
     margin-bottom: 20px;
 }
 
 
 // INPUT LABELS
-.sign--up--input--group{
+.signin--input--group{
     font-size: 12px;
 }
 
 // FOR NOTIFICATION
-.sign--up--notification{
-    font-size: 11px;
+.signin--notification{
+    font-size: 10px;
     margin-left: 5px;
 }
 
 // ERROR MESSAGE
-.sign--up--error{
+.signin--error{
     color: #EF9F9F;
     font-weight: bold;
 }
 
 // SUCCESS MESSAGE{
-.sign--up--success{
+.signin--success{
     font-weight: bold;
-    color: #71DFE7;
+    color: #3EC70B;
 }
 
-// FOR RADIO
-.sign--up--radio--wrapper{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-items: center;
-    margin-bottom: 20px;
-}
-
-.sign--up--radio--group{
-    margin: 0px 55px;
-    cursor: pointer;
-}
 
 // FOR INPUT GROUP
-.sign--up--input--group{
+.signin--input--group{
     display: flex;
     flex-direction: column;
     gap: 3px;
     margin-bottom: 10px;
 }
 
-// INPUT BOX
-.sign--up--input{
-    padding: 9px 13px 9px 11px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    transition: all 0.5s;
-}
+
 
 // INPUT BOX
-.sign--up--input{
+.signin--input{
     padding: 9px 13px 9px 11px;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     font-weight: 500;
     font-size: 14px;
@@ -122,7 +104,7 @@
 }
 
 // BUTTON
-.sign--up--btn{
+.signin--btn{
     background-color: var(--primary-off-white);
     color: var(--primary-very-dark-blue);
     font-weight: bold;
@@ -137,18 +119,18 @@
     cursor: pointer;
 }
 
-.sign--up--btn:hover{
+.signin--btn:hover{
   transform: scale(1.05);
 }
 
 // LINK FOR LOGIN
-.sign--up--wrapper > p{
+.signin--wrapper > p{
     text-align: center;
     font-size: 15px;
     color: #efefef;
     margin-top: 5px;
 }
 
-.sign--up--wrapper > p > a{
+.signin--wrapper > p > a{
     color: var(--primary-white);
 }
