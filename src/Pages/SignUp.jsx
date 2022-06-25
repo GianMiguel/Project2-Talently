@@ -1,7 +1,7 @@
 import React from "react";
 import HunterForm from "../Components/HunterForm";
 import TalentForm from "../Components/TalentForm";
-import { Link } from "react-router-dom";
+
 import * as Helpers from "../Helpers/helpers";
 
 const SignUp = (props) => {
@@ -76,25 +76,16 @@ const SignUp = (props) => {
           &times;
         </button>
 
-        <h2>Join Talently as? </h2>
+        <p className="sign--up--tittle">
+          Join{" "}
+          <span className="logo--name">
+            talently<span className="logo--period">.</span>
+          </span>{" "}
+          as?{" "}
+        </p>
 
         {/* RADIO */}
         <div className="sign--up--radio--wrapper">
-          <div className="sign--up--radio--group">
-            <input
-              className=""
-              // ref={userTypeRef}
-              type="radio"
-              name="signup"
-              id="talent"
-              value="talent"
-              required
-              onChange={handleFormSelect}
-            />
-            <label className="sign--up--label" htmlFor="talent">
-              &nbsp;Talent
-            </label>
-          </div>
           <div className="sign--up--radio--group">
             <input
               className=""
@@ -106,8 +97,37 @@ const SignUp = (props) => {
               required
               onChange={handleFormSelect}
             />
-            <label className="sign--up--label" htmlFor="hunter">
+            <label
+              className={
+                formShown === "hunter"
+                  ? "sign--up--highlight"
+                  : "sign--up--label"
+              }
+              htmlFor="hunter"
+            >
               &nbsp;Recruiter
+            </label>
+          </div>
+          <div className="sign--up--radio--group">
+            <input
+              className=""
+              // ref={userTypeRef}
+              type="radio"
+              name="signup"
+              id="talent"
+              value="talent"
+              required
+              onChange={handleFormSelect}
+            />
+            <label
+              className={
+                formShown === "talent"
+                  ? "sign--up--highlight"
+                  : "sign--up--label"
+              }
+              htmlFor="talent"
+            >
+              &nbsp;Talent
             </label>
           </div>
         </div>
@@ -126,10 +146,10 @@ const SignUp = (props) => {
         )}
 
         {/* LINK FOR LOGIN */}
-        <p>
+        <p className="sign--up--footer">
           Already a member?{" "}
           <a href="#login" onClick={props.handleModalSignUp}>
-            Go and login
+            Login instead
           </a>
         </p>
       </div>

@@ -22,7 +22,9 @@ const Login = (props) => {
       (account) => account.email === data.email
     );
     // ERROR - No account found
-    if (!accountArray.length) return console.log("No account found");
+    if (!accountArray.length) {
+      return console.log("No account found");
+    }
     // ERROR - Wrong password
     const [account] = accountArray;
     if (account.password !== data.password)

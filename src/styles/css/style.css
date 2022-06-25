@@ -1012,20 +1012,31 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
   transition: all 0.5s;
-  z-index: 1000;
+}
+.sign--up--container .sign--up--tittle {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sign--up--container .sign--up--tittle .logo--name {
+  font-weight: bold;
+}
+.sign--up--container .sign--up--tittle .logo--name .logo--period {
+  color: var(--primary-dark-blue);
 }
 
 .sign--up--wrapper {
-  background-color: var(--primary-dark-blue);
-  color: #ffffff;
+  position: relative;
+  background-color: var(--primary-white);
+  color: var(--primary-black);
   border-radius: 10px;
-  padding: 1.5rem;
-  max-width: 40rem;
+  padding: 3rem;
+  width: 70vh;
   transition: all 0.5s;
 }
 
@@ -1055,8 +1066,14 @@ body {
   margin-bottom: 20px;
 }
 
-.sign--up--input--group {
-  font-size: 12px;
+.sign--up--two--column {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+.sign--up--two--column .sign--up--input--group {
+  font-size: 15px;
+  width: 49%;
 }
 
 .sign--up--notification {
@@ -1064,27 +1081,37 @@ body {
   margin-left: 5px;
 }
 
+.sign--up--highlight {
+  color: var(--primary-dark-blue);
+  font-weight: bold;
+}
+
 .sign--up--error {
-  color: #EF9F9F;
+  color: #f94c66;
   font-weight: bold;
 }
 
 .sign--up--success {
   font-weight: bold;
-  color: #71DFE7;
+  color: #009dae;
 }
 
 .sign--up--radio--wrapper {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-items: center;
+  justify-content: space-evenly;
   margin-bottom: 20px;
+  font-size: 20px;
 }
 
-.sign--up--radio--group {
-  margin: 0px 55px;
-  cursor: pointer;
+.sign--up--check {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+}
+.sign--up--check input:focus {
+  outline: none;
 }
 
 .sign--up--input--group {
@@ -1096,34 +1123,28 @@ body {
 
 .sign--up--input {
   padding: 9px 13px 9px 11px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
-  font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
   transition: all 0.5s;
+  height: 50px;
+  border: 1px solid var(--primary-dark-blue);
 }
-
-.sign--up--input {
-  padding: 9px 13px 9px 11px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 16px;
-  transition: all 0.5s;
+.sign--up--input:focus {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--primary-desaturated-blue);
 }
 
 .sign--up--btn {
-  background-color: var(--primary-off-white);
-  color: var(--primary-very-dark-blue);
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-white);
   font-weight: bold;
+  height: 50px;
   padding: 9px 13px 9px 11px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--primary-dark-blue);
   border-radius: 6px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
   width: 100%;
   transition: all 0.5s;
   cursor: pointer;
@@ -1133,17 +1154,26 @@ body {
   transform: scale(1.05);
 }
 
-.sign--up--wrapper > p {
+.sign--up--footer {
   text-align: center;
   font-size: 15px;
-  color: #efefef;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .sign--up--wrapper > p > a {
-  color: var(--primary-white);
+  color: var(--primary-black);
 }
 
+@media screen and (max-width: 550px) {
+  .sign--up--wrapper {
+    padding: 1rem;
+  }
+
+  .sign--up--close {
+    margin-top: 0px;
+    margin-right: 0px;
+  }
+}
 .signin--container {
   display: flex;
   align-items: center;
@@ -1153,27 +1183,42 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
   transition: all 0.5s;
 }
 
+.signin--error--message {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #EF9F9F;
+  margin-bottom: 10px;
+}
+
 .signin--wrapper {
-  background-color: var(--primary-dark-blue);
-  color: #ffffff;
+  position: relative;
+  background-color: var(--primary-white);
+  color: var(--primary-black);
   border-radius: 10px;
-  padding: 1rem;
-  min-width: 25rem;
-  max-width: 50rem;
+  padding: 3rem;
+  width: 60vh;
   transition: all 0.5s;
 }
 .signin--wrapper h1 {
   font-weight: 900;
-  font-size: 35px;
+  font-size: 40px;
 }
 .signin--wrapper h1 span {
   color: var(--primary-dark-blue);
+}
+.signin--wrapper h2 {
+  margin-top: 10px;
+  text-align: center;
+  color: var(--primary-very-dark-blue);
+  margin-bottom: 20px;
 }
 
 .signin--close {
@@ -1203,7 +1248,7 @@ body {
 }
 
 .signin--input--group {
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .signin--notification {
@@ -1231,22 +1276,28 @@ body {
 .signin--input {
   padding: 9px 13px 9px 11px;
   border-radius: 6px;
-  font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
   transition: all 0.5s;
+  height: 50px;
+  border: 1px solid var(--primary-dark-blue);
+}
+
+.signin--input:focus {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--primary-desaturated-blue);
 }
 
 .signin--btn {
-  background-color: var(--primary-off-white);
-  color: var(--primary-very-dark-blue);
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-white);
   font-weight: bold;
+  height: 50px;
   padding: 9px 13px 9px 11px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--primary-dark-blue);
   border-radius: 6px;
   font-weight: 500;
   font-size: 14px;
-  line-height: 16px;
   width: 100%;
   transition: all 0.5s;
   cursor: pointer;
@@ -1259,12 +1310,10 @@ body {
 .signin--wrapper > p {
   text-align: center;
   font-size: 15px;
-  color: #efefef;
-  margin-top: 5px;
+  margin-top: 10px;
 }
-
-.signin--wrapper > p > a {
-  color: var(--primary-white);
+.signin--wrapper > p a {
+  color: #000000;
 }
 
 .pagination--container {
@@ -1388,5 +1437,151 @@ footer .footer--logos span:hover {
 
   p, .footer--brand, .footer--logos {
     margin: 1vh auto;
+  }
+}
+.about--us--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about--us--mission--wrapper {
+  height: 60vh;
+  width: 100%;
+  background-color: var(--primary-dark-blue);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  gap: 30px;
+}
+.about--us--mission--wrapper .about--us--img-box {
+  min-width: 300px;
+  max-width: 500px;
+}
+.about--us--mission--wrapper .about--us--img-box img {
+  margin-top: 10vh;
+  width: 100%;
+  height: auto;
+}
+.about--us--mission--wrapper .about--us--mission {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #fff;
+}
+.about--us--mission--wrapper .about--us--mission p {
+  padding: 20px;
+}
+
+.about--us--vision--wrapper {
+  height: 50vh;
+  width: 100%;
+  background-color: var(--primary-off-white);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  gap: 30px;
+}
+.about--us--vision--wrapper .about--us--img-box {
+  min-width: 300px;
+  max-width: 500px;
+}
+.about--us--vision--wrapper .about--us--img-box img {
+  width: 100%;
+  height: auto;
+}
+.about--us--vision--wrapper .about--us--vision {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--primary-dark-blue);
+}
+.about--us--vision--wrapper .about--us--vision p {
+  padding: 20px;
+}
+
+.about--us--goal--wrapper {
+  height: 50vh;
+  width: 100%;
+  background-color: var(--primary-dark-blue);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  gap: 30px;
+}
+.about--us--goal--wrapper .about--us--img-box {
+  min-width: 300px;
+  max-width: 500px;
+}
+.about--us--goal--wrapper .about--us--img-box img {
+  margin-top: 10vh;
+  width: 100%;
+  height: auto;
+}
+.about--us--goal--wrapper .about--us--goal {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  gap: 10px;
+}
+.about--us--goal--wrapper .about--us--goal p {
+  padding: 20px;
+}
+
+.our--team--container {
+  color: var(--primary-dark-blue);
+  margin-top: 10vh;
+  padding: 30px;
+}
+.our--team--container h1 {
+  text-align: center;
+}
+
+.our--team--wrapper {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.our--team--wrapper .my--team {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.our--team--wrapper .my--team .my--team--img-box {
+  width: 200px;
+}
+.our--team--wrapper .my--team .my--team--img-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  outline: 2px solid var(--primary-dark-blue);
+}
+
+@media screen and (max-width: 810px) {
+  .about--us--mission--wrapper {
+    height: 90vh;
+    flex-direction: column;
+  }
+
+  .about--us--vision--wrapper {
+    height: 80vh;
+    flex-direction: column;
+  }
+
+  .about--us--goal--wrapper {
+    height: 80vh;
+    flex-direction: column;
+  }
+  .about--us--goal--wrapper .about--us--goal {
+    margin-bottom: 10vh;
   }
 }/*# sourceMappingURL=style.css.map */
