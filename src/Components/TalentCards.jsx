@@ -276,6 +276,7 @@ export default function TalentCards(props) {
                 href="https://www.linkedin.com/login"
                 target="_blank"
                 className="talent--card--linkedin--redirect"
+                rel="noopener noreferrer"
               >
                 Go to LinkedIn
               </a>
