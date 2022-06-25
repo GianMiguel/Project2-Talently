@@ -8,11 +8,15 @@
   z-index: 100;
   background-color: transparent;
 
-  h1 {
+  .brand--text {
     font-weight: 900;
     font-size: 45px;
+    color: var(--primary-white);
+    text-decoration: none; 
+
     span {
       color: var(--primary-dark-blue);
+      text-decoration: none;
     }
   }
 
@@ -36,6 +40,19 @@
         .nav--link {
           text-decoration: none;
           color: var(--primary-white);
+
+          &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 3px;
+            background: var(--primary-dark-blue);
+            transition: .3s ease;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
         }
 
         .nav--link--active {
@@ -54,6 +71,7 @@
           &:hover {
             background-color: var(--primary-dark-blue);
             border: 2px solid var(--primary-dark-blue);
+            color: var(--primary-white);
             cursor: pointer;
           }
         }
@@ -67,6 +85,9 @@
   background-color: var(--primary-white);
   color: var(--primary-black);
 
+  .brand--text {
+    color: var(--primary-black);
+  }
   nav ul li .nav--link {
     color: var(--primary-black);
     transition: 0.5s ease-in;
