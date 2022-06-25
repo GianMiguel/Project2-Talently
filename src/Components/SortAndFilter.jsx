@@ -9,9 +9,6 @@ export default function SortAndFilter(props) {
     props.handleSort(e.target);
   }
 
-  function handleRemoveSort() {}
-
-  function handleRemoveFilters() {}
   return (
     <>
       <div className="talents--page--view--card--filter--section">

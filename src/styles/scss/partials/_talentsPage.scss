@@ -96,6 +96,12 @@
     width: 270px;
     display: inline-block;
   }
+  .talents--page--view--card {
+    left: 50%;
+    width: 300px;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -123,10 +129,10 @@
   margin-left: 72px;
   border-radius: 5px;
   max-width: 800px;
+  padding: 1rem;
 }
 
 .talents--displayed {
-  margin: 0.5rem;
   display: block;
   font-weight: 700;
 }
@@ -138,6 +144,7 @@
   padding: 5px;
   border-radius: 5px;
   margin: 2px;
+  font-weight: 400;
 }
 
 .talents--remove--view {
@@ -149,4 +156,8 @@
   .talents--view--feedback {
     margin: 1rem;
   }
+}
+
+.view--feedback--empty {
+  display: none;
 }

@@ -509,6 +509,7 @@ body {
 }
 
 .header--expand {
+  z-index: 500;
   background-color: var(--primary-white);
   color: var(--primary-black);
 }
@@ -638,6 +639,12 @@ body {
     width: 270px;
     display: inline-block;
   }
+
+  .talents--page--view--card {
+    left: 50%;
+    width: 300px;
+    transform: translateX(-50%);
+  }
 }
 @media screen and (max-width: 550px) {
   .talents--page--header {
@@ -662,10 +669,10 @@ body {
   margin-left: 72px;
   border-radius: 5px;
   max-width: 800px;
+  padding: 1rem;
 }
 
 .talents--displayed {
-  margin: 0.5rem;
   display: block;
   font-weight: 700;
 }
@@ -677,6 +684,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   margin: 2px;
+  font-weight: 400;
 }
 
 .talents--remove--view {
@@ -689,6 +697,10 @@ body {
     margin: 1rem;
   }
 }
+.view--feedback--empty {
+  display: none;
+}
+
 .talent--card {
   background-color: var(--primary-white);
   max-width: 300px;
@@ -886,6 +898,21 @@ body {
   transform: scale(1.05);
 }
 
+.talent--card--form--buttons {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: var(--primary-dark-blue);
+  border: none;
+  color: var(--primary-white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.talent--card--form--buttons:hover {
+  transform: scale(1.05);
+}
+
 .talent--card--email--overlay {
   position: absolute;
   height: 100%;
@@ -899,6 +926,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.talent--card--email--warning {
+  text-align: center;
 }
 
 .talent--card--email--overlay button {
@@ -1212,10 +1243,11 @@ body {
 
 .pagination--container {
   width: 100%;
-  margin: auto 1rem;
+  margin: auto;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   gap: 10px;
+  padding-bottom: 2rem;
 }
 
 .pagination--previous--wrapper {
@@ -1267,14 +1299,15 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .pagination--prev {
-  padding: 0.5rem 0.75rem 0.25rem 0.35rem;
+  padding: 0.5rem 0.65rem 0.4rem 0.25rem;
 }
 
 .pagination--next {
-  padding: 0.5rem 0.35rem 0.25rem 0.75rem;
+  padding: 0.5rem 0.25rem 0.4rem 0.65rem;
 }
 
 .pagination--prev > img,
@@ -1330,4 +1363,4 @@ footer .footer--logos span:hover {
   p, .footer--brand, .footer--logos {
     margin: 1vh auto;
   }
-}
+}/*# sourceMappingURL=style.css.map */

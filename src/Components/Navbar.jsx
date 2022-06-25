@@ -1,12 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu } from "react-icons/fi"
+import { FiMenu } from "react-icons/fi";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import { GrClose } from "react-icons/gr";
 
-export default function Navbar() {
-  
+export default function Navbar(props) {
   const [modalSignUp, setModalSignUp] = React.useState(false);
   const [modalLogin, setModalLogin] = React.useState(false);
   // change color when scroll
@@ -55,13 +54,21 @@ export default function Navbar() {
     }));
   }
 
-  const handleModalLogin = () =>{
+  const handleModalLogin = () => {
     !modalLogin ? setModalLogin(true) : setModalLogin(false);
-  }
+  };
 
-  const handleModalSignUp = () =>{
+  const handleModalSignUp = () => {
     !modalSignUp ? setModalSignUp(true) : setModalSignUp(false);
-  }
+  };
+
+  const closeModalLogin = () => {
+    setModalLogin(false);
+  };
+
+  const closeModalSignUp = () => {
+    setModalSignUp(false);
+  };
 
   return (
     <div
@@ -100,9 +107,18 @@ export default function Navbar() {
             </li>
             <li>
               <a href="#1" onClick={handleModalLogin} className="nav--link">
-                Sign In 
-                </a></li>
-            <li><a href="#1" onClick={handleModalSignUp} className="nav--link--join">Join</a></li>
+                Sign In
+              </a>
+            </li>
+            <li>
+              <a
+                href="#1"
+                onClick={handleModalSignUp}
+                className="nav--link--join"
+              >
+                Join
+              </a>
+            </li>
           </ul>
           <span>
             {navControls.expandNav ? (
@@ -113,8 +129,26 @@ export default function Navbar() {
           </span>
         </div>
 
-        {modalLogin ? <Login handleModalLogin={handleModalLogin}/> : ""}
-        {modalSignUp ? <SignUp handleModalSignUp={handleModalSignUp}/> : ""}
+        {modalLogin ? (
+          <Login
+            handleModalLogin={handleModalLogin}
+            accounts={props.accounts}
+            handleLogin={props.handleLogin}
+            closeModalLogin={closeModalLogin}
+          />
+        ) : (
+          ""
+        )}
+        {modalSignUp ? (
+          <SignUp
+            handleModalSignUp={handleModalSignUp}
+            accounts={props.accounts}
+            handleSignUp={props.handleSignUp}
+            closeModalSignUp={closeModalSignUp}
+          />
+        ) : (
+          ""
+        )}
       </nav>
       {navControls.expandNav && (
         <div className="nav--links--collapsed">
@@ -129,8 +163,20 @@ export default function Navbar() {
                 Talents
               </Link>
             </li>
-            <li><a href="#1" onClick={handleModalLogin} className="nav--link">Sign In </a></li>
-            <li><a href="#1" onClick={handleModalSignUp} className="nav--link--join">Join</a></li>
+            <li>
+              <a href="#1" onClick={handleModalLogin} className="nav--link">
+                Sign In{" "}
+              </a>
+            </li>
+            <li>
+              <a
+                href="#1"
+                onClick={handleModalSignUp}
+                className="nav--link--join"
+              >
+                Join
+              </a>
+            </li>
             <li>
               <Link
                 to="/signup"

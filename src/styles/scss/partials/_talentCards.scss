@@ -198,6 +198,21 @@
   transform: scale(1.05);
 }
 
+.talent--card--form--buttons {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.25rem;
+  background-color: var(--primary-dark-blue);
+  border: none;
+  color: var(--primary-white);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.talent--card--form--buttons:hover {
+  transform: scale(1.05);
+}
+
 .talent--card--email--overlay {
   position: absolute;
   height: 100%;
@@ -211,6 +226,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.talent--card--email--warning {
+  text-align: center;
 }
 
 .talent--card--email--overlay button {

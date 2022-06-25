@@ -16,38 +16,53 @@ const SignUp = (props) => {
 
   // handle Submit
   const handleSubmit = (e) => {
+    // CHECK IF ACCOUNT ALREADY EXISTS
+    const accounts = props.accounts;
+    // ACCOUNT EXISTS ARRAY LENGTH IF 0 = false, meaning no account found, IF 1 = true, account found with same email
+    const accountExists = accounts.filter(
+      (account) => account.email === email
+    ).length;
+    if (accountExists)
+      return console.log("Sorry, an account with this email already exists");
+    // IF ACCOUNT DOES NOT EXIST WITH EMAIL, THEN GO AHEAD WITH CODE BELOW
     let valid = true;
     e.querySelectorAll("input").forEach((input) => {
       // Verify that each input field contains a value.
       let inputValidation = Helpers.hasValue(input);
-      if(inputValidation === false) valid = false;
+      if (inputValidation === false) valid = false;
     });
 
     // Validate Password
     let passwordValid = Helpers.validatePassword(e, password, confirmPassword);
-    if(passwordValid === false) valid = false;
+    if (passwordValid === false) valid = false;
 
-    if(valid === true){
+    if (valid === true) {
       let userType = formShown;
-      let account = {email, password, firstName, lastName, company, jobTitle, userType};
-      
+      let account = {
+        email,
+        password,
+        firstName,
+        lastName,
+        company,
+        jobTitle,
+        userType,
+      };
+
       // Submit Data
-      console.log(account);
-      }
-      
+      props.handleSignUp(account);
+      props.closeModalSignUp();
+    }
   };
 
-  
   const handleInputBox = (target) => {
-    if(target.name === "email") setEmail(target.value);
-    if(target.name === "password") setPassword(target.value);
-    if(target.name === "firstName") setFirstName(target.value);
-    if(target.name === "lastName") setLastName(target.value);
-    if(target.name === "company") setCompany(target.value);
-    if(target.name === "jobTitle") setJobTitle(target.value);
-    if(target.name === "confirmPassword") setConfirmPassword(target.value);
-  }
-
+    if (target.name === "email") setEmail(target.value);
+    if (target.name === "password") setPassword(target.value);
+    if (target.name === "firstName") setFirstName(target.value);
+    if (target.name === "lastName") setLastName(target.value);
+    if (target.name === "company") setCompany(target.value);
+    if (target.name === "jobTitle") setJobTitle(target.value);
+    if (target.name === "confirmPassword") setConfirmPassword(target.value);
+  };
 
   function handleFormSelect(e) {
     if (e.target.value === "hunter") setFormShown("hunter");
@@ -57,7 +72,9 @@ const SignUp = (props) => {
   return (
     <div className="sign--up--container">
       <div className="sign--up--wrapper">
-      <button className="sign--up--close" onClick={props.handleModalSignUp}>&times;</button>
+        <button className="sign--up--close" onClick={props.handleModalSignUp}>
+          &times;
+        </button>
 
         <h2>Join Talently as? </h2>
 
@@ -97,20 +114,23 @@ const SignUp = (props) => {
         {formShown === "" ? (
           ""
         ) : formShown === "hunter" ? (
-          <HunterForm 
-          handleSubmit={handleSubmit}
-          handleInputBox={handleInputBox}
+          <HunterForm
+            handleSubmit={handleSubmit}
+            handleInputBox={handleInputBox}
           />
         ) : (
-          <TalentForm 
-          handleSubmit={handleSubmit}
-          handleInputBox={handleInputBox}
+          <TalentForm
+            handleSubmit={handleSubmit}
+            handleInputBox={handleInputBox}
           />
         )}
 
         {/* LINK FOR LOGIN */}
         <p>
-          Already a member? <a href="#login" onClick={props.handleModalSignUp}>Go and login</a>
+          Already a member?{" "}
+          <a href="#login" onClick={props.handleModalSignUp}>
+            Go and login
+          </a>
         </p>
       </div>
     </div>

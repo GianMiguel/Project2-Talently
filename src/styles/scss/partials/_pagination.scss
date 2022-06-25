@@ -1,10 +1,11 @@
 // Pagination
 .pagination--container {
   width: 100%;
-  margin: auto 1rem;
+  margin: auto;
   display: grid;
   grid-template-columns: 0.25fr 1fr 0.25fr;
   gap: 10px;
+  padding-bottom: 2rem;
 }
 
 .pagination--previous--wrapper {
@@ -56,14 +57,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .pagination--prev {
-  padding: 0.5rem 0.75rem 0.25rem 0.35rem;
+  padding: 0.5rem 0.65rem 0.4rem 0.25rem;
 }
 
 .pagination--next {
-  padding: 0.5rem 0.35rem 0.25rem 0.75rem;
+  padding: 0.5rem 0.25rem 0.4rem 0.65rem;
 }
 
 .pagination--prev > img,

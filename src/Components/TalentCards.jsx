@@ -155,6 +155,17 @@ export default function TalentCards(props) {
           ))}
         </div>
 
+        {props.currentUser.userType === "guest" && (
+          <div className="talent--card--connect--wrapper">
+            <button
+              className="talent--card--connect--button"
+              onClick={handleEmail}
+            >
+              Login or sign up to connect
+            </button>
+          </div>
+        )}
+
         {props.isLoggedIn && props.currentUser.userType === "hunter" && (
           <div className="talent--card--connect--wrapper">
             {!props.currentUser.connections.includes(talent.id) ? (
@@ -206,23 +217,45 @@ export default function TalentCards(props) {
               encType="text/plain"
               onSubmit={handleFormSubmit}
             >
-              Name:
-              <input type="text" name="name" />
+              <label htmlFor="name">Your name: </label>
+              <input
+                type="text"
+                name="name"
+                defaultValue={`${props.currentUser.firstName} ${props.currentUser.lastName}`}
+              />
               E-mail:
-              <input type="text" name="mail" />
+              <input
+                type="text"
+                name="mail"
+                defaultValue={props.currentUser.email}
+              />
               Comment:
-              <input type="text" name="comment" size="50" />
-              <input type="submit" value="Send" />
-              <input type="reset" value="Reset" />
-              <button type="button" onClick={handleEmailOverlay}>
-                Cancel
-              </button>
+              <textarea type="text" name="comment" size="20" />
+              <div className="talent--card--delete--btn--wrappers">
+                <input
+                  className="talent--card--form--buttons"
+                  type="submit"
+                  value="Send"
+                />
+                <input
+                  className="talent--card--form--buttons"
+                  type="reset"
+                  value="Reset"
+                />
+                <button type="button" onClick={handleEmailOverlay}>
+                  Cancel
+                </button>
+              </div>
             </form>
           ) : (
             <>
               <p className="talent--card--email--warning">
                 {props.isLoggedIn
-                  ? "Please connect to this Talent first."
+                  ? props.currentUser.userType === "hunter"
+                    ? "Please connect to this Talent first."
+                    : props.currentUser.userType === "talent"
+                    ? "Sorry, this feature is only available for recruiters"
+                    : "Sign up or log in to use this feature"
                   : "Please login first."}
               </p>
               <button
@@ -257,7 +290,11 @@ export default function TalentCards(props) {
             <>
               <p className="talent--card--email--warning">
                 {props.isLoggedIn
-                  ? "Please connect to this Talent first."
+                  ? props.currentUser.userType === "hunter"
+                    ? "Please connect to this Talent first."
+                    : props.currentUser.userType === "talent"
+                    ? "Sorry, this feature is only available for recruiters"
+                    : "Sign up or log in to use this feature"
                   : "Please login first."}
               </p>
               <button

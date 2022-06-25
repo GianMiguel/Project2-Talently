@@ -16,6 +16,18 @@ export default function Talents(props) {
     (account) => account.userType === "talent"
   );
 
+  React.useEffect(() => {
+    if (!sort && !filters.length && !searchQuery) {
+      document
+        .querySelector(".talents--view--feedback")
+        .classList.add("view--feedback--empty");
+    } else {
+      document
+        .querySelector(".talents--view--feedback")
+        .classList.remove("view--feedback--empty");
+    }
+  }, [sort, filters, searchQuery]);
+
   function handleFilterBox(target) {
     if (target.name === "all") {
       if (target.checked) {
@@ -104,6 +116,8 @@ export default function Talents(props) {
     indexOfLastTalent
   );
 
+  console.log(props.currentUser);
+
   // Change page
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
@@ -175,7 +189,11 @@ export default function Talents(props) {
     <div className="talents--page">
       <div className="talents--page--container">
         <div className="talents--page--header">
-          <h2>Discover talented professionals</h2>
+          {props.currentUser.userType === "hunter" ? (
+            <h2>{`Hi ${props.currentUser.firstName}, explore this page for amazing talents!`}</h2>
+          ) : (
+            <h2>Discover talented professionals</h2>
+          )}
           <div>
             <button
               className="sort--filter--button"
@@ -195,7 +213,7 @@ export default function Talents(props) {
         <div className="talents--view--feedback">
           {sort && (
             <span className="talents--displayed">
-              Sorted by:{" "}
+              Sorted by:
               <div className="talents--displayed--contents">
                 {Helpers.sortString(sort)}
                 <GrClose
