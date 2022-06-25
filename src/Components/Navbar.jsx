@@ -84,9 +84,9 @@ export default function Navbar(props) {
     >
       <nav>
         <div className="brand--logo">
-          <h1>
+        <Link to="/" className="brand--text">
             talently<span>.</span>
-          </h1>
+          </Link>
         </div>
         <div className="nav--link--wrapper">
           <ul>
