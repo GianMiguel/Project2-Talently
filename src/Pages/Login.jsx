@@ -43,7 +43,6 @@ const Login = (props) => {
         <h1>
           talently<span>.</span>
         </h1>
-        <h4>Login Form</h4>
 
         <form action="" onSubmit={handleSubmit}>
           {/* EMAIL INPUT*/}

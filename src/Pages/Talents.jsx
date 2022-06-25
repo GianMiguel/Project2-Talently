@@ -6,18 +6,22 @@ import * as Helpers from "../Helpers/helpers";
 import { GrClose } from "react-icons/gr";
 
 export default function Talents(props) {
-  const [filters, setFilters] = React.useState([]);
+  const [filters, setFilters] = React.useState(
+    props.searchQuery.initiateSearch && props.searchQuery.isValid
+      ? props.searchQuery.searchKey
+      : []
+  );
   const [sort, setSort] = React.useState("");
   const [currentPage, setCurrentPage] = React.useState(1);
   const [talentsPerPage] = React.useState(8);
-  const [searchQuery, setSearchQuery] = React.useState("");
 
   const talents = props.accounts.filter(
     (account) => account.userType === "talent"
   );
 
+  // Helper to manage margin and padding of unrendered component
   React.useEffect(() => {
-    if (!sort && !filters.length && !searchQuery) {
+    if (!sort && !filters.length && !props.searchQuery.initiateSearch) {
       document
         .querySelector(".talents--view--feedback")
         .classList.add("view--feedback--empty");
@@ -26,8 +30,9 @@ export default function Talents(props) {
         .querySelector(".talents--view--feedback")
         .classList.remove("view--feedback--empty");
     }
-  }, [sort, filters, searchQuery]);
+  }, [sort, filters, props.searchQuery.initiateSearch]);
 
+  // Filtering
   function handleFilterBox(target) {
     if (target.name === "all") {
       if (target.checked) {
@@ -56,11 +61,27 @@ export default function Talents(props) {
     setCurrentPage(1);
   }
 
+  // Sorting
   function handleSort(target) {
     setSort(target.value);
   }
 
+  // SEARCH FILTER
+  // if (props.searchQuery.initiateSearch) {
+  //   console.log(props.searchQuery);
+  //   // IF INVALID DISPLAY ZERO RESULTS FOUND
+  //   if (!props.searchQuery.isValid) {
+  //     setFilters(["invalid"]);
+  //   }
+  //   // IF VALID FILTER TALENT CARDS
+  //   // CLEAR SEARCH QUERY STATE IN APP
+  // }
+  // Return fields that includes the key word (ex. end = [front-end-development, back-end-development]) then set state
+  // queries.filter((query) => query.includes(searchKey))
+
+  // START OF FILTERING AND SORTING PROCESS
   let filteredTalents;
+
   filteredTalents = !filters.length
     ? talents
     : talents.filter((talent) => {
@@ -68,6 +89,7 @@ export default function Talents(props) {
           filters.includes(skill)
         );
       });
+
   let filteredAndSortedTalents;
   if (sort === "") {
     filteredAndSortedTalents = filteredTalents;
@@ -116,8 +138,6 @@ export default function Talents(props) {
     indexOfLastTalent
   );
 
-  console.log(props.currentUser);
-
   // Change page
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
@@ -131,6 +151,7 @@ export default function Talents(props) {
     setCurrentPage((prevCurrentPage) => prevCurrentPage + 1);
   }
 
+  // AFTER ALL THE FILTERING, SORTING AND PAGINATING, THIS WILL FINALLY RENDER THE CARDS THAT MEETS ALL CONDITIONS
   const talentElements = currentTalents.map((talent) => {
     return (
       <TalentCards
@@ -144,6 +165,7 @@ export default function Talents(props) {
     );
   });
 
+  // HANDLING ALL UI RELATING TO FILTER AND SORT AND ITS INPUTS
   function toggleFilterAndSort() {
     document
       .querySelector(".talents--page--view--card")
@@ -177,6 +199,11 @@ export default function Talents(props) {
       `#${e.target.closest(".filter--option").dataset.filter}`
     ).checked = false;
   }
+
+  function removeSearch() {
+    props.clearSearch();
+    setFilters([]);
+  }
   const filtersRemoveElement = filters.map((filter, i) => (
     <span data-filter={filter} className="filter--option" key={i}>
       <div className="talents--displayed--contents">
@@ -185,6 +212,14 @@ export default function Talents(props) {
       </div>
     </span>
   ));
+  let searchKeyElement;
+  if (props.searchQuery.initiateSearch && props.searchQuery.isValid) {
+    searchKeyElement = props.searchQuery.searchKey.map((key, i) => (
+      <span data-filter={key} className="filter--option" key={i}>
+        <div className="talents--displayed--contents">{key}</div>
+      </span>
+    ));
+  }
   return (
     <div className="talents--page">
       <div className="talents--page--container">
@@ -195,12 +230,14 @@ export default function Talents(props) {
             <h2>Discover talented professionals</h2>
           )}
           <div>
-            <button
-              className="sort--filter--button"
-              onClick={toggleFilterAndSort}
-            >
-              Sort / Filter
-            </button>
+            {!props.searchQuery.initiateSearch && (
+              <button
+                className="sort--filter--button"
+                onClick={toggleFilterAndSort}
+              >
+                Sort / Filter
+              </button>
+            )}
             <div className="talents--page--view--card view--card--hidden">
               <SortAndFilter
                 handleFilter={handleFilterBox}
@@ -223,24 +260,67 @@ export default function Talents(props) {
               </div>
             </span>
           )}
-          {filters.length >= 1 && (
+          {filters.length >= 1 && !props.searchQuery.initiateSearch && (
             <span className="talents--displayed">
               Filtered by: {filtersRemoveElement}
             </span>
           )}
-          {searchQuery && (
-            <span className="talents--displayed">Search by: </span>
+          {props.searchQuery.initiateSearch && (
+            <>
+              <span className="talents--displayed">
+                Search by:
+                <div className="talents--displayed--contents">
+                  "{props.searchQuery.searchTerm}"
+                  <GrClose
+                    className="talents--remove--view"
+                    onClick={removeSearch}
+                  />
+                </div>
+              </span>
+              <span className="talents--displayed">
+                Found fields:{" "}
+                {props.searchQuery.isValid ? (
+                  searchKeyElement
+                ) : (
+                  <div className="talents--displayed--contents">
+                    Sorry, no result found.
+                  </div>
+                )}
+              </span>
+              <span className="talents--displayed--contents">
+                Clear the search field by clicking the X button to see all
+                Talents
+              </span>
+            </>
           )}
         </div>
-        <div className="talent--cards--wrapper">{talentElements}</div>
-        <Pagination
-          talentsPerPage={talentsPerPage}
-          totalTalents={filteredAndSortedTalents.length}
-          paginate={paginate}
-          handlePreviousPage={handlePreviousPage}
-          handleNextPage={handleNextPage}
-          currentPage={currentPage}
-        />
+        {!props.searchQuery.initiateSearch ? (
+          <>
+            <div className="talent--cards--wrapper">{talentElements}</div>
+            <Pagination
+              talentsPerPage={talentsPerPage}
+              totalTalents={filteredAndSortedTalents.length}
+              paginate={paginate}
+              handlePreviousPage={handlePreviousPage}
+              handleNextPage={handleNextPage}
+              currentPage={currentPage}
+            />
+          </>
+        ) : props.searchQuery.isValid ? (
+          <>
+            <div className="talent--cards--wrapper">{talentElements}</div>
+            <Pagination
+              talentsPerPage={talentsPerPage}
+              totalTalents={filteredAndSortedTalents.length}
+              paginate={paginate}
+              handlePreviousPage={handlePreviousPage}
+              handleNextPage={handleNextPage}
+              currentPage={currentPage}
+            />
+          </>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
