@@ -1223,17 +1223,11 @@ body {
   transition: all 0.5s;
 }
 .signin--wrapper h1 {
-  font-weight: 900;
-  font-size: 40px;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 .signin--wrapper h1 span {
   color: var(--primary-dark-blue);
-}
-.signin--wrapper h2 {
-  margin-top: 10px;
-  text-align: center;
-  color: var(--primary-very-dark-blue);
-  margin-bottom: 20px;
 }
 
 .signin--close {
@@ -1572,10 +1566,11 @@ footer .footer--logos span:hover {
 
 .our--team--container {
   color: var(--primary-dark-blue);
-  margin-top: 10vh;
+  background-color: var(--primary-off-white);
   padding: 30px;
 }
 .our--team--container h1 {
+  font-size: 50px;
   text-align: center;
 }
 
@@ -1601,6 +1596,16 @@ footer .footer--logos span:hover {
   height: auto;
   border-radius: 50%;
   outline: 2px solid var(--primary-dark-blue);
+}
+
+.developer--card {
+  min-width: 300px;
+  min-height: 280px;
+}
+
+.developer--portfolio {
+  text-decoration: none;
+  color: var(--primary-dark-blue);
 }
 
 @media screen and (max-width: 810px) {

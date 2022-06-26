@@ -1,4 +1,5 @@
 import React from 'react'
+import DeveloperCard from '../Components/DeveloperCard'
 
 const About = () => {
   return (
@@ -46,38 +47,7 @@ const About = () => {
       <div className='our--team--container'>
         <h1>Our Team</h1>
         <div className='our--team--wrapper'>
-            <div className='my--team'>
-              <div className='my--team--img-box'>
-                <img
-                  src={require(`../images/argel.png`)}
-                  alt="mission"
-                />
-              </div>
-
-              <h2>Senpai Argel</h2>
-            </div>
-
-            <div className='my--team'>
-              <div className='my--team--img-box'>
-                <img
-                  src={require(`../images/argel.png`)}
-                  alt="mission"
-                />
-              </div>
-
-              <h2>Senpai Argel</h2>
-            </div>
-
-            <div className='my--team'>
-              <div className='my--team--img-box'>
-                <img
-                  src={require(`../images/gianmiguel.jpg`)}
-                  alt="mission"
-                />
-              </div>
-
-              <h2>Cancer Only</h2>
-            </div>
+          <DeveloperCard />
         </div>
         
       </div>

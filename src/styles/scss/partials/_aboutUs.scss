@@ -129,10 +129,11 @@
 
 .our--team--container{
     color: var(--primary-dark-blue);
-    margin-top: 10vh;
+    background-color: var(--primary-off-white);
     padding: 30px;
 
     h1{
+        font-size: 50px;
         text-align: center;
     }
 }
@@ -164,6 +165,16 @@
     }
 }
 
+.developer--card{
+    min-width: 300px;
+    min-height: 280px;
+
+}
+
+.developer--portfolio{
+    text-decoration: none;
+    color: var(--primary-dark-blue);
+}
 
 
 @media screen and (max-width: 810px){
