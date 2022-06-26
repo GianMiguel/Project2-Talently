@@ -1,9 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -23,16 +23,21 @@ const Login = (props) => {
     );
     // ERROR - No account found
     if (!accountArray.length) {
-      return console.log("No account found");
+      return setErrorMessage("No account found");
     }
     // ERROR - Wrong password
     const [account] = accountArray;
     if (account.password !== data.password)
-      return console.log("Wrong password");
+      return setErrorMessage("Wrong password");
     // SUCCESS - Account found and password is correct
     props.handleLogin(account);
     props.closeModalLogin();
   };
+
+  const showSignUpModal = () => {
+    props.closeModalLogin();
+    props.showModalSignUp();
+  }
 
   return (
     <div className="signin--container">
@@ -45,6 +50,9 @@ const Login = (props) => {
         </h1>
         <h4>Login Form</h4>
 
+        {errorMessage === "" 
+        ? ""
+        : <p className="signin--error--message">{errorMessage}</p> }
         <form action="" onSubmit={handleSubmit}>
           {/* EMAIL INPUT*/}
           <div className="signin--input--group">
@@ -88,7 +96,7 @@ const Login = (props) => {
         <p>or</p>
         {/* LINK FOR LOGIN */}
         <p>
-          <Link to="/signup">Sign Up</Link>
+          Don't have an account yet? <a href="#signUp" onClick={showSignUpModal}>Sign up instead</a>
         </p>
       </div>
     </div>

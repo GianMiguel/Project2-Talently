@@ -70,6 +70,14 @@ export default function Navbar(props) {
     setModalSignUp(false);
   };
 
+  const showModalLogin = () => {
+    setModalLogin(true);
+  };
+
+  const showModalSignUp = () => {
+    setModalSignUp(true);
+  };
+
   return (
     <div
       className={`header ${
@@ -134,6 +142,7 @@ export default function Navbar(props) {
             handleModalLogin={handleModalLogin}
             accounts={props.accounts}
             handleLogin={props.handleLogin}
+            showModalSignUp={showModalSignUp}
             closeModalLogin={closeModalLogin}
           />
         ) : (
@@ -144,6 +153,7 @@ export default function Navbar(props) {
             handleModalSignUp={handleModalSignUp}
             accounts={props.accounts}
             handleSignUp={props.handleSignUp}
+            showModalLogin={showModalLogin}
             closeModalSignUp={closeModalSignUp}
           />
         ) : (

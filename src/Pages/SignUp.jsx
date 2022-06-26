@@ -22,8 +22,13 @@ const SignUp = (props) => {
     const accountExists = accounts.filter(
       (account) => account.email === email
     ).length;
-    if (accountExists)
-      return console.log("Sorry, an account with this email already exists");
+    if (accountExists){
+      let emailNotif = e.querySelector('#emailNotif');
+      emailNotif.textContent = "Sorry, an account with this email already exists";
+      emailNotif.classList.add("sign--up--error");
+      return;
+    }
+      
     // IF ACCOUNT DOES NOT EXIST WITH EMAIL, THEN GO AHEAD WITH CODE BELOW
     let valid = true;
     e.querySelectorAll("input").forEach((input) => {
@@ -67,6 +72,11 @@ const SignUp = (props) => {
   function handleFormSelect(e) {
     if (e.target.value === "hunter") setFormShown("hunter");
     if (e.target.value === "talent") setFormShown("talent");
+  }
+
+  const showLoginModal = () => {
+    props.closeModalSignUp();
+    props.showModalLogin();
   }
 
   return (
@@ -148,7 +158,7 @@ const SignUp = (props) => {
         {/* LINK FOR LOGIN */}
         <p className="sign--up--footer">
           Already a member?{" "}
-          <a href="#login" onClick={props.handleModalSignUp}>
+          <a href="#login" onClick={showLoginModal}>
             Login instead
           </a>
         </p>

@@ -22,7 +22,7 @@ export default function talentForm(props) {
         className="sign--up--input"
         id="email"
         name="email"
-        placeholder="yourEmail@email.com"
+        placeholder="youremail@email.com"
         onChange={handleTalentInputBox}
       />
       <small className="sign--up--notification" id="emailNotif"></small>
