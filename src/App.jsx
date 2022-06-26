@@ -12,17 +12,62 @@ import sampleData2 from "./Data/data2";
 import Footer from "./Components/Footer";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+import queries from "./Data/queries";
+import Profile from "./Pages/Profile";
 
 export default function App() {
-  // STATE TO HANDLE ISLOGIN
-  const [isLoggedIn, setIsLoggedin] = React.useState(false);
+  // WRITE ACCOUNTS DATA TO LOCAL STORAGE
+  if (!localStorage.talentlyAccounts) {
+    const accountData = JSON.stringify(sampleData2);
+    localStorage.setItem("talentlyAccounts", accountData);
+  }
+
+  if (!localStorage.talentlyCurrentUser) {
+    const defaultUser = {
+      connections: [],
+      userType: "guest",
+    };
+    localStorage.setItem("talentlyCurrentUser", JSON.stringify(defaultUser));
+  }
+
   // STATE TO HANDLE ACCOUNTS
-  const [accounts, setAccounts] = React.useState(sampleData2);
+  const [accounts, setAccounts] = React.useState(
+    JSON.parse(localStorage.getItem("talentlyAccounts"))
+  );
+
+  // OVERWRITE LOCAL STORAGE TALENTLY ACCOUNTS EVERY TIME ACCOUNTS IN STATES CHANGES
+  React.useEffect(() => {
+    localStorage.setItem("talentlyAccounts", JSON.stringify(accounts));
+  }, [accounts]);
   // STATE TO HANDLE CURRENT USER
-  const [currentUser, setCurrentUser] = React.useState({
-    connections: [],
-    userType: "guest",
+  const [currentUser, setCurrentUser] = React.useState(
+    JSON.parse(localStorage.getItem("talentlyCurrentUser"))
+  );
+
+  React.useEffect(() => {
+    localStorage.setItem("talentlyCurrentUser", JSON.stringify(currentUser));
+  }, [currentUser]);
+
+  // STATE TO HANDLE ISLOGIN
+  const [isLoggedIn, setIsLoggedin] = React.useState(
+    JSON.parse(localStorage.getItem("talentlyCurrentUser")).userType === "guest"
+      ? false
+      : true
+  );
+
+  // STATE TO HANDLE SEARCH QUERIES
+  const [searchQuery, setSearchQuery] = React.useState({
+    searchTerm: "",
+    searchKey: "",
+    isValid: false,
+    initiateSearch: false,
   });
+
+  // REWRITE LOCAL STORAGE DATA EVERY TIME SOMETHING CHANGES IN ACCOUNTS
+  React.useEffect(() => {
+    localStorage.setItem("talentlyAccounts", JSON.stringify(accounts));
+  }, [accounts]);
+
   // USED FOR NAVIGATION
   const navigate = useNavigate();
   // TEMPORARY FUNCTIONS TO AVOID WARNING ON UNUSED VARIABLES
@@ -45,6 +90,42 @@ export default function App() {
 
   // // User = hunter
   // const currentUser = sampleData2[7];
+
+  function handleSearch(searchKey) {
+    // search key split, only use first word as search term
+    const searchTerms = searchKey.split(" ");
+    // Flatten query array, containing each word
+    const queryKeywords = queries.flatMap((searchKey) => searchKey.split("-"));
+    // Invalid search query so set the searchQuery to invalid then redirect to TALENTS, ending the function here
+    if (!queryKeywords.includes(searchTerms[0])) {
+      setSearchQuery({
+        searchTerm: searchKey,
+        searchKey: searchKey,
+        isValid: false,
+        initiateSearch: true,
+      });
+      return navigate("/talents");
+    }
+    // Set to valid search, pass as props to Talents, then redirect
+    setSearchQuery({
+      searchTerm: searchKey,
+      searchKey: queries.filter((query) => query.includes(searchTerms[0])),
+      isValid: true,
+      initiateSearch: true,
+    });
+    // return console.log(searchQuery.searchKey);
+    // REDIRECT TO TALENTS PAGE
+    navigate("/talents");
+  }
+
+  function clearSearch() {
+    setSearchQuery({
+      searchTerm: "",
+      searchKey: "",
+      isValid: false,
+      initiateSearch: false,
+    });
+  }
   function handleConnections(currentUserId, talentId) {
     setAccounts(
       accounts.map((account) => {
@@ -58,6 +139,13 @@ export default function App() {
         return account;
       })
     );
+    const currentUserAccount = accounts.filter(
+      (account) => account.id === currentUserId
+    )[0];
+    setCurrentUser({
+      ...currentUserAccount,
+      connections: [...currentUserAccount.connections],
+    });
   }
 
   function handleDisconnections(currentUserId, talentId) {
@@ -76,6 +164,13 @@ export default function App() {
         return account;
       })
     );
+    const currentUserAccount = accounts.filter(
+      (account) => account.id === currentUserId
+    )[0];
+    setCurrentUser({
+      ...currentUserAccount,
+      connections: [...currentUserAccount.connections],
+    });
   }
 
   function handleLogin(account) {
@@ -163,6 +258,63 @@ export default function App() {
     }
   }
 
+  function handleLogOut() {
+    setCurrentUser({
+      connections: [],
+      userType: "guest",
+    });
+    setIsLoggedin(false);
+    navigate("/");
+  }
+
+  function handleAccountEdit(userId, data) {
+    setAccounts((prevAccounts) => {
+      return prevAccounts.map((account) => {
+        if (account.id === userId) {
+          return {
+            ...account,
+            email: data.accountEditEmail,
+            password: data.accountEditPassword,
+          };
+        } else return account;
+      });
+    });
+
+    const account = accounts.filter((account) => account.id === userId)[0];
+    setCurrentUser({
+      ...account,
+      email: data.accountEditEmail,
+      password: data.accountEditPassword,
+    });
+  }
+
+  function handleHunterEdit(userId, data) {
+    setAccounts((prevAccounts) => {
+      return prevAccounts.map((account) => {
+        if (account.id === userId) {
+          return {
+            ...account,
+            firstName: data.accountEditFirstName,
+            lastName: data.accountEditLastName,
+            jobTitle: data.accountEditJobTitle,
+            company: data.accountEditCompany,
+          };
+        } else return account;
+      });
+    });
+
+    const account = accounts.filter((account) => account.id === userId)[0];
+    setCurrentUser({
+      ...account,
+      firstName: data.accountEditFirstName,
+      lastName: data.accountEditLastName,
+      jobTitle: data.accountEditJobTitle,
+      company: data.accountEditCompany,
+    });
+  }
+
+  function handleTalentEdit() {}
+
   return (
     <>
       <Navbar
@@ -171,9 +323,10 @@ export default function App() {
         handleSignUp={handleSignUp}
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
+        handleLogOut={handleLogOut}
       />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home handleSearch={handleSearch} />}></Route>
         <Route
           path="/talents"
           element={
@@ -183,10 +336,27 @@ export default function App() {
               currentUser={currentUser}
               handleConnections={handleConnections}
               handleDisconnections={handleDisconnections}
+              searchQuery={searchQuery}
+              clearSearch={clearSearch}
             />
           }
         ></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              currentUser={currentUser}
+              accounts={accounts}
+              isLoggedIn={isLoggedIn}
+              handleAccountEdit={handleAccountEdit}
+              handleHunterEdit={handleHunterEdit}
+              handleTalentEdit={handleTalentEdit}
+              handleConnections={handleConnections}
+              handleDisconnections={handleDisconnections}
+            />
+          }
+        ></Route>
       </Routes>
       <Footer />
     </>

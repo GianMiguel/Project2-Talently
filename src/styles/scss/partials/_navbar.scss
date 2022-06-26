@@ -12,7 +12,7 @@
     font-weight: 900;
     font-size: 45px;
     color: var(--primary-white);
-    text-decoration: none; 
+    text-decoration: none;
 
     span {
       color: var(--primary-dark-blue);
@@ -42,12 +42,12 @@
           color: var(--primary-white);
 
           &::after {
-            content: '';
+            content: "";
             display: block;
             width: 0;
             height: 3px;
             background: var(--primary-dark-blue);
-            transition: .3s ease;
+            transition: 0.3s ease;
           }
 
           &:hover::after {
@@ -163,6 +163,13 @@
 }
 
 .header--expand {
+  nav {
+    .brand--logo {
+      .brand--text {
+        color: var(--primary-black);
+      }
+    }
+  }
   z-index: 500;
   background-color: var(--primary-white);
   color: var(--primary-black);

@@ -6,8 +6,24 @@ import "aos/dist/aos.css";
 import PopularFields from "../Components/PopularFields";
 import Testimonials from "../Components/Testimonials";
 
-export default function Home() {
+export default function Home(props) {
   AOS.init();
+
+  // STATE TO MANAGE SEARCH FORM
+  const [searchForm, setSearchForm] = React.useState("");
+
+  // Handle form input change
+  function handleChange(e) {
+    setSearchForm(e.target.value);
+  }
+
+  // Handle form submit
+  function handleSearchSubmit(e) {
+    e.preventDefault();
+    if (searchForm === "") return;
+    props.handleSearch(searchForm);
+  }
+
   return (
     <div className="home--page">
       <div className="hero--container">
@@ -23,11 +39,14 @@ export default function Home() {
               Connecting you to the best <i>talents</i> that is perfect for your
               business.
             </p>
-            <form action="" className="search--bar">
+            <form className="search--bar" onSubmit={handleSearchSubmit}>
               <BsSearch className="search--icon" />
               <input
                 type="text"
+                name="search"
                 placeholder='Try "web design" or "front end developer"'
+                onChange={handleChange}
+                value={searchForm}
               />
               <button type="submit">Search</button>
             </form>
@@ -56,7 +75,7 @@ export default function Home() {
         />
       </div>
 
-      <PopularFields />
+      {/* <PopularFields />
 
       <div className="features--container">
         <div className="features--textbox" data-aos="fade-up-right">
@@ -82,7 +101,7 @@ export default function Home() {
           />
         </div>
       </div>
-
+*/}
       <Testimonials />
     </div>
   );

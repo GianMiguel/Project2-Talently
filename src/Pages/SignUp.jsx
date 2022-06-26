@@ -24,8 +24,10 @@ const SignUp = (props) => {
     ).length;
     if (accountExists){
       let emailNotif = e.querySelector('#emailNotif');
-      emailNotif.textContent = "Sorry, an account with this email already exists";
       emailNotif.classList.add("sign--up--error");
+      emailNotif.classList.remove("sign--up--success");
+      emailNotif.textContent = "Sorry, an account with this email already exists";
+      
       return;
     }
       

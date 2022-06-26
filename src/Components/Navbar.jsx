@@ -54,11 +54,15 @@ export default function Navbar(props) {
     }));
   }
 
-  const handleModalLogin = () => {
+  const handleModalLogin = (e) => {
+    e.preventDefault();
+    collapseNav();
     !modalLogin ? setModalLogin(true) : setModalLogin(false);
   };
 
-  const handleModalSignUp = () => {
+  const handleModalSignUp = (e) => {
+    e.preventDefault();
+    collapseNav();
     !modalSignUp ? setModalSignUp(true) : setModalSignUp(false);
   };
 
@@ -76,6 +80,11 @@ export default function Navbar(props) {
 
   const showModalSignUp = () => {
     setModalSignUp(true);
+
+  }
+  const handleLogOut = () => {
+    props.handleLogOut();
+    collapseNav();
   };
 
   return (
@@ -92,7 +101,7 @@ export default function Navbar(props) {
     >
       <nav>
         <div className="brand--logo">
-        <Link to="/" className="brand--text">
+          <Link to="/" className="brand--text">
             talently<span>.</span>
           </Link>
         </div>
@@ -113,20 +122,38 @@ export default function Navbar(props) {
                 About Us
               </Link>
             </li>
-            <li>
-              <a href="#1" onClick={handleModalLogin} className="nav--link">
-                Sign In
-              </a>
-            </li>
-            <li>
-              <a
-                href="#1"
-                onClick={handleModalSignUp}
-                className="nav--link--join"
-              >
-                Join
-              </a>
-            </li>
+
+            {props.isLoggedIn ? (
+              <>
+                <li>
+                  <Link to="/profile" className="nav--link">
+                    My Profile
+                  </Link>
+                </li>
+                <li>
+                  <a href="/" className="nav--link" onClick={handleLogOut}>
+                    Log Out
+                  </a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a href="#1" onClick={handleModalLogin} className="nav--link">
+                    Sign In
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#1"
+                    onClick={handleModalSignUp}
+                    className="nav--link--join"
+                  >
+                    Join
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
           <span>
             {navControls.expandNav ? (
@@ -174,28 +201,49 @@ export default function Navbar(props) {
               </Link>
             </li>
             <li>
-              <a href="#1" onClick={handleModalLogin} className="nav--link">
-                Sign In{" "}
-              </a>
-            </li>
-            <li>
-              <a
-                href="#1"
-                onClick={handleModalSignUp}
-                className="nav--link--join"
-              >
-                Join
-              </a>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="nav--link--join"
-                onClick={collapseNav}
-              >
-                Join
+              <Link to="/about" className="nav--link" onClick={collapseNav}>
+                About Us
               </Link>
             </li>
+            {props.isLoggedIn ? (
+              <>
+                <li>
+                  <Link
+                    to="/profile"
+                    className="nav--link"
+                    onClick={collapseNav}
+                  >
+                    My Profile
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/"
+                    className="nav--link--join"
+                    onClick={handleLogOut}
+                  >
+                    Log Out
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a href="#1" onClick={handleModalLogin} className="nav--link">
+                    Sign In
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#1"
+                    onClick={handleModalSignUp}
+                    className="nav--link--join"
+                  >
+                    Join
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       )}
