@@ -3,7 +3,7 @@ import { FiCheckSquare } from "react-icons/fi";
 import { BsSearch } from "react-icons/bs";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import PopularFields from "../Components/PopularFields";
+// import PopularFields from "../Components/PopularFields";
 import Testimonials from "../Components/Testimonials";
 
 export default function Home(props) {
@@ -75,10 +75,31 @@ export default function Home(props) {
         />
       </div>
 
-      {/* <PopularFields />
+      {/* <PopularFields /> */}
+      <div className="field--container">
+        <p>Popular Talent Fields:</p>
+          <div className="field--wrapper">            
+            <div className="field--card card1" data-aos="fade-up">
+              <span>Web Design</span>
+              <img src={require(`../images/home-img/fields/1.png`)} alt="field1" />
+            </div>
+            <div className="field--card" data-aos="fade-up" data-aos-delay='100'>
+              <span>Front End <br/> Development</span>
+              <img src={require(`../images/home-img/fields/2.png`)} alt="field2" />
+            </div>
+            <div className="field--card card2" data-aos="fade-up" data-aos-delay='200'>
+              <span>Back End <br/> Development</span>
+              <img src={require(`../images/home-img/fields/3.png`)} alt="field3" />
+            </div>
+            <div className="field--card card1" data-aos="fade-up" data-aos-delay='300'>
+              <span>Graphic Design</span>
+              <img src={require(`../images/home-img/fields/4.png`)} alt="field4" />
+            </div>
+          </div>
+        </div>
 
       <div className="features--container">
-        <div className="features--textbox" data-aos="fade-up-right">
+        <div className="features--textbox" data-aos="fade-up-right" data-aos-once="true">
           <h1>
             A frontier of awesome and talented professionals are waiting for you
             connections.
@@ -94,14 +115,14 @@ export default function Home(props) {
             <FiCheckSquare /> Help your business or your company grow.
           </p>
         </div>
-        <div className="features--imgbox" data-aos="fade-up-left">
+        <div className="features--imgbox" data-aos="fade-up-left" data-aos-once="true">
           <img
             src={require(`../images/home-img/features-img.png`)}
             alt="featuresimg"
           />
         </div>
       </div>
-*/}
+
       <Testimonials />
     </div>
   );

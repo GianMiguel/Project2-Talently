@@ -70,10 +70,22 @@ export const sortString = (sort) => {
   if (sort === "nameDown") return "Name (Z to A)";
 };
 
-// export function formatText([...inputs]) {
-//   return argel miralles asdasd asdasdasd => Argel Miralles Asdsasd aAS
-// }
 
-// export function formatSkills(input) {
-//   return front-end-development => Front End Development
-// }
+// format text to capitalize first letter (space)
+export function formatText(text) {
+    text = text.split(" ");
+    for (var i = 0, x = text.length; i < x; i++) {
+        text[i] = text[i][0].toUpperCase() + text[i].slice(1);
+    }
+    return text.join(" ");
+}
+
+
+// format skills to capitalize first letter with dash
+export function formatDashed(skill) {
+  skill = skill.split("-");
+  for (var i = 0, x = skill.length; i < x; i++) {
+      skill[i] = skill[i][0].toUpperCase() + skill[i].slice(1);
+  }
+  return skill.join("-");
+}

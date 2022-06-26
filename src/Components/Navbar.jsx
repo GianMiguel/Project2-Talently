@@ -32,6 +32,7 @@ export default function Navbar(props) {
   if (navControls.page === "/") window.addEventListener("scroll", changeColor);
 
   const location = useLocation();
+  
 
   React.useEffect(() => {
     setNavControls((prevNavControls) => ({
@@ -79,6 +80,13 @@ export default function Navbar(props) {
     collapseNav();
   };
 
+  // for active page indicator
+  const [url, setUrl] = React.useState(null);
+  React.useEffect(() => {
+    setUrl(location.pathname);
+  },[location])
+  
+
   return (
     <div
       className={`header ${
@@ -100,17 +108,17 @@ export default function Navbar(props) {
         <div className="nav--link--wrapper">
           <ul>
             <li>
-              <Link to="/" className="nav--link">
+              <Link to="/" className={"nav--link" + (url === "/" ? " activepage" : "")}>
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/talents" className="nav--link">
+              <Link to="/talents" className={"nav--link" + (url === "/talents" ? " activepage" : "")}>
                 Talents
               </Link>
             </li>
             <li>
-              <Link to="/about" className="nav--link">
+              <Link to="/about" className={"nav--link" + (url === "/about" ? " activepage" : "")}>
                 About Us
               </Link>
             </li>

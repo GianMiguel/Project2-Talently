@@ -5,14 +5,13 @@
 }
 
 .about--us--mission--wrapper{
-    height: 60vh;  
+    height: 80vh;  
     width: 100%;
     background-color: var(--primary-dark-blue);
     display: flex;
-    align-content: center;
     align-items: center; 
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 20px 8em;
     gap: 30px;
 
     .about--us--img-box{
@@ -22,31 +21,39 @@
             margin-top: 10vh;
             width: 100%;
             height: auto;
+            border-radius: 10px;
         }
     }
-
-    
 
     .about--us--mission{
         display: flex;
         flex-direction: column;
         gap: 10px;
         color: #fff;
-        p{
+        text-align: center;
+        width: 40vw;
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 34px;
+        }
+
+        p {
             padding: 20px;
+            font-size: 24px;
         }
     }
 }
 
 .about--us--vision--wrapper{
-    height: 50vh;  
+    height: 80vh;  
     width: 100%;
     background-color: var(--primary-off-white);
     display: flex;
     align-content: center;
     align-items: center; 
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 20px 8em;
     gap: 30px;
 
     .about--us--img-box{
@@ -55,6 +62,7 @@
         img{
             width: 100%;
             height: auto;
+            border-radius: 10px;;
         }
     }
 
@@ -63,41 +71,58 @@
         flex-direction: column;
         gap: 10px;
         color: var(--primary-dark-blue);
+        text-align: center;
+        width: 40vw;
 
-        p{
+        h1 {
+            text-transform: uppercase;
+            font-size: 34px;
+        }
+
+        p {
             padding: 20px;
+            font-size: 24px;
         }
     }
 }
 
 .about--us--goal--wrapper{
-    height: 50vh;      
+    height: 80vh;      
     width: 100%;
     background-color: var(--primary-dark-blue);
     display: flex;
     align-content: center;
     align-items: center; 
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 20px 8em;
     gap: 30px;
 
     .about--us--img-box{
         min-width: 300px;
         max-width: 500px;
         img{
-            margin-top: 10vh;
             width: 100%;
             height: auto;
+            border-radius: 10px;
         }
     }
 
     .about--us--goal{
         display: flex;
         flex-direction: column;
-        color: #fff;
         gap: 10px;
-        p{
+        color: #fff;
+        text-align: center;
+        width: 40vw;
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 34px;
+        }
+
+        p {
             padding: 20px;
+            font-size: 24px;
         }
     }
 }
@@ -113,7 +138,7 @@
 }
 
 .our--team--wrapper{
-    margin-top: 10vh;
+    margin-top: 5vh;
     margin-bottom: 10vh;
     display: flex;
     flex-wrap: wrap;
@@ -143,21 +168,42 @@
 
 @media screen and (max-width: 810px){
     .about--us--mission--wrapper{
-        height: 90vh;
+        margin-top: 10vh;
+        height: 100vh;
         flex-direction: column;
+
+        .about--us--img-box {
+            width: 20vw;
+        }
+
+        .about--us--mission {
+            width: 100vw;
+        }
     }
 
     .about--us--vision--wrapper{
-        height: 80vh;
+        height: 100vh;
         flex-direction: column;
+
+        .about--us--img-box {
+            width: 50vw;
+        }
+
+        .about--us--vision {
+            width: 100vw;
+        }
     }
 
     .about--us--goal--wrapper{
-        height: 80vh;
+        height: 100vh;
         flex-direction: column;
-        .about--us--goal{
-            margin-bottom: 10vh;
 
+        .about--us--img-box {
+            width: 20vw;
+        }
+
+        .about--us--goal {
+            width: 100vw;
         }
     }
 }

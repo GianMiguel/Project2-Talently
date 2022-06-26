@@ -39,7 +39,7 @@
 
         .nav--link {
           text-decoration: none;
-          color: var(--primary-white);
+          color: var(--primary-white);  
 
           &::after {
             content: "";
@@ -80,6 +80,7 @@
   }
 }
 
+
 .header--active {
   transition: 0.5s ease-in;
   background-color: var(--primary-white);
@@ -88,9 +89,20 @@
   .brand--text {
     color: var(--primary-black);
   }
+
   nav ul li .nav--link {
     color: var(--primary-black);
     transition: 0.5s ease-in;
+  }
+
+  nav ul li .activepage {
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--primary-dark-blue);
+    }
   }
 
   nav ul li .nav--link--join {

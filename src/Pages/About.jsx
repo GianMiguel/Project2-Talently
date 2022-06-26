@@ -71,12 +71,12 @@ const About = () => {
             <div className='my--team'>
               <div className='my--team--img-box'>
                 <img
-                  src={require(`../images/argel.png`)}
+                  src={require(`../images/gianmiguel.jpg`)}
                   alt="mission"
                 />
               </div>
 
-              <h2>Senpai Argel</h2>
+              <h2>Cancer Only</h2>
             </div>
         </div>
         
