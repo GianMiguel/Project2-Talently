@@ -1,8 +1,16 @@
 .profile--page--container {
   min-height: 95vh;
+  padding-top: 5rem;
+  background-color: var(--primary-off-white);
+}
+
+.account--info--wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .account--card {
@@ -15,6 +23,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: var(--primary-white);
+  margin: 1rem;
 }
 
 .account--card--header {
@@ -76,4 +86,31 @@
 
 .account--card--password--wrapper {
   align-self: flex-start;
+}
+
+.hunter--card {
+  text-align: center;
+}
+
+.profile--connections--wrapper {
+  max-width: 1536px;
+  margin: auto;
+}
+
+.profile--connections--header {
+  text-align: center;
+}
+
+.account--info--header {
+  text-align: center;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.profile--pagination--wrapper {
+  padding: 1rem;
+}
+
+.hunter--card--content {
+  text-align: start;
 }

@@ -22,6 +22,10 @@ export default function AccountCard(props) {
   function openEdit(e) {
     e.preventDefault();
     setDisplayEdit(true);
+    setFormSuccess({
+      hasSuccess: false,
+      msg: "",
+    });
   }
 
   function closeEdit(e) {
@@ -137,7 +141,6 @@ export default function AccountCard(props) {
               type="password"
               id="account--card--password"
               name="accountEditPassword"
-              value={credentials.email}
               size="32"
               onChange={handleChange}
             />

@@ -139,6 +139,13 @@ export default function App() {
         return account;
       })
     );
+    const currentUserAccount = accounts.filter(
+      (account) => account.id === currentUserId
+    )[0];
+    setCurrentUser({
+      ...currentUserAccount,
+      connections: [...currentUserAccount.connections],
+    });
   }
 
   function handleDisconnections(currentUserId, talentId) {
@@ -157,6 +164,13 @@ export default function App() {
         return account;
       })
     );
+    const currentUserAccount = accounts.filter(
+      (account) => account.id === currentUserId
+    )[0];
+    setCurrentUser({
+      ...currentUserAccount,
+      connections: [...currentUserAccount.connections],
+    });
   }
 
   function handleLogin(account) {
@@ -265,16 +279,39 @@ export default function App() {
         } else return account;
       });
     });
-    // setCurrentUser(accounts.filter((account) => account.id === userId)[0]);
-    // localStorage.setItem(
-    //   "talentlyCurrentUser",
-    //   JSON.stringify(accounts.filter((account) => account.id === userId)[0])
-    // );
-    // console.log("DID I REACH HERE?");
-  }
-  console.log(currentUser);
 
-  function handleHunterEdit() {}
+    const account = accounts.filter((account) => account.id === userId)[0];
+    setCurrentUser({
+      ...account,
+      email: data.accountEditEmail,
+      password: data.accountEditPassword,
+    });
+  }
+
+  function handleHunterEdit(userId, data) {
+    setAccounts((prevAccounts) => {
+      return prevAccounts.map((account) => {
+        if (account.id === userId) {
+          return {
+            ...account,
+            firstName: data.accountEditFirstName,
+            lastName: data.accountEditLastName,
+            jobTitle: data.accountEditJobTitle,
+            company: data.accountEditCompany,
+          };
+        } else return account;
+      });
+    });
+
+    const account = accounts.filter((account) => account.id === userId)[0];
+    setCurrentUser({
+      ...account,
+      firstName: data.accountEditFirstName,
+      lastName: data.accountEditLastName,
+      jobTitle: data.accountEditJobTitle,
+      company: data.accountEditCompany,
+    });
+  }
 
   function handleTalentEdit() {}
 
@@ -315,6 +352,8 @@ export default function App() {
               handleAccountEdit={handleAccountEdit}
               handleHunterEdit={handleHunterEdit}
               handleTalentEdit={handleTalentEdit}
+              handleConnections={handleConnections}
+              handleDisconnections={handleDisconnections}
             />
           }
         ></Route>

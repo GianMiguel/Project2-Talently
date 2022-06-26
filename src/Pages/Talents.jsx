@@ -16,7 +16,7 @@ export default function Talents(props) {
   const [talentsPerPage] = React.useState(8);
 
   const talents = props.accounts.filter(
-    (account) => account.userType === "talent"
+    (account) => account.userType === "talent" && account.profileActivated
   );
 
   // Helper to manage margin and padding of unrendered component
@@ -66,22 +66,10 @@ export default function Talents(props) {
     setSort(target.value);
   }
 
-  // SEARCH FILTER
-  // if (props.searchQuery.initiateSearch) {
-  //   console.log(props.searchQuery);
-  //   // IF INVALID DISPLAY ZERO RESULTS FOUND
-  //   if (!props.searchQuery.isValid) {
-  //     setFilters(["invalid"]);
-  //   }
-  //   // IF VALID FILTER TALENT CARDS
-  //   // CLEAR SEARCH QUERY STATE IN APP
-  // }
-  // Return fields that includes the key word (ex. end = [front-end-development, back-end-development]) then set state
-  // queries.filter((query) => query.includes(searchKey))
-
   // START OF FILTERING AND SORTING PROCESS
   let filteredTalents;
 
+  // IF UNFILTERED, RETURN ALL TALENTS OTHERWISE APPLY FILTER
   filteredTalents = !filters.length
     ? talents
     : talents.filter((talent) => {
