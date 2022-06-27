@@ -8,6 +8,12 @@
   padding-bottom: 2rem;
 }
 
+@media screen and (max-width: 400px) {
+  .pagination--container {
+    padding: 10px;
+  }
+}
+
 .pagination--previous--wrapper {
   grid-column: 1/2;
   text-align: start;
