@@ -553,7 +553,7 @@ body {
 }
 
 .header--expand {
-  z-index: 500;
+  z-index: 900;
   background-color: var(--primary-white);
   color: var(--primary-black);
 }
