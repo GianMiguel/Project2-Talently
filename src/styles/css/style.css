@@ -86,6 +86,10 @@ body {
   .hero--wrapper img {
     width: 400px;
   }
+
+  .card1 {
+    display: none;
+  }
 }
 @media screen and (max-width: 1000px) {
   .hero--bg {
@@ -296,9 +300,6 @@ body {
   }
   .field--container p {
     text-align: center;
-  }
-  .field--container .card1 {
-    display: none;
   }
 
   .features--container {
