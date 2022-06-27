@@ -273,7 +273,7 @@ export default function App() {
         if (account.id === userId) {
           return {
             ...account,
-            email: data.accountEditEmail,
+            email: data.accountEditEmail.toLowerCase(),
             password: data.accountEditPassword,
           };
         } else return account;
@@ -283,7 +283,7 @@ export default function App() {
     const account = accounts.filter((account) => account.id === userId)[0];
     setCurrentUser({
       ...account,
-      email: data.accountEditEmail,
+      email: data.accountEditEmail.toLowerCase(),
       password: data.accountEditPassword,
     });
   }
@@ -294,10 +294,10 @@ export default function App() {
         if (account.id === userId) {
           return {
             ...account,
-            firstName: data.accountEditFirstName,
-            lastName: data.accountEditLastName,
-            jobTitle: data.accountEditJobTitle,
-            company: data.accountEditCompany,
+            firstName: data.accountEditFirstName.toLowerCase(),
+            lastName: data.accountEditLastName.toLowerCase(),
+            jobTitle: data.accountEditJobTitle.toLowerCase(),
+            company: data.accountEditCompany.toLowerCase(),
           };
         } else return account;
       });
@@ -306,14 +306,58 @@ export default function App() {
     const account = accounts.filter((account) => account.id === userId)[0];
     setCurrentUser({
       ...account,
-      firstName: data.accountEditFirstName,
-      lastName: data.accountEditLastName,
-      jobTitle: data.accountEditJobTitle,
-      company: data.accountEditCompany,
+      firstName: data.accountEditFirstName.toLowerCase(),
+      lastName: data.accountEditLastName.toLowerCase(),
+      jobTitle: data.accountEditJobTitle.toLowerCase(),
+      company: data.accountEditCompany.toLowerCase(),
     });
   }
 
-  function handleTalentEdit() {}
+  function handleTalentEdit(userId, data) {
+    const image = data.profileImage
+      ? data.profileImage
+      : "placeholder-image.png";
+    setAccounts((prevAccounts) => {
+      return prevAccounts.map((account) => {
+        if (account.id === userId) {
+          return {
+            ...account,
+            profileActivated: true,
+            profileCard: {
+              profileFirstName: data.profileFirstName,
+              profileLastName: data.profileLastName,
+              profileJobTitle: data.profileJobTitleName,
+              profileEmail: data.profileEmail,
+              profileLinkedIn: data.profileLinkedIn,
+              profileWebsite: data.profileWebsite,
+              profileSkills: data.profileSkills,
+              profileBio: data.profileBio,
+              profileExperience: +data.profileExperience,
+              profileImage: image,
+            },
+          };
+        } else return account;
+      });
+    });
+
+    const account = accounts.filter((account) => account.id === userId)[0];
+    setCurrentUser({
+      ...account,
+      profileActivated: true,
+      profileCard: {
+        profileFirstName: data.profileFirstName,
+        profileLastName: data.profileLastName,
+        profileJobTitle: data.profileJobTitleName,
+        profileEmail: data.profileEmail,
+        profileLinkedIn: data.profileLinkedIn,
+        profileWebsite: data.profileWebsite,
+        profileSkills: data.profileSkills,
+        profileBio: data.profileBio,
+        profileExperience: +data.profileExperience,
+        profileImage: image,
+      },
+    });
+  }
 
   return (
     <>

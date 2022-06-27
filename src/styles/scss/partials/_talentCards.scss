@@ -31,6 +31,9 @@
   width: 128px;
   border: 3px solid var(--primary-white);
   border-radius: 50%;
+
+  height: 128px;
+  object-fit: cover;
 }
 
 .talent--card--header {
@@ -120,6 +123,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
+  word-wrap: break-word;
 }
 
 .talent--card--fields--header {
