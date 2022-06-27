@@ -773,6 +773,9 @@ body {
   width: 128px;
   border: 3px solid var(--primary-white);
   border-radius: 50%;
+  height: 128px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .talent--card--header {
@@ -862,6 +865,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   line-height: 16px;
+  word-wrap: break-word;
 }
 
 .talent--card--fields--header {
@@ -1762,3 +1766,58 @@ footer .footer--logos span:hover {
 .hunter--card--content {
   text-align: start;
 }
+
+.talent--card .talent--card--info .profile--card--note {
+  text-align: center;
+  margin-bottom: 0.25rem;
+  margin-top: 0.25rem;
+  line-height: 12px;
+}
+
+.profile--card--edit--button {
+  margin-top: 0.5rem;
+}
+
+.talent--card--profile--inactive--msg--wrapper {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.talent--card--profile--inactive--msg--header {
+  font-weight: 700;
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.talent--card--brand--text {
+  color: var(--primary-black);
+  font-family: var(--font-league-spartan);
+  font-size: 2rem;
+}
+
+.talent--card--brand--dot {
+  color: var(--primary-dark-blue);
+  font-family: var(--font-league-spartan);
+  font-size: 2rem;
+}
+
+.talent--card--expanded {
+  max-width: 600px;
+}
+
+.profile--form--wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.form--group--wrapper {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}/*# sourceMappingURL=style.css.map */

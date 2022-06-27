@@ -41,10 +41,10 @@ export default function HunterCard(props) {
   function handleEditSubmit(e) {
     e.preventDefault();
     if (
-      credentials.accountEditFirstName === "" ||
-      credentials.accountEditLastName === "" ||
-      credentials.accountEditJobTitle === "" ||
-      credentials.accountEditCompany === ""
+      credentials.accountEditFirstName.trim() === "" ||
+      credentials.accountEditLastName.trim() === "" ||
+      credentials.accountEditJobTitle.trim() === "" ||
+      credentials.accountEditCompany.trim() === ""
     ) {
       return setFormError({
         hasError: true,
