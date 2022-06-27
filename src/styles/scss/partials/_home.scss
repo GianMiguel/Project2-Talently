@@ -1,6 +1,11 @@
 // * {
 //   outline: 1px solid red;
 // }
+
+.home--page {
+  max-width: 100vw;
+  overflow: hidden;
+}
 .hero--container {
   background-color: var(--primary-desaturated-blue);
   height: 574px;

@@ -33,6 +33,11 @@ body {
   --primary-gray: #d1d5db;
 }
 
+.home--page {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
 .hero--container {
   background-color: var(--primary-desaturated-blue);
   height: 574px;
@@ -1386,6 +1391,10 @@ body {
     padding: 10px;
   }
 }
+* {
+  outline: 1px solid red;
+}
+
 .pagination--previous--wrapper {
   grid-column: 1/2;
   text-align: start;
@@ -1503,11 +1512,13 @@ footer .footer--logos span:hover {
 .about--us--container {
   display: flex;
   flex-direction: column;
+  max-width: 100vw;
+  overflow: hidden;
 }
 
 .about--us--mission--wrapper {
   height: 80vh;
-  width: 100%;
+  max-width: 100vw;
   background-color: var(--primary-dark-blue);
   display: flex;
   align-items: center;
@@ -1528,10 +1539,8 @@ footer .footer--logos span:hover {
 .about--us--mission--wrapper .about--us--mission {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   color: #fff;
   text-align: center;
-  width: 40vw;
 }
 .about--us--mission--wrapper .about--us--mission h1 {
   text-transform: uppercase;
@@ -1624,6 +1633,7 @@ footer .footer--logos span:hover {
 .our--team--container h1 {
   font-size: 50px;
   text-align: center;
+  margin: 0;
 }
 
 .our--team--wrapper {

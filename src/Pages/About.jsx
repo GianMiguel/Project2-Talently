@@ -1,10 +1,7 @@
 import React from "react";
 import DeveloperCard from "../Components/DeveloperCard";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const About = () => {
-  AOS.init();
   return (
     <div className="about--us--container">
       <div className="about--us--mission--wrapper">
@@ -24,7 +21,7 @@ const About = () => {
       </div>
 
       <div className="about--us--vision--wrapper">
-        <div className="about--us--vision" data-aos="fade-up-right">
+        <div className="about--us--vision">
           <h1>Our Vision</h1>
           <p>
             We believe that in the future, the supply for tech and digital
@@ -34,16 +31,16 @@ const About = () => {
             that.
           </p>
         </div>
-        <div className="about--us--img-box" data-aos="fade-up-left">
+        <div className="about--us--img-box">
           <img src={require(`../images/about-us/visiom.jpg`)} alt="mission" />
         </div>
       </div>
 
       <div className="about--us--goal--wrapper">
-        <div className="about--us--img-box" data-aos="fade-up-right">
+        <div className="about--us--img-box">
           <img src={require(`../images/about-us-3.jpg`)} alt="mission" />
         </div>
-        <div className="about--us--goal" data-aos="fade-up-left">
+        <div className="about--us--goal">
           <p>
             This project was made to showcase our team's proficiency in front
             end development.
