@@ -4,6 +4,7 @@ import AccountCard from "../Components/AccountCard";
 import HunterCard from "../Components/HunterCard";
 import TalentCards from "../Components/TalentCards";
 import Pagination from "../Components/Pagination";
+import TalentProfileCard from "../Components/TalentProfileCard";
 
 export default function Profile(props) {
   const user = props.currentUser;
@@ -12,13 +13,6 @@ export default function Profile(props) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [talentsPerPage] = React.useState(4);
 
-  //   PREVENT GUESS USERS FROM ACCESSING THIS PAGE BY CHANGING URL
-  if (props.isLoggedIn === false)
-    return (
-      <div className="profile--page--container">
-        <ProfileError />
-      </div>
-    );
   let talents = accounts.filter((account) =>
     user.connections.includes(account.id)
   );
@@ -49,12 +43,23 @@ export default function Profile(props) {
     />
   ));
 
+  //   PREVENT GUESS USERS FROM ACCESSING THIS PAGE BY CHANGING URL
+  if (props.isLoggedIn === false)
+    return (
+      <div className="profile--page--container">
+        <ProfileError />
+      </div>
+    );
+
   return (
     <div className="profile--page--container">
       <div className="account--info--header">
         <h2>
           Here's your profile information,{" "}
-          {user.firstName || user.profileCard.profileFirstName}.
+          {user.firstName ||
+            user.profileCard.profileFirstName ||
+            "new talently member"}
+          .
         </h2>
       </div>
       <div className="account--info--wrapper">
@@ -70,6 +75,13 @@ export default function Profile(props) {
           accounts={props.accounts}
           handleAccountEdit={props.handleAccountEdit}
         />
+        {type === "talent" && (
+          <TalentProfileCard
+            currentUser={user}
+            accounts={props.accounts}
+            handleTalentEdit={props.handleTalentEdit}
+          />
+        )}
       </div>
       <div className="profile--connections--wrapper">
         {type === "hunter" ? (
