@@ -45,14 +45,15 @@ const SignUp = (props) => {
 
     if (valid === true) {
       let userType = formShown;
+
       let account = {
-        email,
-        password,
-        firstName,
-        lastName,
-        company,
-        jobTitle,
-        userType,
+        "email" : email.toLocaleLowerCase(),
+        "password" : password,
+        "firstName" : firstName.toLocaleLowerCase(),
+        "lastName" : lastName.toLocaleLowerCase(),
+        "company" : company.toLocaleLowerCase(),
+        "jobTitle" : jobTitle.toLocaleLowerCase(),
+        "userType" : userType,
       };
 
       // Submit Data
