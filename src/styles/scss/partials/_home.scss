@@ -1,7 +1,6 @@
 // * {
 //   outline: 1px solid red;
 // }
-
 .hero--container {
   background-color: var(--primary-desaturated-blue);
   height: 574px;
@@ -184,7 +183,7 @@
         color: var(--primary-white);
         padding: 10px 20px;
         margin-top: 20px;
-        margin-left: 4vw;
+        margin-left: 20px;
         border-radius: 10px;
         font-size: 18px;
         font-weight: 600;
@@ -298,6 +297,10 @@
 
     p {
       text-align: center;
+    }
+
+    .card1 {
+      display: none;
     }
   }
 

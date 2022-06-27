@@ -203,7 +203,7 @@ body {
   color: var(--primary-white);
   padding: 10px 20px;
   margin-top: 20px;
-  margin-left: 4vw;
+  margin-left: 20px;
   border-radius: 10px;
   font-size: 18px;
   font-weight: 600;
@@ -296,6 +296,9 @@ body {
   }
   .field--container p {
     text-align: center;
+  }
+  .field--container .card1 {
+    display: none;
   }
 
   .features--container {
@@ -472,6 +475,13 @@ body {
 .header--active nav ul li .nav--link {
   color: var(--primary-black);
   transition: 0.5s ease-in;
+}
+.header--active nav ul li .activepage::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-dark-blue);
 }
 .header--active nav ul li .nav--link--join {
   color: var(--primary-dark-blue);
@@ -1217,17 +1227,11 @@ body {
   transition: all 0.5s;
 }
 .signin--wrapper h1 {
-  font-weight: 900;
-  font-size: 40px;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 .signin--wrapper h1 span {
   color: var(--primary-dark-blue);
-}
-.signin--wrapper h2 {
-  margin-top: 10px;
-  text-align: center;
-  color: var(--primary-very-dark-blue);
-  margin-bottom: 20px;
 }
 
 .signin--close {
@@ -1454,14 +1458,13 @@ footer .footer--logos span:hover {
 }
 
 .about--us--mission--wrapper {
-  height: 60vh;
+  height: 80vh;
   width: 100%;
   background-color: var(--primary-dark-blue);
   display: flex;
-  align-content: center;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 20px 8em;
   gap: 30px;
 }
 .about--us--mission--wrapper .about--us--img-box {
@@ -1472,26 +1475,34 @@ footer .footer--logos span:hover {
   margin-top: 10vh;
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 .about--us--mission--wrapper .about--us--mission {
   display: flex;
   flex-direction: column;
   gap: 10px;
   color: #fff;
+  text-align: center;
+  width: 40vw;
+}
+.about--us--mission--wrapper .about--us--mission h1 {
+  text-transform: uppercase;
+  font-size: 34px;
 }
 .about--us--mission--wrapper .about--us--mission p {
   padding: 20px;
+  font-size: 24px;
 }
 
 .about--us--vision--wrapper {
-  height: 50vh;
+  height: 80vh;
   width: 100%;
   background-color: var(--primary-off-white);
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 20px 8em;
   gap: 30px;
 }
 .about--us--vision--wrapper .about--us--img-box {
@@ -1501,26 +1512,34 @@ footer .footer--logos span:hover {
 .about--us--vision--wrapper .about--us--img-box img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 .about--us--vision--wrapper .about--us--vision {
   display: flex;
   flex-direction: column;
   gap: 10px;
   color: var(--primary-dark-blue);
+  text-align: center;
+  width: 40vw;
+}
+.about--us--vision--wrapper .about--us--vision h1 {
+  text-transform: uppercase;
+  font-size: 34px;
 }
 .about--us--vision--wrapper .about--us--vision p {
   padding: 20px;
+  font-size: 24px;
 }
 
 .about--us--goal--wrapper {
-  height: 50vh;
+  height: 80vh;
   width: 100%;
   background-color: var(--primary-dark-blue);
   display: flex;
   align-content: center;
   align-items: center;
   justify-content: space-evenly;
-  padding: 20px;
+  padding: 20px 8em;
   gap: 30px;
 }
 .about--us--goal--wrapper .about--us--img-box {
@@ -1528,31 +1547,39 @@ footer .footer--logos span:hover {
   max-width: 500px;
 }
 .about--us--goal--wrapper .about--us--img-box img {
-  margin-top: 10vh;
   width: 100%;
   height: auto;
+  border-radius: 10px;
 }
 .about--us--goal--wrapper .about--us--goal {
   display: flex;
   flex-direction: column;
-  color: #fff;
   gap: 10px;
+  color: #fff;
+  text-align: center;
+  width: 40vw;
+}
+.about--us--goal--wrapper .about--us--goal h1 {
+  text-transform: uppercase;
+  font-size: 34px;
 }
 .about--us--goal--wrapper .about--us--goal p {
   padding: 20px;
+  font-size: 24px;
 }
 
 .our--team--container {
   color: var(--primary-dark-blue);
-  margin-top: 10vh;
+  background-color: var(--primary-off-white);
   padding: 30px;
 }
 .our--team--container h1 {
+  font-size: 50px;
   text-align: center;
 }
 
 .our--team--wrapper {
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-bottom: 10vh;
   display: flex;
   flex-wrap: wrap;
@@ -1575,23 +1602,49 @@ footer .footer--logos span:hover {
   outline: 2px solid var(--primary-dark-blue);
 }
 
+.developer--card {
+  min-width: 300px;
+  min-height: 280px;
+}
+
+.developer--portfolio {
+  text-decoration: none;
+  color: var(--primary-dark-blue);
+}
+
 @media screen and (max-width: 810px) {
   .about--us--mission--wrapper {
-    height: 90vh;
+    margin-top: 10vh;
+    height: 100vh;
     flex-direction: column;
+  }
+  .about--us--mission--wrapper .about--us--img-box {
+    width: 20vw;
+  }
+  .about--us--mission--wrapper .about--us--mission {
+    width: 100vw;
   }
 
   .about--us--vision--wrapper {
-    height: 80vh;
+    height: 100vh;
     flex-direction: column;
+  }
+  .about--us--vision--wrapper .about--us--img-box {
+    width: 50vw;
+  }
+  .about--us--vision--wrapper .about--us--vision {
+    width: 100vw;
   }
 
   .about--us--goal--wrapper {
-    height: 80vh;
+    height: 100vh;
     flex-direction: column;
   }
+  .about--us--goal--wrapper .about--us--img-box {
+    width: 20vw;
+  }
   .about--us--goal--wrapper .about--us--goal {
-    margin-bottom: 10vh;
+    width: 100vw;
   }
 }
 .profile--page--container {

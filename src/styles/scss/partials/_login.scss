@@ -33,18 +33,11 @@
     transition: all 0.5s;
 
     h1 {
-        font-weight: 900;
-        font-size: 40px;
+        font-size: 30px;
+        margin-bottom: 20px;
         span {
             color: var(--primary-dark-blue);
         }
-    }
-
-    h2 {
-        margin-top: 10px;
-        text-align: center;
-        color: var(--primary-very-dark-blue);
-        margin-bottom: 20px;
     }
 }
 
