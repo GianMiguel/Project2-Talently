@@ -1391,10 +1391,6 @@ body {
     padding: 10px;
   }
 }
-* {
-  outline: 1px solid red;
-}
-
 .pagination--previous--wrapper {
   grid-column: 1/2;
   text-align: start;
