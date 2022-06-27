@@ -1,5 +1,6 @@
 import React from "react";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
+import * as Helpers from "../Helpers/helpers";
 
 export default function TalentCards(props) {
   const talent = props.talent;
@@ -97,9 +98,14 @@ export default function TalentCards(props) {
       </div>
       <div className="talent--card--info">
         <div className="talent--card--header">
-          <h4 className="talent--card--name">{`${talent.profileCard.profileFirstName} ${talent.profileCard.profileLastName}`}</h4>
+          <h4 className="talent--card--name">
+            {Helpers.fullNameFormatter(
+              talent.profileCard.profileFirstName,
+              talent.profileCard.profileLastName
+            )}
+          </h4>
           <h4 className="talent--card--role">
-            {talent.profileCard.profileJobTitle}
+            {Helpers.textFormatter(talent.profileCard.profileJobTitle)}
           </h4>
           <h4 className="talent--card--website">
             {talent.profileCard.profileWebsite}
@@ -150,7 +156,7 @@ export default function TalentCards(props) {
         <div className="talent--card--fields--wrapper">
           {talent.profileCard.profileSkills.map((field, i) => (
             <p key={i} className="talent--card--fields">
-              {field}
+              {Helpers.fieldFormatter(field)}
             </p>
           ))}
         </div>

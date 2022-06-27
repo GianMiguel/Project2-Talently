@@ -32,7 +32,6 @@ export default function Navbar(props) {
   if (navControls.page === "/") window.addEventListener("scroll", changeColor);
 
   const location = useLocation();
-  
 
   React.useEffect(() => {
     setNavControls((prevNavControls) => ({
@@ -81,9 +80,9 @@ export default function Navbar(props) {
 
   const showModalSignUp = () => {
     setModalSignUp(true);
-
-  }
-  const handleLogOut = () => {
+  };
+  const handleLogOut = (e) => {
+    e.preventDefault();
     props.handleLogOut();
     collapseNav();
   };
@@ -92,8 +91,7 @@ export default function Navbar(props) {
   const [url, setUrl] = React.useState(null);
   React.useEffect(() => {
     setUrl(location.pathname);
-  },[location])
-  
+  }, [location]);
 
   return (
     <div
@@ -116,17 +114,30 @@ export default function Navbar(props) {
         <div className="nav--link--wrapper">
           <ul>
             <li>
-              <Link to="/" className={"nav--link" + (url === "/" ? " activepage" : "")}>
+              <Link
+                to="/"
+                className={"nav--link" + (url === "/" ? " activepage" : "")}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/talents" className={"nav--link" + (url === "/talents" ? " activepage" : "")}>
+              <Link
+                to="/talents"
+                className={
+                  "nav--link" + (url === "/talents" ? " activepage" : "")
+                }
+              >
                 Talents
               </Link>
             </li>
             <li>
-              <Link to="/about" className={"nav--link" + (url === "/about" ? " activepage" : "")}>
+              <Link
+                to="/about"
+                className={
+                  "nav--link" + (url === "/about" ? " activepage" : "")
+                }
+              >
                 About Us
               </Link>
             </li>
@@ -134,7 +145,12 @@ export default function Navbar(props) {
             {props.isLoggedIn ? (
               <>
                 <li>
-                  <Link to="/profile" className="nav--link">
+                  <Link
+                    to="/profile"
+                    className={
+                      "nav--link" + (url === "/profile" ? " activepage" : "")
+                    }
+                  >
                     My Profile
                   </Link>
                 </li>
@@ -179,6 +195,8 @@ export default function Navbar(props) {
             handleLogin={props.handleLogin}
             showModalSignUp={showModalSignUp}
             closeModalLogin={closeModalLogin}
+            demoRecruiter={props.demoRecruiter}
+            demoTalent={props.demoTalent}
           />
         ) : (
           ""
@@ -199,18 +217,34 @@ export default function Navbar(props) {
         <div className="nav--links--collapsed">
           <ul>
             <li>
-              <Link to="/" className="nav--link" onClick={collapseNav}>
+              <Link
+                to="/"
+                className={"nav--link" + (url === "/" ? " activepage" : "")}
+                onClick={collapseNav}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/talents" className="nav--link" onClick={collapseNav}>
+              <Link
+                to="/talents"
+                className={
+                  "nav--link" + (url === "/talents" ? " activepage" : "")
+                }
+                onClick={collapseNav}
+              >
                 Talents
               </Link>
             </li>
             <li>
-              <Link to="/about" className="nav--link" onClick={collapseNav}>
-                About Us
+              <Link
+                to="/about"
+                className={
+                  "nav--link" + (url === "/about" ? " activepage" : "")
+                }
+                onClick={collapseNav}
+              >
+                About
               </Link>
             </li>
             {props.isLoggedIn ? (
@@ -218,7 +252,9 @@ export default function Navbar(props) {
                 <li>
                   <Link
                     to="/profile"
-                    className="nav--link"
+                    className={
+                      "nav--link" + (url === "/profile" ? " activepage" : "")
+                    }
                     onClick={collapseNav}
                   >
                     My Profile

@@ -1,153 +1,169 @@
 // START OF SIGN UP
 
-.signin--container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(6px);
-    transition: all 0.5s;
+.signin--container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  transition: all 0.5s;
 }
 
-.signin--error--message{
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    color: #fff;
-    background-color: #EF9F9F;
-    margin-bottom: 10px;
+.signin--error--message {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #ef9f9f;
+  margin-bottom: 10px;
 }
 
-.signin--wrapper{
-    position: relative;
-    background-color: var(--primary-white);
-    color: var(--primary-black);
-    border-radius: 10px;
-    padding: 3rem;
-    width: 60vh;
-    transition: all 0.5s;
+.signin--wrapper {
+  position: relative;
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+  border-radius: 10px;
+  padding: 3rem;
+  width: 60vh;
+  transition: all 0.5s;
 
-    h1 {
-        font-size: 30px;
-        margin-bottom: 20px;
-        span {
-            color: var(--primary-dark-blue);
-        }
+  h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    span {
+      color: var(--primary-dark-blue);
     }
+  }
 }
 
 .signin--close {
-    text-decoration: none;
-    color: inherit;
-    margin-top: -35px;
-    margin-right: -30px;
-    float: right;
-    position: relative;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 5px 11px;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    background: inherit;
-  }
-
-  .signin--close:hover {
-    background-color: var(--primary-off-white);
-    color: var(--primary-very-dark-blue);
-  }
-
-.signin--wrapper > h4{
-    text-align: center;
-    margin-bottom: 20px;
+  text-decoration: none;
+  color: inherit;
+  margin-top: -35px;
+  margin-right: -30px;
+  float: right;
+  position: relative;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 5px 11px;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  background: inherit;
 }
 
+.signin--close:hover {
+  background-color: var(--primary-off-white);
+  color: var(--primary-very-dark-blue);
+}
+
+.signin--wrapper > h4 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
 // INPUT LABELS
-.signin--input--group{
-    font-size: 15px;
+.signin--input--group {
+  font-size: 15px;
 }
 
 // FOR NOTIFICATION
-.signin--notification{
-    font-size: 10px;
-    margin-left: 5px;
+.signin--notification {
+  font-size: 10px;
+  margin-left: 5px;
 }
 
 // ERROR MESSAGE
-.signin--error{
-    color: #EF9F9F;
-    font-weight: bold;
+.signin--error {
+  color: #ef9f9f;
+  font-weight: bold;
 }
 
 // SUCCESS MESSAGE{
-.signin--success{
-    font-weight: bold;
-    color: #3EC70B;
+.signin--success {
+  font-weight: bold;
+  color: #3ec70b;
 }
-
 
 // FOR INPUT GROUP
-.signin--input--group{
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    margin-bottom: 10px;
+.signin--input--group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
 }
-
-
 
 // INPUT BOX
-.signin--input{
-    padding: 9px 13px 9px 11px;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.5s;
-    height: 50px;
-    border: 1px solid var(--primary-dark-blue);
-
+.signin--input {
+  padding: 9px 13px 9px 11px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.5s;
+  height: 50px;
+  border: 1px solid var(--primary-dark-blue);
 }
 
-.signin--input:focus{
-    outline-width: 2px;
-    outline-style: solid;
-    outline-color: var(--primary-desaturated-blue);
-
-}   
+.signin--input:focus {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--primary-desaturated-blue);
+}
 
 // BUTTON
-.signin--btn{
-    background-color: var(--primary-dark-blue);
-    color: var(--primary-white);
-    font-weight: bold;
-    height: 50px;
-    padding: 9px 13px 9px 11px;
-    border: 1px solid var(--primary-dark-blue);
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 14px;
-    width: 100%;
-    transition: all 0.5s;
-    cursor: pointer;
+.signin--btn {
+  background-color: var(--primary-dark-blue);
+  color: var(--primary-white);
+  font-weight: bold;
+  height: 50px;
+  padding: 9px 13px 9px 11px;
+  border: 1px solid var(--primary-dark-blue);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 
-.signin--btn:hover{
+.signin--btn:hover {
   transform: scale(1.05);
 }
 
-
 // LINK FOR Sign Up
-.signin--wrapper > p{
-    text-align: center;
-    font-size: 15px;
-    margin-top: 10px;
+.signin--wrapper > p {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 10px;
 
-    a{
-        color: #000000;
-    }
+  a {
+    color: #000000;
+  }
+}
+
+.demo--btn {
+  background-color: var(--primary-very-dark-blue);
+  border: 1px solid var(--primary-very-dark-blue);
+  margin-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.demo--brand--text {
+  font-weight: 700;
+  font-family: var(--font-league-spartan);
+  color: var(--primary-white);
+  font-size: 150%;
+  letter-spacing: 1px;
+}
+
+.demo--brand--dot {
+  font-weight: 700;
+  font-size: 150%;
+  font-family: var(--font-league-spartan);
+  color: var(--primary-dark-blue);
 }

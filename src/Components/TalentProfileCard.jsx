@@ -1,9 +1,10 @@
 import React from "react";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
-import axios from "axios";
+import * as Helpers from "../Helpers/helpers";
 
 export default function TalentProfileCard(props) {
   const user = props.currentUser.profileCard;
+
   const [displayEdit, setDisplayEdit] = React.useState(false);
   const [profileInfo, setProfileInfo] = React.useState({
     profileFirstName: user.profileFirstName,
@@ -14,7 +15,7 @@ export default function TalentProfileCard(props) {
     profileWebsite: user.profileWebsite,
     profileSkills: user.profileSkills,
     profileBio: user.profileBio,
-    profileExperience: "",
+    profileExperience: user.profileExperience,
     profileImage: user.profileImage,
   });
   const [formError, setFormError] = React.useState({
@@ -25,30 +26,38 @@ export default function TalentProfileCard(props) {
     hasSuccess: false,
     msg: "",
   });
-  const [selectedFile, setSelectedFile] = React.useState();
-  const [isFilePicked, setIsFilePicked] = React.useState(false);
+  // const [selectedFile, setSelectedFile] = React.useState();
+  // const [isFilePicked, setIsFilePicked] = React.useState(false);
 
   function showEditForm(e) {
     e.preventDefault();
     setDisplayEdit(true);
+    setFormSuccess({
+      hasSuccess: false,
+      msg: "",
+    });
   }
 
   function closeEditForm(e) {
     e.preventDefault();
     setDisplayEdit(false);
+    setFormError({
+      hasError: false,
+      msg: "",
+    });
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
     // Validation
     if (
-      profileInfo.profileFirstName.trim() === "" ||
-      profileInfo.profileLastName.trim() === "" ||
-      profileInfo.profileJobTitle.trim() === "" ||
-      profileInfo.profileEmail.trim() === "" ||
-      profileInfo.profileLinkedIn.trim() === "" ||
-      profileInfo.profileWebsite.trim() === "" ||
-      profileInfo.profileBio.trim() === ""
+      profileInfo.profileFirstName === "" ||
+      profileInfo.profileLastName === "" ||
+      profileInfo.profileJobTitle === "" ||
+      profileInfo.profileEmail === "" ||
+      profileInfo.profileLinkedIn === "" ||
+      profileInfo.profileWebsite === "" ||
+      profileInfo.profileBio === ""
     ) {
       return setFormError({
         hasError: true,
@@ -64,6 +73,7 @@ export default function TalentProfileCard(props) {
         msg: "Your profile bio must be at least 60 characters and below 150 characters",
       });
     }
+
     if (
       profileInfo.profileExperience < 0 ||
       profileInfo.profileExperience > 100
@@ -100,8 +110,8 @@ export default function TalentProfileCard(props) {
       msg: "",
     });
     // SET SUCCESS
-    setFormError({
-      hasError: true,
+    setFormSuccess({
+      hasSuccess: true,
       msg: "Profile updated!",
     });
     // CLOSE EDIT DISPLAY
@@ -116,17 +126,16 @@ export default function TalentProfileCard(props) {
     }));
   }
 
-  function handleImgUpload(e) {
-    setSelectedFile(e.target.files[0]);
-    setIsFilePicked(true);
-    setProfileInfo((prevProfileInfo) => ({
-      ...prevProfileInfo,
-      profileImg: e.target.files[0].name,
-    }));
-    // PREVIEW IMAGE
-  }
+  // function handleImgUpload(e) {
+  //   setSelectedFile(e.target.files[0]);
+  //   setIsFilePicked(true);
+  //   setProfileInfo((prevProfileInfo) => ({
+  //     ...prevProfileInfo,
+  //     profileImg: e.target.files[0].name,
+  //   }));
+  //   // PREVIEW IMAGE
+  // }
 
-  console.log(profileInfo);
   function handleFilterBox(e) {
     if (e.target.checked === true) {
       setProfileInfo((prevProfileInfo) => ({
@@ -145,6 +154,7 @@ export default function TalentProfileCard(props) {
       }));
     }
   }
+
   return (
     <div className={`talent--card ${displayEdit && "talent--card--expanded"}`}>
       <div
@@ -169,9 +179,18 @@ export default function TalentProfileCard(props) {
           {props.currentUser.profileActivated ? (
             <div className="talent--card--info">
               <div className="talent--card--header">
-                <h4 className="talent--card--name">{`${user.profileFirstName} ${user.profileLastName}`}</h4>
-                <h4 className="talent--card--role">{user.profileJobTitle}</h4>
-                <h4 className="talent--card--website">{user.profileWebsite}</h4>
+                <h4 className="talent--card--name">
+                  {Helpers.fullNameFormatter(
+                    user.profileFirstName,
+                    user.profileLastName
+                  )}
+                </h4>
+                <h4 className="talent--card--role">
+                  {Helpers.textFormatter(user.profileJobTitle)}
+                </h4>
+                <h4 className="talent--card--website">
+                  {Helpers.textFormatter(user.profileWebsite)}
+                </h4>
               </div>
               <div className="talent--card--button--wrapper">
                 <button className="talent--card--btn talent--card--btn--email">
@@ -215,7 +234,7 @@ export default function TalentProfileCard(props) {
               <div className="talent--card--fields--wrapper">
                 {user.profileSkills.map((field, i) => (
                   <p key={i} className="talent--card--fields">
-                    {field}
+                    {Helpers.fieldFormatter(field)}
                   </p>
                 ))}
               </div>
@@ -238,6 +257,11 @@ export default function TalentProfileCard(props) {
               </div>
               <h4 className="talent--card--about--header">LinkedIn</h4>
               <p className="talent--card--about">{user.profileLinkedIn}</p>
+              <p className="talent--card--about talent--card--connections">
+                <strong>
+                  Number of connections: {props.currentUser.connections.length}
+                </strong>
+              </p>
             </div>
           ) : (
             <div className="talent--card--profile--inactive--msg--wrapper">
@@ -323,7 +347,7 @@ export default function TalentProfileCard(props) {
                   type="email"
                   id="emailProfile"
                   name="profileEmail"
-                  value={profileInfo.emailProfile}
+                  value={profileInfo.profileEmail}
                 />
                 <div className="profile--card--note">
                   <small>
@@ -374,12 +398,13 @@ export default function TalentProfileCard(props) {
                   id="experienceProfile"
                   name="profileExperience"
                   value={profileInfo.profileExperience}
+                  required
                 />
                 <label htmlFor="imageProfile">Profile picture:</label>
                 <input
                   type="file"
                   id="imageProfile"
-                  onChange={handleImgUpload}
+                  // onChange={handleImgUpload}
                   disabled
                 />
               </div>
@@ -400,6 +425,13 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="front-end-development"
                       name="front-end-development"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes(
+                          "front-end-development"
+                        )
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="front-end-development">
                       Front End Development
@@ -412,6 +444,13 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="back-end-development"
                       name="back-end-development"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes(
+                          "back-end-development"
+                        )
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="back-end-development">
                       Back End Development
@@ -424,6 +463,13 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="full-stack-development"
                       name="full-stack-development"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes(
+                          "full-stack-development"
+                        )
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="full-stack-development">
                       Full Stack Development
@@ -441,6 +487,13 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="android-development"
                       name="android-development"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes(
+                          "android-development"
+                        )
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="android-development">
                       Android Development
@@ -453,6 +506,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="ios-development"
                       name="ios-development"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("ios-development")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="ios-development">iOS Development</label>
                   </div>
@@ -463,6 +521,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="web-design"
                       name="web-design"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("web-design")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="web-design">Web Design</label>
                   </div>
@@ -473,6 +536,13 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="software-engineering"
                       name="software-engineering"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes(
+                          "software-engineering"
+                        )
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="software-engineering">
                       Software Engineering
@@ -490,6 +560,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="photography"
                       name="photography"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("photography")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="photography">Photography</label>
                   </div>
@@ -500,6 +575,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="videography"
                       name="videography"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("videography")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="videography">Videography</label>
                   </div>
@@ -510,6 +590,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="graphic-design"
                       name="graphic-design"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("graphic-design")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="graphic-design">Graphic Design</label>
                   </div>
@@ -520,6 +605,11 @@ export default function TalentProfileCard(props) {
                       onChange={handleFilterBox}
                       id="digital-animation"
                       name="digital-animation"
+                      defaultChecked={
+                        profileInfo.profileSkills.includes("digital-animation")
+                          ? true
+                          : false
+                      }
                     />
                     <label htmlFor="digital-animation">Digital Animation</label>
                   </div>

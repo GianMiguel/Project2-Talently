@@ -31,6 +31,10 @@ export default function AccountCard(props) {
   function closeEdit(e) {
     e.preventDefault();
     setDisplayEdit(false);
+    setFormError({
+      hasError: false,
+      msg: "",
+    });
   }
 
   function handleChange(e) {

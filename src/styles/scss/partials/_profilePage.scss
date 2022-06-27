@@ -158,6 +158,18 @@
   font-size: 2rem;
 }
 
+.about--brand--text {
+  color: var(--primary-black);
+  font-family: var(--font-league-spartan);
+  font-size: 110%;
+}
+
+.about--brand--dot {
+  color: var(--primary-dark-blue);
+  font-family: var(--font-league-spartan);
+  font-size: 110%;
+}
+
 .talent--card--expanded {
   max-width: 600px;
 }
@@ -173,4 +185,10 @@
   width: 250px;
   display: flex;
   flex-direction: column;
+}
+
+.talent--card--connections {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
 }

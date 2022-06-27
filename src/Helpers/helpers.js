@@ -1,12 +1,12 @@
 // Require value
 export function hasValue(inputValue) {
-  if(inputValue.name == "termsAndCondition"){
+  if (inputValue.name === "termsAndCondition") {
     if (inputValue.checked === false) {
       return showError(inputValue, "This Field is Required");
     } else {
       return showSuccess(inputValue);
     }
-  }else{
+  } else {
     if (inputValue.value === "") {
       return showError(inputValue, "This Field is Required");
     } else {
@@ -78,22 +78,37 @@ export const sortString = (sort) => {
   if (sort === "nameDown") return "Name (Z to A)";
 };
 
-
 // format text to capitalize first letter (space)
-export function formatText(text) {
-    text = text.split(" ");
-    for (var i = 0, x = text.length; i < x; i++) {
-        text[i] = text[i][0].toUpperCase() + text[i].slice(1);
-    }
-    return text.join(" ");
+export function fullNameFormatter(...inputs) {
+  return inputs
+    .map((input) => input[0].toUpperCase() + input.slice(1))
+    .join(" ");
 }
 
+export function textFormatter(input) {
+  if (!input) return;
+  return input
+    .split(" ")
+    .map((word) => {
+      if (word.toLowerCase() === "hr") return "HR";
+      if (word.toLowerCase() === "ceo") return "CEO";
+      if (word.toLowerCase() === "cto") return "CTO";
+      if (word.toLowerCase() === "of") return "of";
+      if (word.toLowerCase() === "a") return "a";
+      if (word.toLowerCase() === "and") return "and";
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    })
+    .join(" ");
+}
 
 // format skills to capitalize first letter with dash
-export function formatDashed(skill) {
-  skill = skill.split("-");
-  for (var i = 0, x = skill.length; i < x; i++) {
-      skill[i] = skill[i][0].toUpperCase() + skill[i].slice(1);
-  }
-  return skill.join("-");
+export function fieldFormatter(input) {
+  return input
+    .split("-")
+    .map((word) =>
+      word !== "ios"
+        ? word[0].toUpperCase() + word.slice(1).toLowerCase()
+        : "iOS"
+    )
+    .join(" ");
 }

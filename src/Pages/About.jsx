@@ -1,58 +1,68 @@
-import React from 'react'
-import DeveloperCard from '../Components/DeveloperCard'
+import React from "react";
+import DeveloperCard from "../Components/DeveloperCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
+  AOS.init();
   return (
-    <div className='about--us--container'>
-      <div className='about--us--mission--wrapper'>
-        <div className='about--us--img-box'>
-          <img
-            src={require(`../images/about-us/team.jpg`)}
-            alt="mission"
-          />
+    <div className="about--us--container">
+      <div className="about--us--mission--wrapper">
+        <div className="about--us--img-box">
+          <img src={require(`../images/about-us/team.jpg`)} alt="mission" />
         </div>
-        <div className='about--us--mission'>
+        <div className="about--us--mission">
           <h1>Our Mission</h1>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, ipsam. Necessitatibus assumenda aspernatur saepe amet, a, velit iure vel delectus temporibus facere sint asperiores quas minima aliquam excepturi veniam error.</p>
+          <p>
+            As a company, Talently provides a platform for hard working
+            recruiters and exceptional talents to spark a connection and provide
+            opportunity for them to help each other. We are commited in
+            delivering an awesome experience for any kind of users of this
+            application
+          </p>
         </div>
       </div>
 
-      <div className='about--us--vision--wrapper'>
-      
-        <div className='about--us--vision'>
+      <div className="about--us--vision--wrapper">
+        <div className="about--us--vision" data-aos="fade-up-right">
           <h1>Our Vision</h1>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, ipsam. Necessitatibus assumenda aspernatur saepe amet, a, velit iure vel delectus temporibus facere sint asperiores quas minima aliquam excepturi veniam error.</p>
+          <p>
+            We believe that in the future, the supply for tech and digital
+            fields will not be able to catch up to the demands of the market and
+            Talently is here to help alleviate that gap. We're all about giving
+            opportunities to those who deserve it and we're here to provide just
+            that.
+          </p>
         </div>
-        <div className='about--us--img-box'>
-          <img
-            src={require(`../images/about-us/visiom.jpg`)}
-            alt="mission"
-          />
-        </div>
-      </div>
-
-      <div className='about--us--goal--wrapper'>
-        <div className='about--us--img-box'>
-          <img
-            src={require(`../images/about-us/team.jpg`)}
-            alt="mission"
-          />
-        </div>
-        <div className='about--us--goal'>
-          <h1>Our Goal</h1>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, ipsam. Necessitatibus assumenda aspernatur saepe amet, a, velit iure vel delectus temporibus facere sint asperiores quas minima aliquam excepturi veniam error.</p>
+        <div className="about--us--img-box" data-aos="fade-up-left">
+          <img src={require(`../images/about-us/visiom.jpg`)} alt="mission" />
         </div>
       </div>
 
-      <div className='our--team--container'>
-        <h1>Our Team</h1>
-        <div className='our--team--wrapper'>
+      <div className="about--us--goal--wrapper">
+        <div className="about--us--img-box" data-aos="fade-up-right">
+          <img src={require(`../images/about-us-3.jpg`)} alt="mission" />
+        </div>
+        <div className="about--us--goal" data-aos="fade-up-left">
+          <p>
+            This project was made to showcase our team's proficiency in front
+            end development.
+          </p>
+        </div>
+      </div>
+
+      <div className="our--team--container">
+        <h1>
+          Meet the people behind{" "}
+          <span className="about--brand--text">talently</span>
+          <span className="about--brand--dot">.</span>
+        </h1>
+        <div className="our--team--wrapper">
           <DeveloperCard />
         </div>
-        
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

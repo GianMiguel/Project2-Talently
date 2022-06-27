@@ -24,6 +24,10 @@ export default function Home(props) {
     props.handleSearch(searchForm);
   }
 
+  function handleTalentField(e) {
+    props.handleSearch(e.target.closest(".field--card").dataset.field);
+  }
+
   return (
     <div className="home--page">
       <div className="hero--container">
@@ -78,28 +82,75 @@ export default function Home(props) {
       {/* <PopularFields /> */}
       <div className="field--container">
         <p>Popular Talent Fields:</p>
-          <div className="field--wrapper">            
-            <div className="field--card card1" data-aos="fade-up">
+        <div className="field--wrapper">
+          <div className="field--set--wrapper">
+            <div
+              className="field--card card1"
+              data-aos="fade-up"
+              data-field="web design"
+              onClick={handleTalentField}
+            >
               <span>Web Design</span>
-              <img src={require(`../images/home-img/fields/1.png`)} alt="field1" />
+              <img
+                src={require(`../images/home-img/fields/1.png`)}
+                alt="field1"
+              />
             </div>
-            <div className="field--card" data-aos="fade-up" data-aos-delay='100'>
-              <span>Front End <br/> Development</span>
-              <img src={require(`../images/home-img/fields/2.png`)} alt="field2" />
+            <div
+              className="field--card"
+              data-aos="fade-up"
+              data-aos-delay="100"
+              data-field="front end development"
+              onClick={handleTalentField}
+            >
+              <span>
+                Front End <br /> Development
+              </span>
+              <img
+                src={require(`../images/home-img/fields/2.png`)}
+                alt="field2"
+              />
             </div>
-            <div className="field--card card2" data-aos="fade-up" data-aos-delay='200'>
-              <span>Back End <br/> Development</span>
-              <img src={require(`../images/home-img/fields/3.png`)} alt="field3" />
+          </div>
+          <div className="field--set--wrapper">
+            <div
+              className="field--card card2"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              data-field="back end development"
+              onClick={handleTalentField}
+            >
+              <span>
+                Back End <br /> Development
+              </span>
+              <img
+                src={require(`../images/home-img/fields/3.png`)}
+                alt="field3"
+              />
             </div>
-            <div className="field--card card1" data-aos="fade-up" data-aos-delay='300'>
+            <div
+              className="field--card card1"
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-field="graphic design"
+              onClick={handleTalentField}
+            >
               <span>Graphic Design</span>
-              <img src={require(`../images/home-img/fields/4.png`)} alt="field4" />
+              <img
+                src={require(`../images/home-img/fields/4.png`)}
+                alt="field4"
+              />
             </div>
           </div>
         </div>
+      </div>
 
       <div className="features--container">
-        <div className="features--textbox" data-aos="fade-up-right" data-aos-once="true">
+        <div
+          className="features--textbox"
+          data-aos="fade-up-right"
+          data-aos-once="true"
+        >
           <h1>
             A frontier of awesome and talented professionals are waiting for you
             connections.
@@ -115,7 +166,11 @@ export default function Home(props) {
             <FiCheckSquare /> Help your business or your company grow.
           </p>
         </div>
-        <div className="features--imgbox" data-aos="fade-up-left" data-aos-once="true">
+        <div
+          className="features--imgbox"
+          data-aos="fade-up-left"
+          data-aos-once="true"
+        >
           <img
             src={require(`../images/home-img/features-img.png`)}
             alt="featuresimg"

@@ -55,11 +55,6 @@
   .hero--wrapper img {
     width: 400px;
   }
-
-  .card1 {
-    display: none;
-  }
-  
 }
 
 @media screen and(max-width: 1000px) {
@@ -70,8 +65,6 @@
   .hero--wrapper {
     padding-right: 0;
   }
-
-  
 }
 .hero--header {
   color: var(--primary-white);
@@ -152,9 +145,8 @@
 
 // Talent Section
 .field--container {
-  margin-top: 10vh;
-  height: 80vh;
-  padding: 0 8em;
+  min-height: 80vh;
+  padding: 5rem;
 
   p {
     font-size: 34px;
@@ -166,56 +158,64 @@
   .field--wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     padding-top: 2vh;
-    height: 60vh;
+    min-height: 60vh;
 
-    .field--card {
-      position: relative;
-      height: 50vh;
-      width: auto;
-      text-align: center;
-      cursor: pointer;
-      filter: brightness(75%);
-      transition: 0.5s ease;
-
-      &:hover {
-        filter: brightness(100%);
-      }
-
-      span {
-        position: absolute;
-        background-color: var(--primary-dark-blue);
-        color: var(--primary-white);
-        padding: 10px 20px;
-        margin-top: 20px;
-        margin-left: 20px;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      img {
-        border-radius: 10px;
-        overflow: hidden;
-        height: 100%;
-        width: 100%;
-        object-fit: contain;
-      }
-    }
-
-    .container-with-dots {
-      margin-top: 10vh;
-    }
-
-    .arrow--button {
-      font-size: 30px;
-      color: var(--primary-dark-blue);
-
-      &:hover {
-        color: var(--primary-very-dark-blue);
+    .field--set--wrapper {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      min-width: 50%;
+      flex-wrap: wrap;
+      .field--card {
+        position: relative;
+        height: 484px;
+        min-width: 323px;
+        text-align: center;
         cursor: pointer;
+        filter: brightness(75%);
+        transition: 0.5s ease;
+        margin: 1rem;
+
+        &:hover {
+          filter: brightness(100%);
+        }
+
+        span {
+          position: absolute;
+          background-color: var(--primary-dark-blue);
+          color: var(--primary-white);
+          padding: 10px 20px;
+          margin-top: 20px;
+          margin-left: 20px;
+          border-radius: 10px;
+          font-size: 18px;
+          font-weight: 600;
+        }
+
+        img {
+          border-radius: 10px;
+          overflow: hidden;
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .container-with-dots {
+        margin-top: 10vh;
+      }
+
+      .arrow--button {
+        font-size: 30px;
+        color: var(--primary-dark-blue);
+
+        &:hover {
+          color: var(--primary-very-dark-blue);
+          cursor: pointer;
+        }
       }
     }
   }
@@ -300,13 +300,9 @@
 
   // Talent Section
   .field--container {
-    padding: 0 4em;
-
     p {
       text-align: center;
     }
-
-    
   }
 
   // Features Section
@@ -340,12 +336,6 @@
         width: 40vw;
       }
     }
-  }
-}
-
-@media screen and (max-width: 720px) {
-  .card2 {
-    display: none;
   }
 }
 
@@ -401,11 +391,6 @@
 
     img {
       width: 18vw;
-    }
-
-    // Talent Section
-    .card2 {
-      display: none;
     }
   }
 

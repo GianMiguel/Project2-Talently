@@ -14,6 +14,7 @@ import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 import queries from "./Data/queries";
 import Profile from "./Pages/Profile";
+import { Helmet } from "react-helmet";
 
 export default function App() {
   // WRITE ACCOUNTS DATA TO LOCAL STORAGE
@@ -116,6 +117,7 @@ export default function App() {
     // return console.log(searchQuery.searchKey);
     // REDIRECT TO TALENTS PAGE
     navigate("/talents");
+    window.scrollTo(0, 0);
   }
 
   function clearSearch() {
@@ -177,7 +179,7 @@ export default function App() {
     setCurrentUser(account);
     setIsLoggedin(true);
     if (account.userType === "talent") {
-      navigate("/about");
+      navigate("/profile");
     }
     if (account.userType === "hunter") {
       navigate("/talents");
@@ -207,7 +209,7 @@ export default function App() {
               profileWebsite: "",
               profileSkills: [],
               profileBio: "",
-              profileExperience: null,
+              profileExperience: "",
               profileImage: "",
             },
             connections: [],
@@ -231,7 +233,7 @@ export default function App() {
               profileWebsite: "",
               profileSkills: [],
               profileBio: "",
-              profileExperience: null,
+              profileExperience: "",
               profileImage: "",
             },
             connections: [],
@@ -251,7 +253,7 @@ export default function App() {
     setCurrentUser(newUser);
 
     if (newUser.userType === "talent") {
-      navigate("/about");
+      navigate("/profile");
     }
     if (newUser.userType === "hunter") {
       navigate("/talents");
@@ -324,12 +326,12 @@ export default function App() {
             ...account,
             profileActivated: true,
             profileCard: {
-              profileFirstName: data.profileFirstName,
-              profileLastName: data.profileLastName,
-              profileJobTitle: data.profileJobTitleName,
-              profileEmail: data.profileEmail,
-              profileLinkedIn: data.profileLinkedIn,
-              profileWebsite: data.profileWebsite,
+              profileFirstName: data.profileFirstName.toLowerCase(),
+              profileLastName: data.profileLastName.toLowerCase(),
+              profileJobTitle: data.profileJobTitle.toLowerCase(),
+              profileEmail: data.profileEmail.toLowerCase(),
+              profileLinkedIn: data.profileLinkedIn.toLowerCase(),
+              profileWebsite: data.profileWebsite.toLowerCase(),
               profileSkills: data.profileSkills,
               profileBio: data.profileBio,
               profileExperience: +data.profileExperience,
@@ -345,12 +347,12 @@ export default function App() {
       ...account,
       profileActivated: true,
       profileCard: {
-        profileFirstName: data.profileFirstName,
-        profileLastName: data.profileLastName,
-        profileJobTitle: data.profileJobTitleName,
-        profileEmail: data.profileEmail,
-        profileLinkedIn: data.profileLinkedIn,
-        profileWebsite: data.profileWebsite,
+        profileFirstName: data.profileFirstName.toLowerCase(),
+        profileLastName: data.profileLastName.toLowerCase(),
+        profileJobTitle: data.profileJobTitle.toLowerCase(),
+        profileEmail: data.profileEmail.toLowerCase(),
+        profileLinkedIn: data.profileLinkedIn.toLowerCase(),
+        profileWebsite: data.profileWebsite.toLowerCase(),
         profileSkills: data.profileSkills,
         profileBio: data.profileBio,
         profileExperience: +data.profileExperience,
@@ -359,8 +361,24 @@ export default function App() {
     });
   }
 
+  function demoRecruiter() {
+    setCurrentUser(accounts[66]);
+    setIsLoggedin(true);
+    navigate("/talents");
+  }
+
+  function demoTalent() {
+    setCurrentUser(accounts[0]);
+    setIsLoggedin(true);
+    navigate("/profile");
+  }
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Talently | Find the best talents</title>
+        <link rel="canonical" href="https://talently-io.netlify.app/" />
+      </Helmet>
       <Navbar
         accounts={accounts}
         handleLogin={handleLogin}
@@ -368,6 +386,8 @@ export default function App() {
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
         handleLogOut={handleLogOut}
+        demoRecruiter={demoRecruiter}
+        demoTalent={demoTalent}
       />
       <Routes>
         <Route path="/" element={<Home handleSearch={handleSearch} />}></Route>

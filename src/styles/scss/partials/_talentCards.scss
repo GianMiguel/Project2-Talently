@@ -61,6 +61,7 @@
   font-size: 16px;
   line-height: 19px;
   font-weight: 400;
+  word-wrap: break-word;
 }
 
 .talent--card--button--wrapper {
@@ -280,4 +281,16 @@
   font-size: 2.5rem;
   color: var(--primary-white);
   float: right;
+}
+
+.talent--card--company {
+  font-weight: 400;
+  margin-top: 10px;
+  font-family: var(--font-league-spartan);
+  font-size: 26px;
+}
+
+.hunter--name {
+  font-weight: 400;
+  font-family: var(--font-raleway);
 }

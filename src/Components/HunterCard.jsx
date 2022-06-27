@@ -1,7 +1,7 @@
 import React from "react";
+import * as Helpers from "../Helpers/helpers";
 
 export default function HunterCard(props) {
-  console.log(props);
   const user = props.user;
   //   const type = user.userType;
   //   const accounts = props.accounts;
@@ -23,11 +23,19 @@ export default function HunterCard(props) {
   function openEdit(e) {
     e.preventDefault();
     setDisplayEdit(true);
+    setFormSuccess({
+      hasSuccess: false,
+      msg: "",
+    });
   }
 
   function closeEdit(e) {
     e.preventDefault();
     setDisplayEdit(false);
+    setFormError({
+      hasError: false,
+      msg: "",
+    });
   }
 
   function handleChange(e) {
@@ -72,10 +80,27 @@ export default function HunterCard(props) {
       </div>
       {!displayEdit && (
         <>
-          <div className="account--card--content">{`${user.firstName} ${user.lastName}`}</div>
-          <div className="account--card--content">{user.email}</div>
-          <div className="account--card--content">{user.jobTitle}</div>
-          <div className="account--card--content">{user.company}</div>
+          {/* <div className="talent--card--header">
+            <h4 className="talent--card--name">{`${talent.profileCard.profileFirstName} ${talent.profileCard.profileLastName}`}</h4>
+            <h4 className="talent--card--role">
+              {talent.profileCard.profileJobTitle}
+            </h4>
+            <h4 className="talent--card--website">
+              {talent.profileCard.profileWebsite}
+            </h4>
+          </div> */}
+          <div className="talent--card--header">
+            <div className="talent--card--name hunter--name">
+              {Helpers.fullNameFormatter(user.firstName, user.lastName)}
+            </div>
+            <div className="talent--card--role">
+              {Helpers.textFormatter(user.jobTitle)}
+            </div>
+            <div className="talent--card--website">{user.email}</div>
+            <div className="talent--card--company">
+              {Helpers.textFormatter(user.company)}
+            </div>
+          </div>
           <div className="account--card--content">
             Talents connected to: {user.connections.length}
           </div>

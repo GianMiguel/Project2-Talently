@@ -5,6 +5,8 @@ import HunterCard from "../Components/HunterCard";
 import TalentCards from "../Components/TalentCards";
 import Pagination from "../Components/Pagination";
 import TalentProfileCard from "../Components/TalentProfileCard";
+import HunterCardView from "../Components/HunterCardView";
+import * as Helpers from "../Helpers/helpers";
 
 export default function Profile(props) {
   const user = props.currentUser;
@@ -16,9 +18,11 @@ export default function Profile(props) {
   let talents = accounts.filter((account) =>
     user.connections.includes(account.id)
   );
+
   const indexOfLastTalent = currentPage * talentsPerPage;
   const indexOfFirstTalent = indexOfLastTalent - talentsPerPage;
   const currentTalents = talents.slice(indexOfFirstTalent, indexOfLastTalent);
+
   // Change page
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
@@ -56,8 +60,8 @@ export default function Profile(props) {
       <div className="account--info--header">
         <h2>
           Here's your profile information,{" "}
-          {user.firstName ||
-            user.profileCard.profileFirstName ||
+          {Helpers.textFormatter(user.firstName) ||
+            Helpers.textFormatter(user.profileCard.profileFirstName) ||
             "new talently member"}
           .
         </h2>
@@ -108,7 +112,7 @@ export default function Profile(props) {
             </div>
           </>
         ) : (
-          ""
+          <HunterCardView user={props.currentUser} accounts={props.accounts} />
         )}
       </div>
     </div>

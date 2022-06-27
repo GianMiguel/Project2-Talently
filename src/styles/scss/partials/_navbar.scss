@@ -39,7 +39,7 @@
 
         .nav--link {
           text-decoration: none;
-          color: var(--primary-white);  
+          color: var(--primary-white);
 
           &::after {
             content: "";
@@ -79,7 +79,6 @@
     }
   }
 }
-
 
 .header--active {
   transition: 0.5s ease-in;
@@ -145,6 +144,7 @@
 
     li {
       margin: 2rem;
+      position: relative;
 
       .nav--link {
         color: var(--primary-black);
@@ -168,6 +168,22 @@
         font-size: 2rem;
         &:hover {
           cursor: pointer;
+        }
+      }
+      .activepage {
+        &::after {
+          content: "";
+          position: absolute;
+          align-self: center;
+          justify-self: center;
+          display: inline;
+          width: 100px;
+          height: 3px;
+          bottom: 0;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          background: var(--primary-dark-blue);
         }
       }
     }

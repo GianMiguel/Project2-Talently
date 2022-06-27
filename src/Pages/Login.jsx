@@ -37,8 +37,17 @@ const Login = (props) => {
   const showSignUpModal = () => {
     props.closeModalLogin();
     props.showModalSignUp();
+  };
+
+  function demoRecruiter() {
+    props.demoRecruiter();
+    props.closeModalLogin();
   }
 
+  function demoTalent() {
+    props.demoTalent();
+    props.closeModalLogin();
+  }
   return (
     <div className="signin--container">
       <div className="signin--wrapper">
@@ -49,9 +58,11 @@ const Login = (props) => {
           talently<span>.</span>
         </h1>
 
-        {errorMessage === "" 
-        ? ""
-        : <p className="signin--error--message">{errorMessage}</p> }
+        {errorMessage === "" ? (
+          ""
+        ) : (
+          <p className="signin--error--message">{errorMessage}</p>
+        )}
         <form action="" onSubmit={handleSubmit}>
           {/* EMAIL INPUT*/}
           <div className="signin--input--group">
@@ -91,11 +102,29 @@ const Login = (props) => {
             Login
           </button>
         </form>
-
+        <button
+          type="button"
+          className="signin--btn demo--btn"
+          onClick={demoRecruiter}
+        >
+          Demo <span className="demo--brand--text">talently</span>
+          <span className="demo--brand--dot">.</span> as a Recruiter
+        </button>
+        <button
+          type="button"
+          className="signin--btn demo--btn"
+          onClick={demoTalent}
+        >
+          Demo <span className="demo--brand--text">talently</span>
+          <span className="demo--brand--dot">.</span> as a Talent
+        </button>
         <p>or</p>
         {/* LINK FOR LOGIN */}
         <p>
-          Don't have an account yet? <a href="#signUp" onClick={showSignUpModal}>Sign up instead</a>
+          Don't have an account yet?{" "}
+          <a href="#signUp" onClick={showSignUpModal}>
+            Sign up instead
+          </a>
         </p>
       </div>
     </div>

@@ -195,7 +195,7 @@ export default function Talents(props) {
   const filtersRemoveElement = filters.map((filter, i) => (
     <span data-filter={filter} className="filter--option" key={i}>
       <div className="talents--displayed--contents">
-        {filter}
+        {Helpers.fieldFormatter(filter)}
         <GrClose className="talents--remove--view" onClick={removeFilter} />
       </div>
     </span>
@@ -204,7 +204,9 @@ export default function Talents(props) {
   if (props.searchQuery.initiateSearch && props.searchQuery.isValid) {
     searchKeyElement = props.searchQuery.searchKey.map((key, i) => (
       <span data-filter={key} className="filter--option" key={i}>
-        <div className="talents--displayed--contents">{key}</div>
+        <div className="talents--displayed--contents">
+          {Helpers.fieldFormatter(key)}
+        </div>
       </span>
     ));
   }
@@ -213,7 +215,9 @@ export default function Talents(props) {
       <div className="talents--page--container">
         <div className="talents--page--header">
           {props.currentUser.userType === "hunter" ? (
-            <h2>{`Hi ${props.currentUser.firstName}, explore this page for amazing talents!`}</h2>
+            <h2>{`Hi ${Helpers.textFormatter(
+              props.currentUser.firstName
+            )}, explore this page for amazing talents!`}</h2>
           ) : (
             <h2>Discover talented professionals</h2>
           )}

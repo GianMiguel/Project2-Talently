@@ -86,10 +86,6 @@ body {
   .hero--wrapper img {
     width: 400px;
   }
-
-  .card1 {
-    display: none;
-  }
 }
 @media screen and (max-width: 1000px) {
   .hero--bg {
@@ -171,9 +167,8 @@ body {
 }
 
 .field--container {
-  margin-top: 10vh;
-  height: 80vh;
-  padding: 0 8em;
+  min-height: 80vh;
+  padding: 5rem;
 }
 .field--container p {
   font-size: 34px;
@@ -184,24 +179,32 @@ body {
 .field--container .field--wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   padding-top: 2vh;
-  height: 60vh;
+  min-height: 60vh;
 }
-.field--container .field--wrapper .field--card {
+.field--container .field--wrapper .field--set--wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 50%;
+  flex-wrap: wrap;
+}
+.field--container .field--wrapper .field--set--wrapper .field--card {
   position: relative;
-  height: 50vh;
-  width: auto;
+  height: 484px;
+  min-width: 323px;
   text-align: center;
   cursor: pointer;
   filter: brightness(75%);
   transition: 0.5s ease;
+  margin: 1rem;
 }
-.field--container .field--wrapper .field--card:hover {
+.field--container .field--wrapper .field--set--wrapper .field--card:hover {
   filter: brightness(100%);
 }
-.field--container .field--wrapper .field--card span {
+.field--container .field--wrapper .field--set--wrapper .field--card span {
   position: absolute;
   background-color: var(--primary-dark-blue);
   color: var(--primary-white);
@@ -212,7 +215,7 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
-.field--container .field--wrapper .field--card img {
+.field--container .field--wrapper .field--set--wrapper .field--card img {
   border-radius: 10px;
   overflow: hidden;
   height: 100%;
@@ -220,14 +223,14 @@ body {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.field--container .field--wrapper .container-with-dots {
+.field--container .field--wrapper .field--set--wrapper .container-with-dots {
   margin-top: 10vh;
 }
-.field--container .field--wrapper .arrow--button {
+.field--container .field--wrapper .field--set--wrapper .arrow--button {
   font-size: 30px;
   color: var(--primary-dark-blue);
 }
-.field--container .field--wrapper .arrow--button:hover {
+.field--container .field--wrapper .field--set--wrapper .arrow--button:hover {
   color: var(--primary-very-dark-blue);
   cursor: pointer;
 }
@@ -295,9 +298,6 @@ body {
     width: 12vw;
   }
 
-  .field--container {
-    padding: 0 4em;
-  }
   .field--container p {
     text-align: center;
   }
@@ -327,11 +327,6 @@ body {
   }
   .testimonials--container .testimonials--imgbox img {
     width: 40vw;
-  }
-}
-@media screen and (max-width: 720px) {
-  .card2 {
-    display: none;
   }
 }
 @media screen and (max-width: 560px) {
@@ -381,9 +376,6 @@ body {
   }
   .company--logos img {
     width: 18vw;
-  }
-  .company--logos .card2 {
-    display: none;
   }
 
   .testimonials--container .testimonials--textbox {
@@ -521,6 +513,7 @@ body {
 }
 .nav--links--collapsed ul li {
   margin: 2rem;
+  position: relative;
 }
 .nav--links--collapsed ul li .nav--link {
   color: var(--primary-black);
@@ -544,6 +537,19 @@ body {
 }
 .nav--links--collapsed ul li .nav--link--join:hover {
   cursor: pointer;
+}
+.nav--links--collapsed ul li .activepage::after {
+  content: "";
+  position: absolute;
+  align-self: center;
+  justify-self: center;
+  display: inline;
+  width: 100px;
+  height: 3px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-dark-blue);
 }
 
 .header--expand {
@@ -804,6 +810,7 @@ body {
   font-size: 16px;
   line-height: 19px;
   font-weight: 400;
+  word-wrap: break-word;
 }
 
 .talent--card--button--wrapper {
@@ -1024,6 +1031,18 @@ body {
   float: right;
 }
 
+.talent--card--company {
+  font-weight: 400;
+  margin-top: 10px;
+  font-family: var(--font-league-spartan);
+  font-size: 26px;
+}
+
+.hunter--name {
+  font-weight: 400;
+  font-family: var(--font-raleway);
+}
+
 .sign--up--container {
   display: flex;
   align-items: center;
@@ -1214,7 +1233,7 @@ body {
   padding: 10px;
   text-align: center;
   color: #fff;
-  background-color: #EF9F9F;
+  background-color: #ef9f9f;
   margin-bottom: 10px;
 }
 
@@ -1271,13 +1290,13 @@ body {
 }
 
 .signin--error {
-  color: #EF9F9F;
+  color: #ef9f9f;
   font-weight: bold;
 }
 
 .signin--success {
   font-weight: bold;
-  color: #3EC70B;
+  color: #3ec70b;
 }
 
 .signin--input--group {
@@ -1328,6 +1347,29 @@ body {
 }
 .signin--wrapper > p a {
   color: #000000;
+}
+
+.demo--btn {
+  background-color: var(--primary-very-dark-blue);
+  border: 1px solid var(--primary-very-dark-blue);
+  margin-top: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.demo--brand--text {
+  font-weight: 700;
+  font-family: var(--font-league-spartan);
+  color: var(--primary-white);
+  font-size: 150%;
+  letter-spacing: 1px;
+}
+
+.demo--brand--dot {
+  font-weight: 700;
+  font-size: 150%;
+  font-family: var(--font-league-spartan);
+  color: var(--primary-dark-blue);
 }
 
 .pagination--container {
@@ -1806,6 +1848,18 @@ footer .footer--logos span:hover {
   font-size: 2rem;
 }
 
+.about--brand--text {
+  color: var(--primary-black);
+  font-family: var(--font-league-spartan);
+  font-size: 110%;
+}
+
+.about--brand--dot {
+  color: var(--primary-dark-blue);
+  font-family: var(--font-league-spartan);
+  font-size: 110%;
+}
+
 .talent--card--expanded {
   max-width: 600px;
 }
@@ -1822,3 +1876,9 @@ footer .footer--logos span:hover {
   display: flex;
   flex-direction: column;
 }
+
+.talent--card--connections {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */
