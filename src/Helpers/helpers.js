@@ -81,7 +81,12 @@ export const sortString = (sort) => {
 // format text to capitalize first letter (space)
 export function fullNameFormatter(...inputs) {
   return inputs
-    .map((input) => input[0].toUpperCase() + input.slice(1))
+    .map((input) => {
+      return input
+        .split(" ")
+        .map((word) => word[0].toUpperCase() + word.slice(1))
+        .join(" ");
+    })
     .join(" ");
 }
 

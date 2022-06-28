@@ -71,7 +71,7 @@ const DeveloperCard = () => {
         <div className="talent--card--info">
           <div className="talent--card--header">
             <h4 className="talent--card--name">Gian Miguel Dela Cruz</h4>
-            <h4 className="talent--card--role">UI/EX Engineer</h4>
+            <h4 className="talent--card--role">UI/UX Engineer</h4>
             <h4 className="talent--card--website">
               <a
                 href="https://gianmiguel.github.io/e-Portfolio/"
